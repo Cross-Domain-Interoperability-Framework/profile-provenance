@@ -1,0 +1,84 @@
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "ex": "https://example.org/"
+  },
+  "@id": "ex:dataset_with_provenance_001",
+  "@type": [
+    "schema:Dataset"
+  ],
+  "schema:name": "Processed Seismic Survey Data",
+  "schema:identifier": "https://doi.org/10.1234/seismic-2025",
+  "schema:url": "https://example.org/datasets/seismic-2025",
+  "schema:dateModified": "2025-06-15",
+  "schema:license": [
+    "https://creativecommons.org/licenses/by/4.0/"
+  ],
+  "schema:subjectOf": {
+    "@type": [
+      "schema:Dataset"
+    ],
+    "schema:additionalType": [
+      "dcat:CatalogRecord"
+    ],
+    "@id": "ex:metadata_provenance_001",
+    "schema:about": {
+      "@id": "ex:dataset_with_provenance_001"
+    },
+    "dcterms:conformsTo": [
+      {
+        "@id": "https://w3id.org/cdif/provenance/1.0"
+      }
+    ]
+  },
+  "prov:wasGeneratedBy": [
+    {
+      "@type": [
+        "prov:Activity",
+        "schema:Action"
+      ],
+      "schema:name": "Seismic data processing",
+      "schema:description": "Raw seismic traces were processed using standard reflection seismology workflow including deconvolution, stacking, and migration.",
+      "schema:agent": {
+        "@type": [
+          "schema:Person"
+        ],
+        "schema:name": "Garcia, Maria",
+        "schema:identifier": "https://orcid.org/0000-0003-1234-5678",
+        "schema:contactPoint": {
+          "@type": [
+            "schema:ContactPoint"
+          ],
+          "schema:email": "m.garcia@example.org"
+        }
+      },
+      "prov:used": [
+        {
+          "schema:instrument": {
+            "@type": [
+              "schema:SoftwareApplication"
+            ],
+            "schema:name": "SeisUnix",
+            "schema:version": "44R27",
+            "schema:url": "https://wiki.seismic-unix.org/",
+            "schema:category": [
+              {
+                "@type": [
+                  "schema:DefinedTerm"
+                ],
+                "schema:name": "Seismic processing software",
+                "schema:termCode": "seismic-processing"
+              }
+            ]
+          }
+        }
+      ],
+      "schema:startTime": "2025-01-10T00:00:00Z",
+      "schema:endTime": "2025-03-20T00:00:00Z",
+      "schema:actionStatus": "schema:CompletedActionStatus"
+    }
+  ]
+}

@@ -1,0 +1,1745 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CDIF Provenance",
+  "description": "Building block that defines the prov:wasGeneratedBy property for CDIF metadata records. Wraps the cdifProvActivity building block as an array of provenance activities that describe how the described resource was generated.",
+  "type": "object",
+  "properties": {
+    "schema:subjectOf": {
+      "properties": {
+        "dcterms:conformsTo": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "@id": {
+                "type": "string",
+                "description": "uri for specifications that this metadata record conforms to"
+              }
+            }
+          },
+          "minItems": 1,
+          "contains": {
+            "type": "object",
+            "properties": {
+              "@id": {
+                "const": "https://w3id.org/cdif/provenance/1.0"
+              }
+            }
+          }
+        }
+      }
+    },
+    "prov:wasGeneratedBy": {
+      "description": "Provenance activities describing how the resource was generated, including agents, instruments, methodology, temporal bounds, and action chaining.",
+      "type": "array",
+      "items": {
+        "title": "CDIF Provenance Activity",
+        "description": "Extended provenance activity building block for CDIF. Extends the minimal prov:Activity (generatedBy) with schema.org Action properties for comprehensive provenance documentation including agents, instruments, methodology, temporal bounds, action chaining, and more.",
+        "type": "object",
+        "allOf": [
+          {
+            "title": "very simple links or names of software or instruments used to generate a resource.",
+            "type": "object",
+            "properties": {
+              "@type": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "minItems": 1,
+                "contains": {
+                  "const": "prov:Activity"
+                }
+              },
+              "prov:used": {
+                "type": "array",
+                "items": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "@id": {
+                          "type": "string",
+                          "description": "a resolvable reference to a representation of the software or instrument used"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "type": "object",
+            "properties": {
+              "@type": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "minItems": 2,
+                "contains": {
+                  "const": "schema:Action"
+                },
+                "description": "Must include both schema:Action and prov:Activity (prov:Activity required by base generatedBy schema)"
+              },
+              "prov:used": {
+                "type": "array",
+                "items": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "@id": {
+                          "type": "string",
+                          "description": "a resolvable reference to a representation of the software or instrument used"
+                        }
+                      }
+                    },
+                    {
+                      "type": "object",
+                      "description": "an item used by the activity that includes a schema:instrument sub-key",
+                      "properties": {
+                        "schema:instrument": {
+                          "title": "Instrument Description",
+                          "description": "Schema for describing laboratory instruments and instrument systems. Supports ownership, manufacturer, model, commissioning dates, hierarchical sub-components via schema:hasPart, and domain-specific typing. Instruments may be standalone devices or complex systems with sub-components.",
+                          "type": "object",
+                          "properties": {
+                            "@context": {
+                              "type": "object",
+                              "description": "JSON-LD context declaring namespace prefixes.",
+                              "properties": {
+                                "schema": {
+                                  "const": "http://schema.org/"
+                                },
+                                "dcterms": {
+                                  "const": "http://purl.org/dc/terms/"
+                                }
+                              },
+                              "required": [
+                                "schema"
+                              ]
+                            },
+                            "@id": {
+                              "type": "string",
+                              "description": "Persistent identifier URI for this instrument metadata record."
+                            },
+                            "@type": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              },
+                              "minItems": 2,
+                              "description": "Must include schema:Product and schema:Thing. May include additional types.",
+                              "allOf": [
+                                {
+                                  "contains": {
+                                    "const": "schema:Product"
+                                  }
+                                },
+                                {
+                                  "contains": {
+                                    "const": "schema:Thing"
+                                  }
+                                }
+                              ]
+                            },
+                            "schema:additionalType": {
+                              "description": "Domain-specific type classifications. Should include a scientific instrument type URI (e.g. wd:Q3099911 for Wikidata scientific instrument).",
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              },
+                              "minItems": 1
+                            },
+                            "schema:name": {
+                              "type": "string",
+                              "minLength": 3,
+                              "description": "Human-readable name for this instrument."
+                            },
+                            "schema:description": {
+                              "type": "string",
+                              "description": "Text description of this instrument, its purpose, and capabilities."
+                            },
+                            "schema:alternateName": {
+                              "description": "Alternate name(s), e.g. specific make/model designation, common abbreviation.",
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            },
+                            "schema:identifier": {
+                              "description": "Formal identifier(s) for this instrument. Use PropertyValue for structured identifiers (e.g. PIDINST, serial number, inventory number).",
+                              "type": "array",
+                              "items": {
+                                "anyOf": [
+                                  {
+                                    "type": "string"
+                                  },
+                                  {
+                                    "$ref": "#/$defs/Identifier"
+                                  }
+                                ]
+                              }
+                            },
+                            "schema:url": {
+                              "type": "string",
+                              "format": "uri",
+                              "description": "Landing page URL for this instrument."
+                            },
+                            "schema:manufacturer": {
+                              "$ref": "#/$defs/Organization",
+                              "description": "Organization that manufactured this instrument."
+                            },
+                            "schema:model": {
+                              "type": "object",
+                              "description": "Product model information for this instrument.",
+                              "properties": {
+                                "@type": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "string"
+                                  },
+                                  "contains": {
+                                    "const": "schema:ProductModel"
+                                  },
+                                  "minItems": 1
+                                },
+                                "schema:name": {
+                                  "type": "string",
+                                  "description": "Model name or number."
+                                },
+                                "schema:identifier": {
+                                  "description": "Model identifier.",
+                                  "anyOf": [
+                                    {
+                                      "type": "string"
+                                    },
+                                    {
+                                      "$ref": "#/$defs/Identifier"
+                                    }
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "schema:name"
+                              ]
+                            },
+                            "schema:category": {
+                              "description": "Instrument type classification(s) from a controlled vocabulary.",
+                              "type": "array",
+                              "items": {
+                                "$ref": "#/$defs/DefinedTerm"
+                              }
+                            },
+                            "schema:owner": {
+                              "$ref": "#/$defs/Organization",
+                              "description": "Organization that owns this instrument."
+                            },
+                            "schema:contributor": {
+                              "description": "Agents associated with this instrument in specific roles (e.g. operator, custodian, principal investigator). Use schema:owner for the owning organization.",
+                              "type": "array",
+                              "items": {
+                                "$ref": "#/$defs/AgentInRole"
+                              }
+                            },
+                            "schema:additionalProperty": {
+                              "type": "array",
+                              "description": "Instrument-specific properties (measured variables, detection limits, calibration information, operating parameters, etc.).",
+                              "items": {
+                                "$ref": "#/$defs/AdditionalProperty"
+                              }
+                            },
+                            "schema:validFrom": {
+                              "type": "string",
+                              "description": "Date the instrument was commissioned (ISO 8601)."
+                            },
+                            "schema:validThrough": {
+                              "type": "string",
+                              "description": "Date the instrument was decommissioned (ISO 8601). Absent if still operational."
+                            },
+                            "schema:hasPart": {
+                              "type": "array",
+                              "description": "Sub-components of this instrument system. Each item is either an inline instrument description or an @id reference.",
+                              "items": {
+                                "anyOf": [
+                                  {
+                                    "type": "object",
+                                    "description": "A sub-component of an instrument system. Uses the same structure as the parent instrument but without nesting (single level of hasPart).",
+                                    "properties": {
+                                      "@type": {
+                                        "type": "array",
+                                        "items": {
+                                          "type": "string"
+                                        },
+                                        "minItems": 1,
+                                        "contains": {
+                                          "const": "schema:Thing"
+                                        }
+                                      },
+                                      "@id": {
+                                        "type": "string"
+                                      },
+                                      "schema:name": {
+                                        "type": "string",
+                                        "minLength": 3
+                                      },
+                                      "schema:description": {
+                                        "type": "string"
+                                      },
+                                      "schema:alternateName": {
+                                        "type": "array",
+                                        "items": {
+                                          "type": "string"
+                                        }
+                                      },
+                                      "schema:identifier": {
+                                        "anyOf": [
+                                          {
+                                            "type": "string"
+                                          },
+                                          {
+                                            "$ref": "#/$defs/Identifier"
+                                          }
+                                        ]
+                                      },
+                                      "schema:additionalType": {
+                                        "description": "Component type classification.",
+                                        "type": "array",
+                                        "items": {
+                                          "type": "string"
+                                        }
+                                      },
+                                      "schema:additionalProperty": {
+                                        "type": "array",
+                                        "items": {
+                                          "$ref": "#/$defs/AdditionalProperty"
+                                        }
+                                      },
+                                      "schema:manufacturer": {
+                                        "$ref": "#/$defs/Organization"
+                                      },
+                                      "schema:model": {
+                                        "type": "object",
+                                        "properties": {
+                                          "@type": {
+                                            "type": "array",
+                                            "items": {
+                                              "type": "string"
+                                            },
+                                            "contains": {
+                                              "const": "schema:ProductModel"
+                                            },
+                                            "minItems": 1
+                                          },
+                                          "schema:name": {
+                                            "type": "string"
+                                          },
+                                          "schema:identifier": {
+                                            "anyOf": [
+                                              {
+                                                "type": "string"
+                                              },
+                                              {
+                                                "$ref": "#/$defs/Identifier"
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "required": [
+                                      "schema:name"
+                                    ]
+                                  },
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "@id": {
+                                        "type": "string",
+                                        "description": "Reference to a sub-component defined elsewhere."
+                                      }
+                                    },
+                                    "required": [
+                                      "@id"
+                                    ]
+                                  }
+                                ]
+                              }
+                            },
+                            "schema:relatedLink": {
+                              "type": "array",
+                              "description": "Links to related resources (manuals, datasheets, calibration records, related instruments).",
+                              "items": {
+                                "type": "object",
+                                "description": "Building block to implement relations to other resources using a URL and some semantics.",
+                                "allOf": [
+                                  {
+                                    "description": "schema for a labeled link, a profile of schema.org/CreativeWork",
+                                    "type": "object",
+                                    "properties": {
+                                      "@type": {
+                                        "default": "schema:CreativeWork",
+                                        "type": "array",
+                                        "items": {
+                                          "type": "string"
+                                        },
+                                        "contains": {
+                                          "const": "schema:CreativeWork"
+                                        },
+                                        "minItems": 1
+                                      },
+                                      "schema:name": {
+                                        "type": "string"
+                                      },
+                                      "schema:description": {
+                                        "type": "string"
+                                      },
+                                      "schema:url": {
+                                        "type": "string",
+                                        "format": "uri"
+                                      }
+                                    },
+                                    "required": [
+                                      "@type",
+                                      "schema:url"
+                                    ]
+                                  },
+                                  {
+                                    "type": "object",
+                                    "description": "DCAT Relationship surface added on top of the schema.org labeled link construct.",
+                                    "properties": {
+                                      "@type": {
+                                        "type": "array",
+                                        "items": {
+                                          "type": "string"
+                                        },
+                                        "contains": {
+                                          "const": "dcat:Relationship"
+                                        },
+                                        "minItems": 1
+                                      },
+                                      "dcat:hadRole": {
+                                        "description": "Role of the related resource as a SKOS Concept (DCAT canonical role slot).",
+                                        "anyOf": [
+                                          {
+                                            "type": "string"
+                                          },
+                                          {
+                                            "anyOf": [
+                                              {
+                                                "type": "object",
+                                                "properties": {
+                                                  "@id": {
+                                                    "type": "string",
+                                                    "description": "reference to a skos concept for the data type"
+                                                  }
+                                                }
+                                              },
+                                              {
+                                                "$ref": "#/$defs/DefinedTerm"
+                                              },
+                                              {
+                                                "type": "object",
+                                                "properties": {
+                                                  "@context": {
+                                                    "description": "JSON-LD context declaring the skos namespace prefix. May be a single object or an array of strings and objects.",
+                                                    "type": "object",
+                                                    "properties": {
+                                                      "skos": {
+                                                        "const": "http://www.w3.org/2004/02/skos/core#"
+                                                      }
+                                                    },
+                                                    "required": [
+                                                      "skos"
+                                                    ]
+                                                  },
+                                                  "@id": {
+                                                    "type": "string",
+                                                    "description": "URI identifier for this concept."
+                                                  },
+                                                  "@type": {
+                                                    "type": "array",
+                                                    "items": {
+                                                      "type": "string"
+                                                    },
+                                                    "contains": {
+                                                      "const": "skos:Concept"
+                                                    },
+                                                    "minItems": 1
+                                                  },
+                                                  "skos:prefLabel": {
+                                                    "description": "Preferred lexical label for this concept. A single string, a single language-tagged value, or an array of language-tagged values. Each language should appear at most once.",
+                                                    "anyOf": [
+                                                      {
+                                                        "type": "string"
+                                                      },
+                                                      {
+                                                        "$ref": "#/$defs/LanguageTaggedValue"
+                                                      },
+                                                      {
+                                                        "type": "array",
+                                                        "items": {
+                                                          "$ref": "#/$defs/LanguageTaggedValue"
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "skos:notation": {
+                                                    "description": "Classification code for this concept within a scheme.",
+                                                    "type": "array",
+                                                    "items": {
+                                                      "type": "string"
+                                                    }
+                                                  },
+                                                  "skos:definition": {
+                                                    "description": "Formal explanation of the meaning of this concept.",
+                                                    "anyOf": [
+                                                      {
+                                                        "type": "string"
+                                                      },
+                                                      {
+                                                        "$ref": "#/$defs/LanguageTaggedValue"
+                                                      },
+                                                      {
+                                                        "type": "array",
+                                                        "items": {
+                                                          "anyOf": [
+                                                            {
+                                                              "type": "string"
+                                                            },
+                                                            {
+                                                              "$ref": "#/$defs/LanguageTaggedValue"
+                                                            }
+                                                          ]
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "skos:note": {
+                                                    "description": "General note about this concept.",
+                                                    "anyOf": [
+                                                      {
+                                                        "type": "string"
+                                                      },
+                                                      {
+                                                        "$ref": "#/$defs/LanguageTaggedValue"
+                                                      },
+                                                      {
+                                                        "type": "array",
+                                                        "items": {
+                                                          "anyOf": [
+                                                            {
+                                                              "type": "string"
+                                                            },
+                                                            {
+                                                              "$ref": "#/$defs/LanguageTaggedValue"
+                                                            }
+                                                          ]
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "skos:inScheme": {
+                                                    "description": "Concept scheme(s) this concept belongs to.",
+                                                    "anyOf": [
+                                                      {
+                                                        "type": "object",
+                                                        "properties": {
+                                                          "@id": {
+                                                            "type": "string"
+                                                          }
+                                                        },
+                                                        "required": [
+                                                          "@id"
+                                                        ]
+                                                      },
+                                                      {
+                                                        "type": "array",
+                                                        "items": {
+                                                          "type": "object",
+                                                          "properties": {
+                                                            "@id": {
+                                                              "type": "string"
+                                                            }
+                                                          },
+                                                          "required": [
+                                                            "@id"
+                                                          ]
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "skos:broader": {
+                                                    "description": "Broader (parent) concepts in the hierarchy. Items are inline concept objects or @id references.",
+                                                    "type": "array",
+                                                    "items": {
+                                                      "anyOf": [
+                                                        {
+                                                          "type": "object",
+                                                          "description": "Reference (by URI) to a skos:Concept defined elsewhere. Used inside skos:broader / skos:narrower as the @id-reference alternative to an inline Concept.",
+                                                          "properties": {
+                                                            "@id": {
+                                                              "type": "string",
+                                                              "description": "URI of the referenced concept."
+                                                            }
+                                                          },
+                                                          "required": [
+                                                            "@id"
+                                                          ]
+                                                        },
+                                                        {
+                                                          "$comment": "circular-ref"
+                                                        }
+                                                      ]
+                                                    }
+                                                  },
+                                                  "skos:narrower": {
+                                                    "description": "Narrower (child) concepts in the hierarchy. Items are inline concept objects or @id references.",
+                                                    "type": "array",
+                                                    "items": {
+                                                      "anyOf": [
+                                                        {
+                                                          "type": "object",
+                                                          "description": "Reference (by URI) to a skos:Concept defined elsewhere. Used inside skos:broader / skos:narrower as the @id-reference alternative to an inline Concept.",
+                                                          "properties": {
+                                                            "@id": {
+                                                              "type": "string",
+                                                              "description": "URI of the referenced concept."
+                                                            }
+                                                          },
+                                                          "required": [
+                                                            "@id"
+                                                          ]
+                                                        },
+                                                        {
+                                                          "$comment": "circular-ref"
+                                                        }
+                                                      ]
+                                                    }
+                                                  }
+                                                },
+                                                "required": [
+                                                  "@type",
+                                                  "skos:prefLabel",
+                                                  "skos:notation"
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      },
+                                      "dcterms:relation": {
+                                        "type": "string",
+                                        "format": "uri",
+                                        "description": "URI of the related resource (DCAT canonical pointer to what is being related to; distinct from schema:url which is the presentation URL inherited from labeledLink)."
+                                      }
+                                    }
+                                  }
+                                ]
+                              }
+                            },
+                            "schema:subjectOf": {
+                              "description": "Catalog record metadata-about-metadata for this instrument description.",
+                              "type": "object",
+                              "properties": {
+                                "@id": {
+                                  "type": "string"
+                                },
+                                "@type": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "string"
+                                  }
+                                },
+                                "schema:dateModified": {
+                                  "type": "string",
+                                  "description": "Date this metadata record was last modified (ISO 8601)."
+                                },
+                                "schema:about": {
+                                  "type": "object",
+                                  "properties": {
+                                    "@id": {
+                                      "type": "string",
+                                      "description": "Reference back to the instrument @id."
+                                    }
+                                  }
+                                },
+                                "dcterms:conformsTo": {
+                                  "description": "Schema or profile this metadata record conforms to.",
+                                  "type": "array",
+                                  "items": {
+                                    "anyOf": [
+                                      {
+                                        "type": "string"
+                                      },
+                                      {
+                                        "type": "object",
+                                        "properties": {
+                                          "@id": {
+                                            "type": "string"
+                                          }
+                                        }
+                                      }
+                                    ]
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "required": [
+                            "@type",
+                            "schema:name"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "schema:instrument"
+                      ]
+                    }
+                  ]
+                }
+              },
+              "schema:name": {
+                "type": "string",
+                "description": "Human-readable name for the activity"
+              },
+              "schema:description": {
+                "type": "string",
+                "description": "Text description of what this activity did"
+              },
+              "schema:identifier": {
+                "description": "Formal identifier for this activity",
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/Identifier"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ]
+              },
+              "schema:agent": {
+                "description": "Primary responsible agent for this activity (maps to PROV wasAssociatedWith)",
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/Person"
+                  },
+                  {
+                    "$ref": "#/$defs/Organization"
+                  },
+                  {
+                    "$ref": "#/$defs/AgentInRole"
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "@id": {
+                        "type": "string",
+                        "description": "reference to an agent defined elsewhere"
+                      }
+                    },
+                    "required": [
+                      "@id"
+                    ]
+                  }
+                ]
+              },
+              "schema:participant": {
+                "description": "Other participants in this activity",
+                "type": "array",
+                "items": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/$defs/Person"
+                    },
+                    {
+                      "$ref": "#/$defs/Organization"
+                    },
+                    {
+                      "$ref": "#/$defs/AgentInRole"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "@id": {
+                          "type": "string",
+                          "description": "reference to a participant defined elsewhere"
+                        }
+                      },
+                      "required": [
+                        "@id"
+                      ]
+                    }
+                  ]
+                }
+              },
+              "schema:object": {
+                "description": "Input entity (or entities) for this activity. Per schema.org, the range of schema:object is schema:Thing. Accepts four shapes (1) a string URI, (2) an @id reference object, (3) an inline schema:Thing object, or (4) an array whose items take any of those shapes (used when an activity has multiple inputs, e.g. samples analyzed). Supports action chaining where the value references the result of a prior activity.",
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "@id": {
+                        "type": "string",
+                        "description": "reference to an input entity"
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "description": "Inline schema:Thing object describing the input entity.",
+                    "properties": {
+                      "@type": {
+                        "anyOf": [
+                          {
+                            "type": "string"
+                          },
+                          {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    "required": [
+                      "@type"
+                    ]
+                  },
+                  {
+                    "type": "array",
+                    "description": "Multiple input entities (e.g. samples analyzed). Each item may be a string URI, an @id reference, or an inline schema:Thing.",
+                    "items": {
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "object"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              "schema:result": {
+                "description": "Output entity (or entities) produced by this activity. Per schema.org, the range is schema:Thing. Accepts: (1) a string URI reference (action chaining shorthand to be referenced as schema:object of a subsequent activity); (2) a single {\"@id\": \"<uri>\"} object reference; (3) an inline schema:Thing (object with @type); or (4) an array of any of these forms (e.g. multiple datasets produced by this activity). Profiles may restrict the array item shape further.",
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "@id": {
+                        "type": "string",
+                        "description": "reference to an output entity"
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "description": "Inline schema:Thing object describing the output entity.",
+                    "properties": {
+                      "@type": {
+                        "anyOf": [
+                          {
+                            "type": "string"
+                          },
+                          {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    "required": [
+                      "@type"
+                    ]
+                  },
+                  {
+                    "type": "array",
+                    "description": "Multiple output entities. Each item may be a string URI, an @id reference, or an inline schema:Thing.",
+                    "items": {
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "object"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              "schema:actionStatus": {
+                "type": "string",
+                "description": "Status of this activity",
+                "enum": [
+                  "schema:CompletedActionStatus",
+                  "schema:ActiveActionStatus",
+                  "schema:PotentialActionStatus",
+                  "schema:FailedActionStatus"
+                ]
+              },
+              "schema:startTime": {
+                "type": "string",
+                "description": "ISO8601 date-time when the activity started (maps to PROV startedAtTime)"
+              },
+              "schema:endTime": {
+                "type": "string",
+                "description": "ISO8601 date-time when the activity ended (maps to PROV endedAtTime)"
+              },
+              "schema:location": {
+                "description": "Where the activity occurred",
+                "anyOf": [
+                  {
+                    "description": "Spatial Extent description for CDIF discovery profile.  Note required prefix declaration for geoSparql ( http://www.opengis.net/ont/geosparql#) and OGC simple features (sf: http://www.opengis.net/ont/sf#)",
+                    "type": "object",
+                    "properties": {
+                      "@type": {
+                        "default": "schema:Place",
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        },
+                        "contains": {
+                          "const": "schema:Place"
+                        },
+                        "minItems": 1
+                      },
+                      "schema:additionalType": {
+                        "description": "Domain-specific type classifications for this place (e.g. facility type,laboratory classification, feature type).",
+                        "type": "array",
+                        "items": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "$ref": "#/$defs/DefinedTerm"
+                            }
+                          ]
+                        }
+                      },
+                      "schema:name": {
+                        "description": "A place name for the location, either as a string or a DefinedTerm from a gazetteer.",
+                        "anyOf": [
+                          {
+                            "type": "string"
+                          },
+                          {
+                            "$ref": "#/$defs/DefinedTerm"
+                          }
+                        ]
+                      },
+                      "schema:identifier": {
+                        "description": "Formal identifier for this place (e.g. ROR identifier for a facility).",
+                        "anyOf": [
+                          {
+                            "type": "string"
+                          },
+                          {
+                            "$ref": "#/$defs/Identifier"
+                          }
+                        ]
+                      },
+                      "schema:alternateName": {
+                        "description": "Alternate or abbreviated name(s) for this place.",
+                        "type": "array",
+                        "items": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "$ref": "#/$defs/DefinedTerm"
+                            }
+                          ]
+                        }
+                      },
+                      "schema:geo": {
+                        "description": "Either a bounding box or a point location.",
+                        "anyOf": [
+                          {
+                            "type": "object",
+                            "description": "A point location. Point locations are recommended for data that is associated with specific sample locations, particularly if these are widely spaced such that an enclosing bounding box would be a misleading representation of the spatial location. Be aware that some client applications might only index or display bounding box extents or a single point location.",
+                            "properties": {
+                              "@type": {
+                                "default": "schema:GeoCoordinates",
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                },
+                                "contains": {
+                                  "const": "schema:GeoCoordinates"
+                                },
+                                "minItems": 1
+                              },
+                              "schema:latitude": {
+                                "type": "number",
+                                "minimum": -90,
+                                "maximum": 90
+                              },
+                              "schema:longitude": {
+                                "type": "number",
+                                "minimum": -180,
+                                "maximum": 180
+                              }
+                            },
+                            "required": [
+                              "@type",
+                              "schema:latitude",
+                              "schema:longitude"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "description": "A schema:GeoShape bounding box. The geometry is described with a set of latitude/longitude pairs (in that order).The documentation for schema:GeoShape states 'Either whitespace or commas can be used to separate latitude and longitude; whitespace should be used when writing a list of several such points.'",
+                            "properties": {
+                              "@type": {
+                                "default": "schema:GeoShape",
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                },
+                                "contains": {
+                                  "const": "schema:GeoShape"
+                                },
+                                "minItems": 1
+                              },
+                              "schema:box": {
+                                "type": "string",
+                                "description": "A GeoShape box defines an area on the surface of the earth defined by point locations of the southwest corner and northeast corner of the rectangle in latitude-longitude coordinates. A space should be used to separate the latitude and longitude values. The two corner coordinate points are separated by a space. 'East longitude' means positive longitude values are east of the prime (Greenwich) meridian."
+                              }
+                            },
+                            "required": [
+                              "@type",
+                              "schema:box"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "description": "A schema:GeoShape curvilinear trace, for resource related to a linear trace like a ship track or airplane flight line",
+                            "properties": {
+                              "@type": {
+                                "default": "schema:GeoShape",
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                },
+                                "contains": {
+                                  "const": "schema:GeoShape"
+                                },
+                                "minItems": 1
+                              },
+                              "schema:line": {
+                                "type": "string",
+                                "description": "A GeoShape box defines a curvilinear geometry as a string of latitude-longitude coordinates. A space should be used to separate the latitude and longitude values. The coordinate point pairs are also separated by a space. 'East longitude' means positive longitude values are east of the prime (Greenwich) meridian. e.g. '39.33 120.77 40.44 123.96 41.00 121.34' "
+                              }
+                            },
+                            "required": [
+                              "@type",
+                              "schema:line"
+                            ]
+                          }
+                        ]
+                      },
+                      "geosparql:hasGeometry": {
+                        "type": "object",
+                        "description": "Optional geographic extent using wkt geometry, see Ocean InfoHub (https://book.oceaninfohub.org/thematics/spatial/README.html#simple-geosparql-wkt). Other geometry schemes might be specified in a specific domain profile, e.g. for atmospheric, subsurface data, or local coordinate systems. NOTE that the location specified here should be the same as the schema.org point or contained within the specified bounding box.",
+                        "properties": {
+                          "@type": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            },
+                            "minItems": 1,
+                            "description": "MUST be sf: (<http://www.opengis.net/ont/sf#>) SimpleFeature geometry type. See https://opengeospatial.github.io/ogc-geosparql/geosparql11/sf_geometries.ttl"
+                          },
+                          "geosparql:asWKT": {
+                            "type": "object",
+                            "properties": {
+                              "@type": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                },
+                                "contains": {
+                                  "const": "geosparql:wktLiteral"
+                                },
+                                "minItems": 1
+                              },
+                              "@value": {
+                                "type": "string",
+                                "description": "a WKT geometry description string, e.g. 'POINT(-76 -18)'"
+                              }
+                            }
+                          },
+                          "geosparql:crs": {
+                            "type": "object",
+                            "properties": {
+                              "@id": {
+                                "type": "string",
+                                "description": "identifier string for coordinate reference system, e.g., 'CRS84'"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "anyOf": [
+                      {
+                        "required": [
+                          "schema:name"
+                        ]
+                      },
+                      {
+                        "required": [
+                          "schema:identifier"
+                        ]
+                      },
+                      {
+                        "required": [
+                          "schema:geo"
+                        ]
+                      },
+                      {
+                        "required": [
+                          "geosparql:hasGeometry"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "@id": {
+                        "type": "string",
+                        "description": "reference to a place defined elsewhere"
+                      }
+                    }
+                  }
+                ]
+              },
+              "schema:actionProcess": {
+                "description": "Methodology or protocol for this activity",
+                "anyOf": [
+                  {
+                    "type": "object",
+                    "description": "A methodology or protocol described as a HowTo with optional steps",
+                    "properties": {
+                      "@type": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        },
+                        "contains": {
+                          "const": "schema:HowTo"
+                        },
+                        "minItems": 1
+                      },
+                      "@id": {
+                        "type": "string"
+                      },
+                      "schema:name": {
+                        "type": "string",
+                        "description": "Name of the methodology or protocol"
+                      },
+                      "schema:description": {
+                        "type": "string",
+                        "description": "Description of the methodology"
+                      },
+                      "schema:url": {
+                        "type": "string",
+                        "format": "uri",
+                        "description": "URL to a published methodology or protocol document"
+                      },
+                      "schema:step": {
+                        "type": "array",
+                        "description": "Ordered steps in this methodology",
+                        "items": {
+                          "type": "object",
+                          "description": "A single step in a HowTo methodology",
+                          "properties": {
+                            "@type": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              },
+                              "contains": {
+                                "const": "schema:HowToStep"
+                              },
+                              "minItems": 1
+                            },
+                            "schema:name": {
+                              "type": "string",
+                              "description": "Name of this step"
+                            },
+                            "schema:description": {
+                              "type": "string",
+                              "description": "Description of what this step involves"
+                            },
+                            "schema:url": {
+                              "type": "string",
+                              "format": "uri",
+                              "description": "URL to documentation for this step"
+                            },
+                            "schema:position": {
+                              "type": "integer",
+                              "description": "Ordinal position of this step"
+                            }
+                          },
+                          "required": [
+                            "@type",
+                            "schema:name"
+                          ]
+                        }
+                      }
+                    },
+                    "required": [
+                      "@type"
+                    ],
+                    "anyOf": [
+                      {
+                        "required": [
+                          "schema:name"
+                        ]
+                      },
+                      {
+                        "required": [
+                          "schema:url"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "@id": {
+                        "type": "string",
+                        "description": "reference to a methodology defined elsewhere"
+                      }
+                    }
+                  }
+                ]
+              },
+              "schema:error": {
+                "type": "string",
+                "description": "Error description for failed activities"
+              },
+              "schema:additionalProperty": {
+                "description": "Domain-specific extension properties",
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/AdditionalProperty"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "$defs": {
+    "Person": {
+      "description": "schema for cdif profile of schema.org/Person",
+      "type": "object",
+      "properties": {
+        "@id": {
+          "type": "string"
+        },
+        "@type": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "contains": {
+            "const": "schema:Person"
+          },
+          "minItems": 1
+        },
+        "schema:name": {
+          "type": "string",
+          "description": "string label for person that is meaningful for human users, should format consistently. Recommend 'Family Name, Given name' format."
+        },
+        "schema:description": {
+          "type": "string"
+        },
+        "schema:identifier": {
+          "description": "identifier for person, recommend ORCID",
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Identifier"
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "schema:alternateName": {
+          "type": "string",
+          "description": "other labels by which the person might be known"
+        },
+        "schema:affiliation": {
+          "$ref": "#/$defs/Organization",
+          "description": "if affiliation is present, value must be a schema:Organization."
+        },
+        "schema:contactPoint": {
+          "type": "object",
+          "description": "restrict to email only. Schema.org allows telephone and postal contacts as well",
+          "properties": {
+            "@type": {
+              "default": "schema:ContactPoint",
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "contains": {
+                "const": "schema:ContactPoint"
+              },
+              "minItems": 1
+            },
+            "schema:email": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "schema:email"
+          ]
+        },
+        "schema:sameAs": {
+          "type": "array",
+          "description": "other identifiers for the person",
+          "items": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "@id": {
+                    "type": "string"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      },
+      "allOf": [
+        {
+          "required": [
+            "@type"
+          ]
+        },
+        {
+          "anyOf": [
+            {
+              "required": [
+                "schema:name"
+              ]
+            },
+            {
+              "required": [
+                "schema:identifier"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "Identifier": {
+      "description": "Properties for a schema.org identifier (schema:PropertyValue pattern).\n\n**Union-type policy:** In CDIF profile UML models an attribute typed as\nschema:Identifier / schema:PropertyValue is represented by a single attribute\nof that class type. The JSON Schema implementation permits the property value\nto be EITHER a plain string (interpreted as the bare identifier value) OR a\nfull schema:PropertyValue object (with explicit @type, propertyID, value).\nConsumers should accept either form.\n",
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "contains": {
+            "const": "schema:PropertyValue"
+          },
+          "minItems": 1
+        },
+        "schema:propertyID": {
+          "type": "string",
+          "description": "In this context for the schema:PropertyValue, this field is an identifier for the identifier schema, e.g. DOI, ARK.  Get values from https://registry.identifiers.org/registry/ for interoperability"
+        },
+        "schema:value": {
+          "type": "string",
+          "description": "the identifier string. E.g. 10.5066/F7VX0DMQ"
+        },
+        "schema:url": {
+          "type": "string",
+          "format": "uri",
+          "description": "web-resolveable string for the identifier; host name part is location of a resolver that will return some representation for the given identifier value. E.g. https://doi.org/10.5066/F7VX0DMQ "
+        }
+      },
+      "allOf": [
+        {
+          "required": [
+            "@type"
+          ]
+        },
+        {
+          "anyOf": [
+            {
+              "required": [
+                "schema:value"
+              ]
+            },
+            {
+              "required": [
+                "schema:url"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "Organization": {
+      "type": "object",
+      "properties": {
+        "@id": {
+          "type": "string"
+        },
+        "@type": {
+          "default": "schema:Organization",
+          "type": "array",
+          "items": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "schema:Organization",
+                  "schema:FundingAgency",
+                  "schema:Consortium",
+                  "schema:Corporation",
+                  "schema:EducationalOrganization",
+                  "schema:FundingScheme",
+                  "schema:GovernmentOrganization",
+                  "schema:NGO",
+                  "schema:Project",
+                  "schema:ResearchOrganization"
+                ]
+              }
+            ]
+          },
+          "contains": {
+            "const": "schema:Organization"
+          },
+          "minItems": 1
+        },
+        "schema:additionalType": {
+          "type": "array",
+          "items": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/DefinedTerm"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "schema:name": {
+          "type": "string",
+          "description": "string label for organization that is meaningful for human users"
+        },
+        "schema:alternateName": {
+          "type": "string",
+          "description": "other labels by which the organization might be known"
+        },
+        "schema:description": {
+          "type": "string"
+        },
+        "schema:identifier": {
+          "description": "identifier for organization",
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Identifier"
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "schema:sameAs": {
+          "type": "array",
+          "description": "other identifiers for the organization",
+          "items": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "@id": {
+                    "type": "string"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      },
+      "allOf": [
+        {
+          "required": [
+            "@type"
+          ]
+        },
+        {
+          "anyOf": [
+            {
+              "required": [
+                "schema:name"
+              ]
+            },
+            {
+              "required": [
+                "schema:identifier"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "DefinedTerm": {
+      "description": "schema.org Defined Term schema.\n\n**Union-type policy:** In CDIF profile UML models an attribute typed as\nschema:DefinedTerm is represented by a single attribute of that class type.\nThe JSON Schema implementation permits the property value to be EITHER a\nplain string (interpreted as schema:name or schema:termCode in the default\nvocabulary) OR a full schema:DefinedTerm object (with explicit @type, name,\nidentifier, termCode, inDefinedTermSet). Consumers should accept either form.\n\nNote that this differs from the cdif Concept policy: a Concept (skos:Concept)\nin CDIF profiles MUST be a controlled-vocabulary entry (object form or\n@id-reference) — plain strings are not permitted for Concept-typed values\nbecause vocabulary identity cannot be recovered from an unscoped label.\n",
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "contains": {
+            "const": "schema:DefinedTerm"
+          },
+          "minItems": 1
+        },
+        "schema:name": {
+          "type": "string",
+          "description": "text label for the term that is useful to human user"
+        },
+        "schema:identifier": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "$ref": "#/$defs/Identifier"
+            }
+          ]
+        },
+        "schema:inDefinedTermSet": {
+          "type": "string",
+          "description": "Name for the controlled vocabulary responsible for this keyword."
+        },
+        "schema:termCode": {
+          "type": "string",
+          "description": "A representative code for this keyword in the controlled vocabulary. Analogous to skos:Notation"
+        }
+      },
+      "allOf": [
+        {
+          "required": [
+            "@type"
+          ]
+        },
+        {
+          "anyOf": [
+            {
+              "required": [
+                "schema:name"
+              ]
+            },
+            {
+              "required": [
+                "schema:identifier"
+              ]
+            },
+            {
+              "required": [
+                "schema:termCode"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "AgentInRole": {
+      "description": "For more granularity on how a person contributed to a Dataset, use schema:Role. The schema.org documentation does not state that the Role type is an expected data type of author, creator and contributor, but that is addressed in this blog post (http://blog.schema.org/2014/06/introducing-role.html). see https://github.com/ESIPFed/science-on-schema.org/blob/develop/guides/Dataset.md#roles-of-people",
+      "type": "object",
+      "properties": {
+        "@type": {
+          "default": "schema:Role",
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "contains": {
+            "const": "schema:Role"
+          },
+          "minItems": 1
+        },
+        "schema:roleName": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "$ref": "#/$defs/DefinedTerm"
+            }
+          ]
+        },
+        "schema:contributor": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "@id": {
+                  "type": "string",
+                  "description": "IRI reference to a Person or Organization defined elsewhere"
+                }
+              },
+              "required": [
+                "@id"
+              ]
+            },
+            {
+              "$ref": "#/$defs/Person"
+            },
+            {
+              "$ref": "#/$defs/Organization"
+            }
+          ]
+        }
+      },
+      "required": [
+        "@type",
+        "schema:roleName",
+        "schema:contributor"
+      ]
+    },
+    "AdditionalProperty": {
+      "type": "object",
+      "title": "additionalProperty PropertyValue",
+      "description": "PropertyValue values required to define a soft-typed property with a value. ",
+      "properties": {
+        "@type": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "contains": {
+            "const": "schema:PropertyValue"
+          },
+          "minItems": 1
+        },
+        "schema:propertyID": {
+          "type": "array",
+          "items": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "@id": {
+                    "type": "string"
+                  }
+                }
+              },
+              {
+                "$ref": "#/$defs/DefinedTerm"
+              }
+            ]
+          },
+          "minItems": 1,
+          "description": "identifier or name for the property concept quantified by the values in this variable slot. Multiple values can specify the property at different levels of granularity."
+        },
+        "schema:name": {
+          "type": "string"
+        },
+        "schema:value": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "schema:unitCode": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "$ref": "#/$defs/DefinedTerm"
+            }
+          ]
+        },
+        "schema:unitText": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "schema:name",
+        "schema:value"
+      ]
+    },
+    "LanguageTaggedValue": {
+      "type": "object",
+      "description": "An RDF literal value with a language tag, serialized as a JSON-LD value object. Inlined from skosConcept (the resolver does not preserve cross-file '#/$defs/...' fragment refs).",
+      "properties": {
+        "@value": {
+          "type": "string",
+          "description": "The text content."
+        },
+        "@language": {
+          "type": "string",
+          "description": "BCP 47 language tag (e.g. en, fr, de)."
+        }
+      },
+      "required": [
+        "@value"
+      ]
+    }
+  }
+}
