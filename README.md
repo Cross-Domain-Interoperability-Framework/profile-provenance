@@ -74,3 +74,8 @@ Galaxy workflow RO-Crates originate from [Zenodo record 13842780](https://zenodo
 - [usgin/metadataBuildingBlocks](https://github.com/usgin/metadataBuildingBlocks) — CDIF metadata building blocks (cdifProv, provActivity, ddicdiProv schemas and SHACL shapes)
 - [Cross-Domain-Interoperability-Framework/packaging](https://github.com/Cross-Domain-Interoperability-Framework/packaging) — CDIF packaging tools including RO-Crate and WRROC converters
 - [Cross-Domain-Interoperability-Framework/validation](https://github.com/Cross-Domain-Interoperability-Framework/validation) — CDIF validation schemas and SHACL shapes
+
+## Development branch
+
+Active work for the 2026-06 review revision is on the `reviewRevision202606` branch. `main` reflects the prior release state. New changes should target the review branch; it is merged to main on release.
+
