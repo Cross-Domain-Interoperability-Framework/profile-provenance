@@ -8,6 +8,7 @@ There is a related [Google drive](https://drive.google.com/drive/folders/1TGToyv
 
 ### Documentation
 
+- **[CDIFProvenanceImplementationGuide.md](CDIFProvenanceImplementationGuide.md)** — Implementation guide (auto-generated draft from the StructuredSchema; hand-curated content pending). Properties, classes, and conformance.
 - **[ProvenanceOptions.md](ProvenanceOptions.md)** — Comprehensive comparison of provenance approaches available in CDIF: the three native building blocks (cdifProv, provActivity, ddicdiProv) and external RO-Crate-based profiles (WRROC, ARC). Covers property mappings, multi-step provenance patterns, and guidance for implementing ARC profile support in CDIF.
 - **[agents.md](agents.md)** — Analysis of how agents (people, organizations, software) are represented across provenance vocabularies used in CDIF, with recommendations for consistent implementation.
 
