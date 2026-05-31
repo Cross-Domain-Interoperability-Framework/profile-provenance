@@ -13,9 +13,9 @@ In addition to the native CDIF building blocks, the research community has devel
 
 | Building Block | Primary Vocabulary | Activity Type | Location |
 |---|---|---|---|
-| **cdifProv** | schema.org + PROV-O | `["schema:Action", "prov:Activity"]` | [cdifProperties/cdifProv](https://github.com/usgin/metadataBuildingBlocks/tree/main/_sources/cdifProperties/cdifProv) |
-| **provActivity** | W3C PROV-O | `["prov:Activity"]` | [provProperties/provActivity](https://github.com/usgin/metadataBuildingBlocks/tree/main/_sources/provProperties/provActivity) |
-| **ddicdiActivity** | DDI-CDI 1.0 | `cdi:Activity` | [ddiProperties/ddicdiActivity](https://github.com/usgin/metadataBuildingBlocks/tree/main/_sources/ddiProperties/ddicdiActivity) |
+| **cdifProvActivity** | schema.org + PROV-O | `["schema:Action", "prov:Activity"]` | [cdifDataType/cdifProvActivity](https://github.com/Cross-Domain-Interoperability-Framework/metadataBuildingBlocks/tree/main/_sources/cdifDataType/cdifProvActivity) |
+| **provActivity** | W3C PROV-O | `["prov:Activity"]` | [provProperties/provActivity](https://github.com/Cross-Domain-Interoperability-Framework/metadataBuildingBlocks/tree/main/_sources/provProperties/provActivity) |
+| **ddicdiActivity** | DDI-CDI 1.0 | `cdi:Activity` | [ddiProperties/ddicdiActivity](https://github.com/Cross-Domain-Interoperability-Framework/metadataBuildingBlocks/tree/main/_sources/ddiProperties/ddicdiActivity) |
 
 ### External Provenance Profiles
 
@@ -30,17 +30,17 @@ In addition to the native CDIF building blocks, the research community has devel
 
 | Building Block | Resolved Schema | Example Instance |
 |---|---|---|
-| cdifProv | [resolvedSchema.json](https://github.com/usgin/metadataBuildingBlocks/blob/main/_sources/cdifProperties/cdifProv/resolvedSchema.json) | [exampleCdifProv.json](https://github.com/usgin/metadataBuildingBlocks/blob/main/_sources/cdifProperties/cdifProv/exampleCdifProv.json) |
-| provActivity | [provActivitySchema.json](https://github.com/usgin/metadataBuildingBlocks/blob/main/_sources/provProperties/provActivity/provActivitySchema.json) | [exampleProvActivity.json](https://github.com/usgin/metadataBuildingBlocks/blob/main/_sources/provProperties/provActivity/exampleProvActivity.json) |
-| ddicdiActivity | [ddicdiActivitySchema.json](https://github.com/usgin/metadataBuildingBlocks/blob/main/_sources/ddiProperties/ddicdiActivity/ddicdiActivitySchema.json) | [exampleDdicdiActivity.json](https://github.com/usgin/metadataBuildingBlocks/blob/main/_sources/ddiProperties/ddicdiActivity/exampleDdicdiActivity.json) |
+| cdifProvActivity | [resolvedSchema.json](https://github.com/Cross-Domain-Interoperability-Framework/metadataBuildingBlocks/blob/main/_sources/cdifDataType/cdifProvActivity/resolvedSchema.json) | [exampleCdifProvActivity.json](https://github.com/Cross-Domain-Interoperability-Framework/metadataBuildingBlocks/blob/main/_sources/cdifDataType/cdifProvActivity/exampleCdifProvActivity.json) |
+| provActivity | [provActivitySchema.json](https://github.com/Cross-Domain-Interoperability-Framework/metadataBuildingBlocks/blob/main/_sources/provProperties/provActivity/provActivitySchema.json) | [exampleProvActivity.json](https://github.com/Cross-Domain-Interoperability-Framework/metadataBuildingBlocks/blob/main/_sources/provProperties/provActivity/exampleProvActivity.json) |
+| ddicdiActivity | [ddicdiActivitySchema.json](https://github.com/Cross-Domain-Interoperability-Framework/metadataBuildingBlocks/blob/main/_sources/ddiProperties/ddicdiActivity/ddicdiActivitySchema.json) | [exampleDdicdiActivity.json](https://github.com/Cross-Domain-Interoperability-Framework/metadataBuildingBlocks/blob/main/_sources/ddiProperties/ddicdiActivity/exampleDdicdiActivity.json) |
 
-WRROC conversion examples (Galaxy workflow RO-Crates from [Zenodo record 13842780](https://zenodo.org/records/13842780) and Bennu py-GC-MS analytical workflow) are available in the [prov-context-quality/Examples](./Examples/) folder.
+WRROC conversion examples (Galaxy workflow RO-Crates from [Zenodo record 13842780](https://zenodo.org/records/13842780) and Bennu py-GC-MS analytical workflow) are available in the [prov-context-quality/Examples](./examples/) folder.
 
 ## 2. CDIF Building Block Design
 
-### cdifProv — Schema.org-first with PROV-O linkage
+### cdifProvActivity — Schema.org-first with PROV-O linkage
 
-The cdifProv building block is the primary CDIF recommendation. It follows the approach developed by the [ODIS Architecture](https://github.com/iodepo/odis-arch/blob/414-update-provenance-recommendations/book/thematics/provenance/common-provenance-cases.md) provenance recommendations, mapping schema.org `Action` to `prov:Activity` and using schema.org properties to describe provenance in a vocabulary already familiar to web developers and search engines.
+The cdifProvActivity building block is the primary CDIF recommendation. It follows the approach developed by the [ODIS Architecture](https://github.com/iodepo/odis-arch/blob/414-update-provenance-recommendations/book/thematics/provenance/common-provenance-cases.md) provenance recommendations, mapping schema.org `Action` to `prov:Activity` and using schema.org properties to describe provenance in a vocabulary already familiar to web developers and search engines.
 
 Activity nodes carry dual types `["schema:Action", "prov:Activity"]` so that:
 - Schema.org-aware consumers (search engines, web crawlers) see a well-typed `Action`
@@ -97,10 +97,10 @@ Key alignment points:
 - Both capture temporal bounds and completion status
 
 Key differences:
-- WRROC uses `schema:CreateAction` (no PROV-O dual typing); cdifProv uses `["schema:Action", "prov:Activity"]`
-- WRROC uses `schema:object`/`schema:result` for action I/O; cdifProv uses `prov:used` for inputs (inherited from the `generatedBy` base building block) alongside `schema:result` for outputs
-- WRROC uses `schema:instrument` at the action level for the tool/workflow; cdifProv nests instruments within `prov:used` items
-- WRROC defines methodology implicitly through the workflow structure; cdifProv uses explicit `schema:actionProcess` → `schema:HowTo` for methodology
+- WRROC uses `schema:CreateAction` (no PROV-O dual typing); cdifProvActivity uses `["schema:Action", "prov:Activity"]`
+- WRROC uses `schema:object`/`schema:result` for action I/O; cdifProvActivity uses `prov:used` for inputs (inherited from the `generatedBy` base building block) alongside `schema:result` for outputs
+- WRROC uses `schema:instrument` at the action level for the tool/workflow; cdifProvActivity nests instruments within `prov:used` items
+- WRROC defines methodology implicitly through the workflow structure; cdifProvActivity uses explicit `schema:actionProcess` → `schema:HowTo` for methodology
 
 ## 4. ARC Workflow Run RO-Crate Profile
 
@@ -141,7 +141,7 @@ Actual parameter values used during execution: temperature (600°C), ramp rate (
 
 ### 4.3 Bennu py-GC-MS Example
 
-The [Bennu-py-GC-MSarc](./Examples/Bennu-py-GC-MSarc-ro-crate-metadata.json) example demonstrates the ARC profile for a multi-step analytical workflow: pyrolysis-GC-MS/MS analysis of asteroid sample OREX-803003-0 from the OSIRIS-REx mission. The workflow chains five activities:
+The [Bennu-py-GC-MSarc](./examples/ROCRATE/Bennu-py-GC-MSarc-ro-crate-metadata.json) example demonstrates the ARC profile for a multi-step analytical workflow: pyrolysis-GC-MS/MS analysis of asteroid sample OREX-803003-0 from the OSIRIS-REx mission. The workflow chains five activities:
 
 1. **Sample Preparation** → quartz tube loading, mass measurement
 2. **Flash Pyrolysis** → 600°C at 10°C/ms ramp rate, He carrier gas
@@ -151,20 +151,20 @@ The [Bennu-py-GC-MSarc](./Examples/Bennu-py-GC-MSarc-ro-crate-metadata.json) exa
 
 Each step carries rich `parameterValue` arrays with actual instrument settings. Equipment (`DefinedTerm` entities: pyrolysis oven, gas chromatograph, TSQ triple-quad mass spectrometer) is declared on the protocol and referenced by steps.
 
-The [converted cdifProv output](./Examples/Bennu-py-GC-MSarc.cdifprov.json) demonstrates how all ARC concepts map cleanly to cdifProv vocabulary.
+The [converted cdifProvActivity output](./examples/Bennu-py-GC-MSarc.cdifprov.json) demonstrates how all ARC concepts map cleanly to cdifProvActivity vocabulary.
 
-## 5. Mapping WRROC/ARC to cdifProv
+## 5. Mapping WRROC/ARC to cdifProvActivity
 
-A converter tool ([WRROCToCdifProv.py](https://github.com/Cross-Domain-Interoperability-Framework/packaging/tree/main/tools/WRROCToCdifProv.py)) has been developed to transform WRROC and ARC RO-Crate files into cdifProv-compatible `@graph` documents.
+A converter tool ([WRROCToCdifProv.py](https://github.com/Cross-Domain-Interoperability-Framework/packaging/tree/main/tools/WRROCToCdifProv.py)) has been developed to transform WRROC and ARC RO-Crate files into cdifProvActivity-compatible `@graph` documents.
 
 ### 5.1 Property Mapping
 
-| WRROC / ARC | cdifProv | Notes |
+| WRROC / ARC | cdifProvActivity | Notes |
 |---|---|---|
 | `@type: CreateAction` | `@type: ["schema:Action", "prov:Activity"]` | Original type preserved in `schema:additionalType` |
 | `@type: LabProcess` | `schema:additionalType: ["schema:LabProcess"]` | ARC-specific action subtype |
 | `@type: OrganizeAction` | `schema:additionalType: ["schema:OrganizeAction"]` | Orchestration actions |
-| `object` (inputs) | `prov:used` | cdifProv inherits `prov:used` from base |
+| `object` (inputs) | `prov:used` | cdifProvActivity inherits `prov:used` from base |
 | `result` (outputs) | `schema:result` | Direct mapping |
 | `instrument` (tool) | `schema:instrument` on `prov:used` items, or `schema:actionProcess` | Depends on type — workflows become actionProcess |
 | `agent` | `schema:agent` | Direct mapping (Person, Organization) |
@@ -185,7 +185,7 @@ A converter tool ([WRROCToCdifProv.py](https://github.com/Cross-Domain-Interoper
 The converter produces a `@graph` array where each execution action (CreateAction, OrganizeAction, LabProcess) becomes a top-level node. All referenced entities — instruments, files, parameters, samples, agents — are inlined at their first occurrence within an activity node. Subsequent references use `{"@id": "..."}` only.
 
 ```
-RO-Crate flat @graph:          cdifProv nested @graph:
+RO-Crate flat @graph:          cdifProvActivity nested @graph:
   CreateAction₁                  Activity₁
   CreateAction₂                    +-- prov:used [inline entities]
   OrganizeAction                   +-- schema:result [inline entities]
@@ -199,7 +199,7 @@ RO-Crate flat @graph:          cdifProv nested @graph:
 
 ### 5.3 What Maps Cleanly
 
-- **Activities**: CreateAction, OrganizeAction, and LabProcess all map naturally to cdifProv's dual-typed `["schema:Action", "prov:Activity"]` pattern. The original action subtype is preserved in `schema:additionalType`.
+- **Activities**: CreateAction, OrganizeAction, and LabProcess all map naturally to cdifProvActivity's dual-typed `["schema:Action", "prov:Activity"]` pattern. The original action subtype is preserved in `schema:additionalType`.
 - **Temporal bounds**: `startTime`/`endTime` are direct mappings.
 - **Agents**: Person and Organization inline directly as `schema:agent`.
 - **Action status**: Maps directly with URI normalization.
@@ -211,19 +211,19 @@ RO-Crate flat @graph:          cdifProv nested @graph:
 ### 5.4 What Requires Interpretation
 
 - **FormalParameter → MediaObject**: WRROC's `FormalParameter` (which describes expected I/O slots) has no direct schema.org equivalent. Since `schema:object`/`prov:used` and `schema:result` expect `schema:CreativeWork` or similar, and most FormalParameters describe file-like entities, `schema:MediaObject` with `additionalType: ["schema:FormalParameter"]` is used.
-- **Nested instrument placement**: WRROC places `instrument` directly on the action; cdifProv nests instruments within `prov:used` items. The converter places instruments either on the `schema:actionProcess` (workflow/protocol) node or as `schema:instrument` on the activity, depending on context.
-- **Workflow as methodology vs. instrument**: In WRROC, the `ComputationalWorkflow` is the `instrument` of an `OrganizeAction`. In cdifProv, it's more natural to treat it as `schema:actionProcess` (methodology). The converter maps it to `schema:actionProcess` for actions that `executesLabProtocol`, and as `schema:instrument` context otherwise.
+- **Nested instrument placement**: WRROC places `instrument` directly on the action; cdifProvActivity nests instruments within `prov:used` items. The converter places instruments either on the `schema:actionProcess` (workflow/protocol) node or as `schema:instrument` on the activity, depending on context.
+- **Workflow as methodology vs. instrument**: In WRROC, the `ComputationalWorkflow` is the `instrument` of an `OrganizeAction`. In cdifProvActivity, it's more natural to treat it as `schema:actionProcess` (methodology). The converter maps it to `schema:actionProcess` for actions that `executesLabProtocol`, and as `schema:instrument` context otherwise.
 - **Bioschemas vocabulary**: Terms like `LabProcess`, `LabProtocol`, `Sample` are Bioschemas extensions not in the core schema.org vocabulary. These are preserved as `additionalType` values with a `bioschemas:` prefix where appropriate.
 
 ### 5.5 Conversion Examples
 
 Six Galaxy workflow RO-Crates from [Zenodo record 13842780](https://zenodo.org/records/13842780) have been converted, demonstrating computational workflow provenance (FeS2 analysis, Pt3Sn catalyst, Au colloids, LaMnO3 catalytic behaviour, EXAFS fitting, Diphosphine workflow). The Bennu py-GC-MS example demonstrates both standard WRROC and ARC profile conversion for laboratory analytical workflows.
 
-All examples are in the [Examples](./Examples/) folder with `.rocrate.json` (source) and `.cdifprov.json` (converted) pairs.
+All examples are in the [Examples](./examples/) folder with `.rocrate.json` (source) and `.cdifprov.json` (converted) pairs.
 
 ## 6. Representing Multi-Step Provenance
 
-When a dataset is produced by a multi-step process (analytical workflow, computational pipeline), there are two structural options within cdifProv for representing the steps.
+When a dataset is produced by a multi-step process (analytical workflow, computational pipeline), there are two structural options within cdifProvActivity for representing the steps.
 
 ### Option A: Activity list in `prov:wasGeneratedBy`
 
@@ -295,7 +295,7 @@ A single `["schema:Action", "prov:Activity"]` represents the overall process. Th
 
 ### Recommendation
 
-Both approaches are valid cdifProv. The choice depends on the level of detail:
+Both approaches are valid cdifProvActivity. The choice depends on the level of detail:
 
 - **Use Option A** (activity list) when each step has its own instruments, parameters, agents, temporal bounds, or when step-level provenance queries matter. This is the natural mapping for WRROC and ARC conversions where each action carries rich execution metadata.
 - **Use Option B** (HowTo steps) when the methodology is the primary concern and step-level execution detail is not needed — e.g., describing a standard operating procedure without per-step timestamps or parameter values.
@@ -303,7 +303,7 @@ Both approaches are valid cdifProv. The choice depends on the level of detail:
 
 ## 7. Property Mapping Across All Approaches
 
-| Concept | cdifProv | provActivity | ddicdiActivity | WRROC | ARC Profile |
+| Concept | cdifProvActivity | provActivity | ddicdiActivity | WRROC | ARC Profile |
 |---|---|---|---|---|---|
 | **Activity type** | `["schema:Action", "prov:Activity"]` | `["prov:Activity"]` | `cdi:Activity` | `CreateAction` | `CreateAction` + `LabProcess` |
 | **Name** | `schema:name` | `schema:name` | `cdi:name` | `name` | `name` |
@@ -323,7 +323,7 @@ Both approaches are valid cdifProv. The choice depends on the level of detail:
 
 ## 8. Benefits and Challenges
 
-### cdifProv
+### cdifProvActivity
 
 **Benefits:**
 - Broadest interoperability with web infrastructure: schema.org Action is understood by Google Dataset Search, web crawlers, and general-purpose JSON-LD consumers
@@ -372,14 +372,14 @@ Both approaches are valid cdifProv. The choice depends on the level of detail:
 - Rich retrospective provenance capturing actual execution details
 - ARC profile adds structured parameterization well-suited for analytical chemistry
 - RO-Crate packaging bundles provenance with the data files it describes
-- Conversion to cdifProv is straightforward and largely lossless
+- Conversion to cdifProvActivity is straightforward and largely lossless
 
 **Challenges:**
 - Uses unqualified schema.org property names (no namespace prefixes) — requires JSON-LD context processing
 - `schema:input`/`schema:output` (Bioschemas properties used in some implementations) are not in core schema.org; the standard properties are `schema:object`/`schema:result`
 - `FormalParameter` has no direct schema.org equivalent type
 - Bioschemas types (LabProcess, LabProtocol, Sample) are community extensions, not core schema.org
-- RO-Crate's flat `@graph` structure requires restructuring for cdifProv's nested inline pattern
+- RO-Crate's flat `@graph` structure requires restructuring for cdifProvActivity's nested inline pattern
 
 ## 9. Implementing ARC Profile Support in CDIF
 
@@ -387,9 +387,9 @@ The ARC Workflow Run RO-Crate profile is particularly relevant for CDIF because 
 
 ### 9.1 Natural Mappings
 
-The ARC profile's core concepts map directly to cdifProv:
+The ARC profile's core concepts map directly to cdifProvActivity:
 
-| ARC Concept | cdifProv Implementation |
+| ARC Concept | cdifProvActivity Implementation |
 |---|---|
 | `LabProcess` execution | Activity node with `additionalType: ["schema:LabProcess"]` |
 | `executesLabProtocol` | `schema:actionProcess` → `schema:HowTo` node |
@@ -401,11 +401,11 @@ The ARC profile's core concepts map directly to cdifProv:
 
 ### 9.2 What the Bennu Example Demonstrates
 
-The Bennu py-GC-MS/MS analysis ([standard](./Examples/Bennu-py-GC-MS.cdifprov.json) and [ARC](./Examples/Bennu-py-GC-MSarc.cdifprov.json) versions) demonstrates:
+The Bennu py-GC-MS/MS analysis ([standard](./examples/Bennu-py-GC-MS.cdifprov.json) and [ARC](./examples/Bennu-py-GC-MSarc.cdifprov.json) versions) demonstrates:
 
 1. **Multi-step analytical chain**: Five activities linked through their inputs and outputs, capturing the complete analytical pathway from sample preparation through mass spectrometric detection.
 
-2. **Rich parameterization**: Each step carries actual instrument settings as `schema:additionalProperty` PropertyValue objects — pyrolysis temperature (600°C), GC column dimensions (30m × 0.250mm × 0.50µm), MS scan range (m/z 50–500), number of targeted MRM compounds (38). These are preserved losslessly in the cdifProv output.
+2. **Rich parameterization**: Each step carries actual instrument settings as `schema:additionalProperty` PropertyValue objects — pyrolysis temperature (600°C), GC column dimensions (30m × 0.250mm × 0.50µm), MS scan range (m/z 50–500), number of targeted MRM compounds (38). These are preserved losslessly in the cdifProvActivity output.
 
 3. **Protocol-equipment binding**: Instruments (pyrolysis oven, gas chromatograph, TSQ triple-quad mass spectrometer) are declared on the protocol (`schema:actionProcess`) and referenced by the steps that use them. This cleanly separates "what equipment exists" from "which step used it."
 
@@ -413,9 +413,9 @@ The Bennu py-GC-MS/MS analysis ([standard](./Examples/Bennu-py-GC-MS.cdifprov.js
 
 ### 9.3 Recommendations for CDIF Adopters
 
-1. **Use `WRROCToCdifProv.py` for automated conversion** from existing WRROC/ARC RO-Crate files to cdifProv. The converter handles both standard WRROC (computational workflows) and ARC profile (lab analytical workflows).
+1. **Use `WRROCToCdifProv.py` for automated conversion** from existing WRROC/ARC RO-Crate files to cdifProvActivity. The converter handles both standard WRROC (computational workflows) and ARC profile (lab analytical workflows).
 
-2. **For new analytical provenance**, author directly in cdifProv using ARC-inspired patterns:
+2. **For new analytical provenance**, author directly in cdifProvActivity using ARC-inspired patterns:
    - Use `schema:additionalProperty` with PropertyValue objects for instrument parameters
    - Use `schema:actionProcess` → `schema:HowTo` for protocol/methodology
    - Use `schema:DefinedTerm` for physical instruments (as opposed to `schema:SoftwareApplication` for software tools)
@@ -427,14 +427,14 @@ The Bennu py-GC-MS/MS analysis ([standard](./Examples/Bennu-py-GC-MS.cdifprov.js
 
 | Use Case | Recommended Approach |
 |---|---|
-| General CDIF metadata with web discoverability | **cdifProv** |
-| Interoperability with ODIS / Ocean InfoHub | **cdifProv** |
-| Converting existing WRROC/ARC workflow provenance | **cdifProv** (via converter) |
+| General CDIF metadata with web discoverability | **cdifProvActivity** |
+| Interoperability with ODIS / Ocean InfoHub | **cdifProvActivity** |
+| Converting existing WRROC/ARC workflow provenance | **cdifProvActivity** (via converter) |
 | PROV-O tooling and formal provenance reasoning | **provActivity** |
 | DDI-CDI infrastructure and statistical workflows | **ddicdiActivity** |
 | Detailed data-flow modeling between processing steps | **ddicdiActivity** |
-| Lab analytical workflows with rich parameterization | **cdifProv** with ARC-inspired patterns |
-| Minimal authoring effort | **cdifProv** or **provActivity** |
+| Lab analytical workflows with rich parameterization | **cdifProvActivity** with ARC-inspired patterns |
+| Minimal authoring effort | **cdifProvActivity** or **provActivity** |
 
 Multiple building blocks can coexist. A Dataset's `prov:wasGeneratedBy` can point to an activity described using any approach, and the base `generatedBy` building block provides a minimal common denominator that all PROV-aware consumers can process.
 
@@ -442,11 +442,11 @@ Multiple building blocks can coexist. A Dataset's `prov:wasGeneratedBy` can poin
 
 ### Base generatedBy building block
 
-Both cdifProv and provActivity extend the [generatedBy](https://github.com/usgin/metadataBuildingBlocks/tree/main/_sources/provProperties/generatedBy) building block via JSON Schema `allOf`. The base requires `@type` containing `prov:Activity` and a `prov:used` array, ensuring any consumer that understands these can extract basic provenance from any CDIF document.
+Both cdifProvActivity and provActivity extend the [generatedBy](https://github.com/Cross-Domain-Interoperability-Framework/metadataBuildingBlocks/tree/main/_sources/provProperties/generatedBy) building block via JSON Schema `allOf`. The base requires `@type` containing `prov:Activity` and a `prov:used` array, ensuring any consumer that understands these can extract basic provenance from any CDIF document.
 
 ### Instrument building block
 
-The generic [instrument](https://github.com/usgin/metadataBuildingBlocks/tree/main/_sources/schemaorgProperties/instrument) building block provides a reusable `schema:Thing`-based instrument description with `schema:hasPart` for hierarchical instrument systems.
+The generic [instrument](https://github.com/Cross-Domain-Interoperability-Framework/metadataBuildingBlocks/tree/main/_sources/schemaorgProperties/instrument) building block provides a reusable `schema:Thing`-based instrument description with `schema:hasPart` for hierarchical instrument systems.
 
 ### SHACL validation
 
@@ -490,5 +490,5 @@ All three building blocks include companion `rules.shacl` files providing SHACL 
 
 ### Tools
 
-- [WRROCToCdifProv.py](https://github.com/Cross-Domain-Interoperability-Framework/packaging/tree/main/tools/WRROCToCdifProv.py) — WRROC/ARC to cdifProv converter
+- [WRROCToCdifProv.py](https://github.com/Cross-Domain-Interoperability-Framework/packaging/tree/main/tools/WRROCToCdifProv.py) — WRROC/ARC to cdifProvActivity converter
 - [ROCrateToCDIF.py](https://github.com/Cross-Domain-Interoperability-Framework/packaging/tree/main/tools/ROCrateToCDIF.py) — RO-Crate to full CDIF metadata converter
