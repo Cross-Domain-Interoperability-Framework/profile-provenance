@@ -1,10 +1,8 @@
 # CDIF Provenance Profile — Implementation Guide
 
-> **Draft.** This guide was auto-generated from the StructuredSchema. Edit freely — descriptions, ordering, and the introductory prose should be curated by hand.
-
 # Purpose and scope
 
-The **CDIF Provenance profile module** (`cdifProvenance`) — see the source register description for the module's purpose. *(Replace this stub paragraph with a hand-written purpose statement.)*
+The **CDIF Provenance profile module** (`cdifProvenance`) specifies metadata elements to document the workflow used to create a resource. This is a preliminary draft.
 
 # Conformance
 
@@ -42,6 +40,8 @@ The schema and SHACL files are generated from the canonical source register, [me
 - `provenanceRules.shacl` ← `tools/validate_shacl.py cdifProvenance --emit-shapes`
 
 Source profile directory: `_sources/profiles/cdifProfile/cdifProvenance/`.
+
+MODEL description is preliminary...
 
 # Dataset Properties added by the CDIF Provenance Profile
 
