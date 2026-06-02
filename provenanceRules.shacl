@@ -127,18 +127,18 @@ cdifd:CDIFPersonShape a sh:NodeShape ;
 
 cdifd:CDIFProvenanceConformsToShape a sh:NodeShape ;
     sh:property [ a sh:PropertyShape ;
-            sh:hasValue <https://w3id.org/cdif/provenance/1.0> ;
-            sh:message "Metadata record must declare conformance to the CDIF provenance profile (https://w3id.org/cdif/provenance/1.0)" ;
+            sh:hasValue <https://w3id.org/cdif/provenance/1.1> ;
+            sh:message "Metadata record must declare conformance to the CDIF provenance profile (https://w3id.org/cdif/provenance/1.1)" ;
             sh:path dcterms:conformsTo ] ;
     sh:target [ a sh:SPARQLTarget ;
-            sh:select """
-            PREFIX schema: <http://schema.org/>
-            SELECT ?this
-            WHERE {
-            ?this a schema:Dataset ;
-             schema:about ?parent ;
-             schema:additionalType "dcat:CatalogRecord" .
-            }
+            sh:select """\r
+            PREFIX schema: <http://schema.org/>\r
+            SELECT ?this\r
+            WHERE {\r
+            ?this a schema:Dataset ;\r
+             schema:about ?parent ;\r
+             schema:additionalType "dcat:CatalogRecord" .\r
+            }\r
         """ ] .
 
 cdifd:CDIFProvenanceShape a sh:NodeShape ;
@@ -147,16 +147,16 @@ cdifd:CDIFProvenanceShape a sh:NodeShape ;
             sh:path prov:wasGeneratedBy ;
             sh:severity sh:Warning ] ;
     sh:target [ a sh:SPARQLTarget ;
-            sh:select """
-       PREFIX schema: <http://schema.org/>
-            SELECT ?this
-            WHERE {
-              ?this a schema:Dataset .
-              MINUS {
-                ?this schema:about ?x .
-                ?this schema:additionalType "dcat:CatalogRecord" .
-              }
-            }
+            sh:select """\r
+       PREFIX schema: <http://schema.org/>\r
+            SELECT ?this\r
+            WHERE {\r
+              ?this a schema:Dataset .\r
+              MINUS {\r
+                ?this schema:about ?x .\r
+                ?this schema:additionalType "dcat:CatalogRecord" .\r
+              }\r
+            }\r
           """ ] .
 
 cdifd:CDIFRelationShape a sh:NodeShape ;

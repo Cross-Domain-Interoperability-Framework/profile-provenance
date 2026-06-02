@@ -12,7 +12,7 @@ A resource conforms to the CDIF Provenance profile when its catalog record decla
 "schema:subjectOf": {
   "@type": ["schema:CreativeWork", "dcat:CatalogRecord"],
   "dcterms:conformsTo": [
-    "https://w3id.org/cdif/provenance/1.0"
+    "https://w3id.org/cdif/provenance/1.1"
   ]
 }
 ```
