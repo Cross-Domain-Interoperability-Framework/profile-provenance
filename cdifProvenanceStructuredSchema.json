@@ -432,6 +432,7 @@
                                             "type": "string"
                                           },
                                           {
+                                            "description": "A SKOS concept identified by URI, a schema:DefinedTerm, or an inline cdif:Concept. Shared shape used wherever a CDIF property carries either a controlled-vocabulary reference or an inline concept definition.",
                                             "anyOf": [
                                               {
                                                 "type": "object",
@@ -627,8 +628,7 @@
                                                 },
                                                 "required": [
                                                   "@type",
-                                                  "skos:prefLabel",
-                                                  "skos:notation"
+                                                  "skos:prefLabel"
                                                 ]
                                               }
                                             ]
@@ -1371,7 +1371,7 @@
       ]
     },
     "Identifier": {
-      "description": "Properties for a schema.org identifier (schema:PropertyValue pattern).\n\n**Union-type policy:** In CDIF profile UML models an attribute typed as\nschema:Identifier / schema:PropertyValue is represented by a single attribute\nof that class type. The JSON Schema implementation permits the property value\nto be EITHER a plain string (interpreted as the bare identifier value) OR a\nfull schema:PropertyValue object (with explicit @type, propertyID, value).\nConsumers should accept either form.\n",
+      "description": "Properties for a schema.org identifier (schema:PropertyValue pattern).\n**Union-type policy:** In CDIF profile UML models an attribute typed as\nschema:Identifier / schema:PropertyValue is represented by a single attribute\nof that class type. The JSON Schema implementation permits the property value\nto be EITHER a plain string (interpreted as the bare identifier value) OR a\nfull schema:PropertyValue object (with explicit @type, propertyID, value).\nConsumers should accept either form.\n",
       "type": "object",
       "properties": {
         "@type": {
