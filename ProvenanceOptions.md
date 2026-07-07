@@ -26,6 +26,8 @@ In addition to the native CDIF building blocks, the research community has devel
 | **Provenance Run Crate** | schema.org + CWLProv | `schema:CreateAction` + `schema:OrganizeAction` | [w3id.org/ro/wfrun/provenance/0.1](https://w3id.org/ro/wfrun/provenance/0.1) |
 | **ARC WR RO-Crate** | schema.org + Bioschemas | `schema:CreateAction` + `LabProcess` | [nfdi4plants/arc-wr-ro-crate-profile](https://github.com/nfdi4plants/arc-wr-ro-crate-profile) |
 
+see also activityStream https://www.w3.org/TR/activitystreams-core/
+
 ### Links to Schemas and Examples
 
 | Building Block | Resolved Schema | Example Instance |
