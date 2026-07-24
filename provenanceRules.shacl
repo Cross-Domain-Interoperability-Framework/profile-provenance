@@ -8,6 +8,13 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
+cdifd:AdditionalTypeUriShouldBeIRIShape a sh:NodeShape ;
+    sh:message "schema:additionalType value looks like a URI or CURIE (prefix:localname) but is serialized as a string literal. Serialize URI values as JSON-LD IRI references: {\"@id\":\"...\"}. Free-label strings like 'MaterialSample' remain valid as strings; schema:DefinedTerm objects are also permitted." ;
+    sh:or ( [ sh:nodeKind sh:IRI ] [ sh:class schema:DefinedTerm ] [ sh:datatype xsd:string ;
+                sh:not [ sh:pattern "^[A-Za-z][A-Za-z0-9+.\\-]*:[^\\s\"]+$" ] ] ) ;
+    sh:severity sh:Violation ;
+    sh:targetObjectsOf schema:additionalType .
+
 cdifd:CDIFAddPropertyTermShape a sh:NodeShape ;
     sh:message "A Term must have a name (label) or an identifier. It should have both!." ;
     sh:property [ sh:message "a defined term should have an identifier that is a resolvable URI" ;
@@ -232,6 +239,13 @@ cdifd:CDIFadditionalPropertyShape a sh:NodeShape ;
           ?s schema:additionalProperty ?this .\r
         }\r
       }""" ] .
+
+cdifd:PropertyIDUriShouldBeIRIShape a sh:NodeShape ;
+    sh:message "schema:propertyID value looks like a URI or CURIE (prefix:localname) but is serialized as a string literal. Serialize URI values as JSON-LD IRI references: {\"@id\":\"...\"}. Free-label strings like 'temperature' remain valid as strings." ;
+    sh:or ( [ sh:nodeKind sh:IRI ] [ sh:class schema:DefinedTerm ] [ sh:datatype xsd:string ;
+                sh:not [ sh:pattern "^[A-Za-z][A-Za-z0-9+.\\-]*:[^\\s\"]+$" ] ] ) ;
+    sh:severity sh:Violation ;
+    sh:targetObjectsOf schema:propertyID .
 
 cdifd:cdifProvActivityShape a sh:NodeShape ;
     sh:property [ sh:message "A cdifProvActivity should identify a responsible agent (schema:Person, schema:Organization, or IRI reference)" ;
