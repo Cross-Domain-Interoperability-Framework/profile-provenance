@@ -42,8 +42,12 @@
       "@id": "#SamplePreparation",
       "schema:name": "Sample preparation for EPMA",
       "schema:additionalType": [
-        "schema:CreateAction",
-        "bios:LabProcess"
+        {
+          "@id": "schema:CreateAction"
+        },
+        {
+          "@id": "bios:LabProcess"
+        }
       ],
       "schema:description": "Olivine grains from Kilauea Iki lava lake drill core KI81-1 mounted in epoxy, ground, polished, and carbon coated for electron microprobe analysis.",
       "schema:actionProcess": {
@@ -92,7 +96,11 @@
         {
           "@id": "#KI81-1-olivine",
           "schema:name": "Olivine separates from drill core KI81-1",
-          "schema:description": "Hand-picked olivine grains (Fo85-88) from Kilauea Iki lava lake drill core."
+          "schema:description": "Hand-picked olivine grains (Fo85-88) from Kilauea Iki lava lake drill core.",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ]
         }
       ],
       "schema:result": [
@@ -110,8 +118,12 @@
       "@id": "#EPMAAnalysis",
       "schema:name": "EPMA major element analysis of olivine",
       "schema:additionalType": [
-        "schema:CreateAction",
-        "bios:LabProcess"
+        {
+          "@id": "schema:CreateAction"
+        },
+        {
+          "@id": "bios:LabProcess"
+        }
       ],
       "schema:description": "Quantitative WDS electron microprobe analysis of olivine for major and minor elements using a JEOL JXA-8530F field-emission electron microprobe at 15 kV / 20 nA.",
       "schema:actionProcess": {
@@ -176,25 +188,27 @@
       },
       "prov:used": [
         {
-          "schema:instrument": {
-            "@type": [
-              "schema:Product",
-              "schema:Thing"
-            ],
-            "schema:name": "JEOL JXA-8530F Plus Field Emission Electron Microprobe",
-            "schema:manufacturer": {
+          "schema:instrument": [
+            {
               "@type": [
-                "schema:Organization"
+                "schema:Product",
+                "schema:Thing"
               ],
-              "schema:name": "JEOL"
-            },
-            "schema:model": {
-              "@type": [
-                "schema:ProductModel"
-              ],
-              "schema:name": "JXA-8530F Plus"
+              "schema:name": "JEOL JXA-8530F Plus Field Emission Electron Microprobe",
+              "schema:manufacturer": {
+                "@type": [
+                  "schema:Organization"
+                ],
+                "schema:name": "JEOL"
+              },
+              "schema:model": {
+                "@type": [
+                  "schema:ProductModel"
+                ],
+                "schema:name": "JXA-8530F Plus"
+              }
             }
-          }
+          ]
         },
         {
           "@id": "#PolishedMount-A"
@@ -264,7 +278,9 @@
       "@id": "#DataReduction",
       "schema:name": "Data reduction and filtering",
       "schema:additionalType": [
-        "schema:CreateAction"
+        {
+          "@id": "schema:CreateAction"
+        }
       ],
       "schema:description": "Analyses filtered for quality: rejected points with analytical totals outside 98.5–101.0 wt% or with anomalous stoichiometry. Forsterite content (Fo) calculated from Mg/(Mg+Fe) atomic ratio. Final dataset exported as CSV.",
       "schema:actionProcess": {
@@ -311,14 +327,18 @@
       },
       "prov:used": [
         {
-          "schema:instrument": {
-            "@type": [
-              "schema:SoftwareApplication"
-            ],
-            "schema:name": "Probe for EPMA",
-            "schema:version": "13.0.6",
-            "schema:url": "https://www.probesoftware.com/"
-          }
+          "schema:instrument": [
+            {
+              "@type": [
+                "schema:Product",
+                "schema:Thing",
+                "schema:SoftwareApplication"
+              ],
+              "schema:name": "Probe for EPMA",
+              "schema:version": "13.0.6",
+              "schema:url": "https://www.probesoftware.com/"
+            }
+          ]
         }
       ],
       "schema:object": {
