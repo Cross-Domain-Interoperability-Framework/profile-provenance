@@ -59,23 +59,27 @@
       },
       "prov:used": [
         {
-          "schema:instrument": {
-            "@type": [
-              "schema:SoftwareApplication"
-            ],
-            "schema:name": "SeisUnix",
-            "schema:version": "44R27",
-            "schema:url": "https://wiki.seismic-unix.org/",
-            "schema:category": [
-              {
-                "@type": [
-                  "schema:DefinedTerm"
-                ],
-                "schema:name": "Seismic processing software",
-                "schema:termCode": "seismic-processing"
-              }
-            ]
-          }
+          "schema:instrument": [
+            {
+              "@type": [
+                "schema:Product",
+                "schema:Thing",
+                "schema:SoftwareApplication"
+              ],
+              "schema:name": "SeisUnix",
+              "schema:version": "44R27",
+              "schema:url": "https://wiki.seismic-unix.org/",
+              "schema:category": [
+                {
+                  "@type": [
+                    "schema:DefinedTerm"
+                  ],
+                  "schema:name": "Seismic processing software",
+                  "schema:termCode": "seismic-processing"
+                }
+              ]
+            }
+          ]
         }
       ],
       "schema:startTime": "2025-01-10T00:00:00Z",

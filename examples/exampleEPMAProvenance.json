@@ -92,7 +92,11 @@
         {
           "@id": "#KI81-1-olivine",
           "schema:name": "Olivine separates from drill core KI81-1",
-          "schema:description": "Hand-picked olivine grains (Fo85-88) from Kilauea Iki lava lake drill core."
+          "schema:description": "Hand-picked olivine grains (Fo85-88) from Kilauea Iki lava lake drill core.",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ]
         }
       ],
       "schema:result": [
@@ -176,25 +180,27 @@
       },
       "prov:used": [
         {
-          "schema:instrument": {
-            "@type": [
-              "schema:Product",
-              "schema:Thing"
-            ],
-            "schema:name": "JEOL JXA-8530F Plus Field Emission Electron Microprobe",
-            "schema:manufacturer": {
+          "schema:instrument": [
+            {
               "@type": [
-                "schema:Organization"
+                "schema:Product",
+                "schema:Thing"
               ],
-              "schema:name": "JEOL"
-            },
-            "schema:model": {
-              "@type": [
-                "schema:ProductModel"
-              ],
-              "schema:name": "JXA-8530F Plus"
+              "schema:name": "JEOL JXA-8530F Plus Field Emission Electron Microprobe",
+              "schema:manufacturer": {
+                "@type": [
+                  "schema:Organization"
+                ],
+                "schema:name": "JEOL"
+              },
+              "schema:model": {
+                "@type": [
+                  "schema:ProductModel"
+                ],
+                "schema:name": "JXA-8530F Plus"
+              }
             }
-          }
+          ]
         },
         {
           "@id": "#PolishedMount-A"
@@ -311,14 +317,18 @@
       },
       "prov:used": [
         {
-          "schema:instrument": {
-            "@type": [
-              "schema:SoftwareApplication"
-            ],
-            "schema:name": "Probe for EPMA",
-            "schema:version": "13.0.6",
-            "schema:url": "https://www.probesoftware.com/"
-          }
+          "schema:instrument": [
+            {
+              "@type": [
+                "schema:Product",
+                "schema:Thing",
+                "schema:SoftwareApplication"
+              ],
+              "schema:name": "Probe for EPMA",
+              "schema:version": "13.0.6",
+              "schema:url": "https://www.probesoftware.com/"
+            }
+          ]
         }
       ],
       "schema:object": {
