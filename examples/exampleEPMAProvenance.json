@@ -42,8 +42,12 @@
       "@id": "#SamplePreparation",
       "schema:name": "Sample preparation for EPMA",
       "schema:additionalType": [
-        "schema:CreateAction",
-        "bios:LabProcess"
+        {
+          "@id": "schema:CreateAction"
+        },
+        {
+          "@id": "bios:LabProcess"
+        }
       ],
       "schema:description": "Olivine grains from Kilauea Iki lava lake drill core KI81-1 mounted in epoxy, ground, polished, and carbon coated for electron microprobe analysis.",
       "schema:actionProcess": {
@@ -114,8 +118,12 @@
       "@id": "#EPMAAnalysis",
       "schema:name": "EPMA major element analysis of olivine",
       "schema:additionalType": [
-        "schema:CreateAction",
-        "bios:LabProcess"
+        {
+          "@id": "schema:CreateAction"
+        },
+        {
+          "@id": "bios:LabProcess"
+        }
       ],
       "schema:description": "Quantitative WDS electron microprobe analysis of olivine for major and minor elements using a JEOL JXA-8530F field-emission electron microprobe at 15 kV / 20 nA.",
       "schema:actionProcess": {
@@ -270,7 +278,9 @@
       "@id": "#DataReduction",
       "schema:name": "Data reduction and filtering",
       "schema:additionalType": [
-        "schema:CreateAction"
+        {
+          "@id": "schema:CreateAction"
+        }
       ],
       "schema:description": "Analyses filtered for quality: rejected points with analytical totals outside 98.5–101.0 wt% or with anomalous stoichiometry. Forsterite content (Fo) calculated from Mg/(Mg+Fe) atomic ratio. Final dataset exported as CSV.",
       "schema:actionProcess": {
