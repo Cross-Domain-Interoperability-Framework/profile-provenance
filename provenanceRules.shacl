@@ -116,7 +116,7 @@ cdifd:CDIFLabeledLinkShape a sh:NodeShape ;
 
 cdifd:CDIFOrganizationShape a sh:NodeShape ;
     sh:message "Organization must have an @id IRI, a name or an identifier that is a string" ;
-    sh:or ( [ sh:property cdifd:nameProperty ] [ sh:property [ sh:message "an organization should have an identifier that is a URI; use of ORCID is strongly encouraged" ;
+    sh:or ( [ sh:nodeKind sh:IRI ] [ sh:property cdifd:nameProperty ] [ sh:property [ sh:message "an organization should have an identifier that is a URI; use of ORCID is strongly encouraged" ;
                         sh:minCount 1 ;
                         sh:nodeKind sh:IRIOrLiteral ;
                         sh:path schema:identifier ] ] ) ;
