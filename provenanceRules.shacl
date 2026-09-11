@@ -136,7 +136,8 @@ cdifd:CDIFProvenanceConformsToShape a sh:NodeShape ;
     sh:property [ a sh:PropertyShape ;
             sh:hasValue <https://w3id.org/cdif/provenance/1.1> ;
             sh:message "Metadata record must declare conformance to the CDIF provenance profile (https://w3id.org/cdif/provenance/1.1)" ;
-            sh:path dcterms:conformsTo ] ;
+            sh:path dcterms:conformsTo ;
+            sh:severity sh:Warning ] ;
     sh:target [ a sh:SPARQLTarget ;
             sh:select """
             PREFIX schema: <http://schema.org/>
@@ -144,7 +145,8 @@ cdifd:CDIFProvenanceConformsToShape a sh:NodeShape ;
             WHERE {
             ?this a schema:Dataset ;
              schema:about ?parent ;
-             schema:additionalType "dcat:CatalogRecord" .
+             schema:additionalType ?at .
+             FILTER( ?at = <http://www.w3.org/ns/dcat#CatalogRecord> || STR(?at) = "dcat:CatalogRecord" )
             }
         """ ] .
 
@@ -161,7 +163,8 @@ cdifd:CDIFProvenanceShape a sh:NodeShape ;
               ?this a schema:Dataset .
               MINUS {
                 ?this schema:about ?x .
-                ?this schema:additionalType "dcat:CatalogRecord" .
+                ?this schema:additionalType ?at .
+                FILTER( ?at = <http://www.w3.org/ns/dcat#CatalogRecord> || STR(?at) = "dcat:CatalogRecord" )
               }
             }
           """ ] .
