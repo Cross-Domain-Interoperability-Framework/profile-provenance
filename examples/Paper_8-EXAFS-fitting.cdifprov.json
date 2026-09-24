@@ -2,9 +2,37 @@
   "@context": {
     "schema": "http://schema.org/",
     "prov": "http://www.w3.org/ns/prov#",
-    "bios": "https://bioschemas.org/"
+    "bios": "https://bioschemas.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "dcat": "http://www.w3.org/ns/dcat#"
   },
-  "@graph": [
+  "@id": "#dataset",
+  "@type": [
+    "schema:Dataset"
+  ],
+  "schema:name": "Paper 8 EXAFS fitting",
+  "schema:dateModified": "2024-10-28",
+  "schema:subjectOf": {
+    "@type": [
+      "schema:Dataset",
+      "dcat:CatalogRecord"
+    ],
+    "schema:additionalType": [
+      {
+        "@id": "dcat:CatalogRecord"
+      }
+    ],
+    "@id": "#metadata",
+    "schema:about": {
+      "@id": "#dataset"
+    },
+    "dcterms:conformsTo": [
+      {
+        "@id": "https://w3id.org/cdif/provenance/1.1"
+      }
+    ]
+  },
+  "prov:wasGeneratedBy": [
     {
       "@type": [
         "schema:Action",
@@ -84,43 +112,57 @@
         ],
         "schema:step": [
           {
-            "@type": "schema:HowToStep",
+            "@type": [
+              "schema:HowToStep"
+            ],
             "schema:name": "4",
             "schema:position": 1,
             "schema:description": "Inputs from: Washcoat Athena project file from paper"
           },
           {
-            "@type": "schema:HowToStep",
+            "@type": [
+              "schema:HowToStep"
+            ],
             "schema:name": "5",
             "schema:position": 2,
             "schema:description": "Inputs from: 20g ash Athena project file from paper"
           },
           {
-            "@type": "schema:HowToStep",
+            "@type": [
+              "schema:HowToStep"
+            ],
             "schema:name": "6",
             "schema:position": 3,
             "schema:description": "Inputs from: PdO cif file"
           },
           {
-            "@type": "schema:HowToStep",
+            "@type": [
+              "schema:HowToStep"
+            ],
             "schema:name": "7",
             "schema:position": 4,
             "schema:description": "Inputs from: Pd cif file"
           },
           {
-            "@type": "schema:HowToStep",
+            "@type": [
+              "schema:HowToStep"
+            ],
             "schema:name": "8",
             "schema:position": 5,
             "schema:description": "Inputs from: 6, 7"
           },
           {
-            "@type": "schema:HowToStep",
+            "@type": [
+              "schema:HowToStep"
+            ],
             "schema:name": "9",
             "schema:position": 6,
             "schema:description": "Inputs from: 8, 4"
           },
           {
-            "@type": "schema:HowToStep",
+            "@type": [
+              "schema:HowToStep"
+            ],
             "schema:name": "10",
             "schema:position": 7,
             "schema:description": "Inputs from: 8, 5"
@@ -130,6 +172,7 @@
       "prov:used": [
         {
           "@type": [
+            "prov:Entity",
             "schema:MediaObject"
           ],
           "@id": "datasets/Washcoat_Athena_project_file_from_paper_3dfde3a7417d0973.prj",
@@ -138,6 +181,7 @@
         },
         {
           "@type": [
+            "prov:Entity",
             "schema:MediaObject"
           ],
           "@id": "datasets/20g_ash_Athena_project_file_from_paper_cb3d3286c5ba876f.prj",
@@ -146,6 +190,7 @@
         },
         {
           "@type": [
+            "prov:Entity",
             "schema:MediaObject"
           ],
           "@id": "datasets/PdO_cif_file.cif_ebd697d0c147d306.cif",
@@ -154,6 +199,7 @@
         },
         {
           "@type": [
+            "prov:Entity",
             "schema:MediaObject"
           ],
           "@id": "datasets/Pd_cif_file.cif_b0b2392468d82f00.cif",

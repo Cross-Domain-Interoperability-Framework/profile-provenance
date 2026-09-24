@@ -2,9 +2,37 @@
   "@context": {
     "schema": "http://schema.org/",
     "prov": "http://www.w3.org/ns/prov#",
-    "bios": "https://bioschemas.org/"
+    "bios": "https://bioschemas.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "dcat": "http://www.w3.org/ns/dcat#"
   },
-  "@graph": [
+  "@id": "#dataset",
+  "@type": [
+    "schema:Dataset"
+  ],
+  "schema:name": "FeS2 Analysis",
+  "schema:dateModified": "2024-10-23",
+  "schema:subjectOf": {
+    "@type": [
+      "schema:Dataset",
+      "dcat:CatalogRecord"
+    ],
+    "schema:additionalType": [
+      {
+        "@id": "dcat:CatalogRecord"
+      }
+    ],
+    "@id": "#metadata",
+    "schema:about": {
+      "@id": "#dataset"
+    },
+    "dcterms:conformsTo": [
+      {
+        "@id": "https://w3id.org/cdif/provenance/1.1"
+      }
+    ]
+  },
+  "prov:wasGeneratedBy": [
     {
       "@type": [
         "schema:Action",
@@ -84,7 +112,9 @@
         ],
         "schema:step": [
           {
-            "@type": "schema:HowToStep",
+            "@type": [
+              "schema:HowToStep"
+            ],
             "schema:name": "2",
             "schema:position": 1,
             "schema:description": "Inputs from: fes2_rt01_mar02.xmu",
@@ -136,7 +166,9 @@
             ]
           },
           {
-            "@type": "schema:HowToStep",
+            "@type": [
+              "schema:HowToStep"
+            ],
             "schema:name": "3",
             "schema:position": 2,
             "schema:description": "Inputs from: 1564889.cif",
@@ -268,7 +300,9 @@
             ]
           },
           {
-            "@type": "schema:HowToStep",
+            "@type": [
+              "schema:HowToStep"
+            ],
             "schema:name": "4",
             "schema:position": 3,
             "schema:description": "Inputs from: 3",
@@ -309,7 +343,9 @@
             ]
           },
           {
-            "@type": "schema:HowToStep",
+            "@type": [
+              "schema:HowToStep"
+            ],
             "schema:name": "5",
             "schema:position": 4,
             "schema:description": "Inputs from: 4, 3, 2",
@@ -344,6 +380,7 @@
       "prov:used": [
         {
           "@type": [
+            "prov:Entity",
             "schema:MediaObject"
           ],
           "@id": "datasets/fes2_rt01_mar02.xmu_df0bac1ee137448a.txt",
@@ -352,6 +389,7 @@
         },
         {
           "@type": [
+            "prov:Entity",
             "schema:MediaObject"
           ],
           "@id": "datasets/1564889.cif_df02c7af9dfe5b62.cif",

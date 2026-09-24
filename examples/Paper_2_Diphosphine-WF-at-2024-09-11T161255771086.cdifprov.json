@@ -2,9 +2,37 @@
   "@context": {
     "schema": "http://schema.org/",
     "prov": "http://www.w3.org/ns/prov#",
-    "bios": "https://bioschemas.org/"
+    "bios": "https://bioschemas.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "dcat": "http://www.w3.org/ns/dcat#"
   },
-  "@graph": [
+  "@id": "#dataset",
+  "@type": [
+    "schema:Dataset"
+  ],
+  "schema:name": "Paper 2 Diphosphine WF at 2024 09 11T161255771086",
+  "schema:dateModified": "2024-09-11",
+  "schema:subjectOf": {
+    "@type": [
+      "schema:Dataset",
+      "dcat:CatalogRecord"
+    ],
+    "schema:additionalType": [
+      {
+        "@id": "dcat:CatalogRecord"
+      }
+    ],
+    "@id": "#metadata",
+    "schema:about": {
+      "@id": "#dataset"
+    },
+    "dcterms:conformsTo": [
+      {
+        "@id": "https://w3id.org/cdif/provenance/1.1"
+      }
+    ]
+  },
+  "prov:wasGeneratedBy": [
     {
       "@type": [
         "schema:Action",
@@ -68,7 +96,9 @@
         ],
         "schema:step": [
           {
-            "@type": "schema:HowToStep",
+            "@type": [
+              "schema:HowToStep"
+            ],
             "schema:name": "7",
             "schema:position": 1,
             "schema:description": "Inputs from: A data",
@@ -112,7 +142,9 @@
             ]
           },
           {
-            "@type": "schema:HowToStep",
+            "@type": [
+              "schema:HowToStep"
+            ],
             "schema:name": "8",
             "schema:position": 2,
             "schema:description": "Inputs from: B data",
@@ -156,7 +188,9 @@
             ]
           },
           {
-            "@type": "schema:HowToStep",
+            "@type": [
+              "schema:HowToStep"
+            ],
             "schema:name": "9",
             "schema:position": 3,
             "schema:description": "Inputs from: C data",
@@ -200,7 +234,9 @@
             ]
           },
           {
-            "@type": "schema:HowToStep",
+            "@type": [
+              "schema:HowToStep"
+            ],
             "schema:name": "10",
             "schema:position": 4,
             "schema:description": "Inputs from: D data",
@@ -244,7 +280,9 @@
             ]
           },
           {
-            "@type": "schema:HowToStep",
+            "@type": [
+              "schema:HowToStep"
+            ],
             "schema:name": "11",
             "schema:position": 5,
             "schema:description": "Inputs from: Fe Metal",
@@ -288,7 +326,9 @@
             ]
           },
           {
-            "@type": "schema:HowToStep",
+            "@type": [
+              "schema:HowToStep"
+            ],
             "schema:name": "12",
             "schema:position": 6,
             "schema:description": "Inputs from: FeBr",
@@ -328,7 +368,9 @@
             ]
           },
           {
-            "@type": "schema:HowToStep",
+            "@type": [
+              "schema:HowToStep"
+            ],
             "schema:name": "13",
             "schema:position": 7,
             "schema:description": "Inputs from: 7a",
@@ -372,7 +414,9 @@
             ]
           },
           {
-            "@type": "schema:HowToStep",
+            "@type": [
+              "schema:HowToStep"
+            ],
             "schema:name": "14",
             "schema:position": 8,
             "schema:description": "Inputs from: 7, 8, 9, 10, 11",
@@ -403,7 +447,9 @@
             ]
           },
           {
-            "@type": "schema:HowToStep",
+            "@type": [
+              "schema:HowToStep"
+            ],
             "schema:name": "15",
             "schema:position": 9,
             "schema:description": "Inputs from: 7, 8, 9, 10, 11, 12",
@@ -434,7 +480,9 @@
             ]
           },
           {
-            "@type": "schema:HowToStep",
+            "@type": [
+              "schema:HowToStep"
+            ],
             "schema:name": "16",
             "schema:position": 10,
             "schema:description": "Inputs from: 7, 8, 9, 10, 11, 12",
@@ -465,7 +513,9 @@
             ]
           },
           {
-            "@type": "schema:HowToStep",
+            "@type": [
+              "schema:HowToStep"
+            ],
             "schema:name": "17",
             "schema:position": 11,
             "schema:description": "Inputs from: 7, 8, 9, 10, 13",
@@ -500,6 +550,7 @@
       "prov:used": [
         {
           "@type": [
+            "prov:Entity",
             "schema:CreativeWorkSeries"
           ],
           "@id": "#dataset_collection-2617",
@@ -508,6 +559,7 @@
         },
         {
           "@type": [
+            "prov:Entity",
             "schema:CreativeWorkSeries"
           ],
           "@id": "#dataset_collection-2618",
@@ -516,6 +568,7 @@
         },
         {
           "@type": [
+            "prov:Entity",
             "schema:CreativeWorkSeries"
           ],
           "@id": "#dataset_collection-2619",
@@ -524,6 +577,7 @@
         },
         {
           "@type": [
+            "prov:Entity",
             "schema:CreativeWorkSeries"
           ],
           "@id": "#dataset_collection-2620",
@@ -532,6 +586,7 @@
         },
         {
           "@type": [
+            "prov:Entity",
             "schema:CreativeWorkSeries"
           ],
           "@id": "#dataset_collection-2621",
@@ -540,6 +595,7 @@
         },
         {
           "@type": [
+            "prov:Entity",
             "schema:CreativeWorkSeries"
           ],
           "@id": "#dataset_collection-2622",
@@ -548,6 +604,7 @@
         },
         {
           "@type": [
+            "prov:Entity",
             "schema:CreativeWorkSeries"
           ],
           "@id": "#dataset_collection-2623",

@@ -2,9 +2,37 @@
   "@context": {
     "schema": "http://schema.org/",
     "prov": "http://www.w3.org/ns/prov#",
-    "bios": "https://bioschemas.org/"
+    "bios": "https://bioschemas.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "dcat": "http://www.w3.org/ns/dcat#"
   },
-  "@graph": [
+  "@id": "#dataset",
+  "@type": [
+    "schema:Dataset"
+  ],
+  "schema:name": "Paper 2 Diphosphine WF at 2024 09 11T161255771086",
+  "schema:dateModified": "2024-09-11",
+  "schema:subjectOf": {
+    "@type": [
+      "schema:Dataset",
+      "dcat:CatalogRecord"
+    ],
+    "schema:additionalType": [
+      {
+        "@id": "dcat:CatalogRecord"
+      }
+    ],
+    "@id": "#metadata",
+    "schema:about": {
+      "@id": "#dataset"
+    },
+    "dcterms:conformsTo": [
+      {
+        "@id": "https://w3id.org/cdif/provenance/1.1"
+      }
+    ]
+  },
+  "prov:wasGeneratedBy": [
     {
       "@type": [
         "schema:Action",
@@ -52,6 +80,7 @@
       "prov:used": [
         {
           "@type": [
+            "prov:Entity",
             "schema:CreativeWorkSeries"
           ],
           "@id": "#dataset_collection-2617",
@@ -60,6 +89,7 @@
         },
         {
           "@type": [
+            "prov:Entity",
             "schema:CreativeWorkSeries"
           ],
           "@id": "#dataset_collection-2618",
@@ -68,6 +98,7 @@
         },
         {
           "@type": [
+            "prov:Entity",
             "schema:CreativeWorkSeries"
           ],
           "@id": "#dataset_collection-2619",
@@ -76,6 +107,7 @@
         },
         {
           "@type": [
+            "prov:Entity",
             "schema:CreativeWorkSeries"
           ],
           "@id": "#dataset_collection-2620",
@@ -84,6 +116,7 @@
         },
         {
           "@type": [
+            "prov:Entity",
             "schema:CreativeWorkSeries"
           ],
           "@id": "#dataset_collection-2621",
@@ -92,6 +125,7 @@
         },
         {
           "@type": [
+            "prov:Entity",
             "schema:CreativeWorkSeries"
           ],
           "@id": "#dataset_collection-2622",
@@ -100,6 +134,7 @@
         },
         {
           "@type": [
+            "prov:Entity",
             "schema:CreativeWorkSeries"
           ],
           "@id": "#dataset_collection-2623",
@@ -135,7 +170,10 @@
       },
       "prov:used": [
         {
-          "@type": "schema:Thing",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
           "@id": "#input-A data",
           "schema:name": "A data"
         }
@@ -154,7 +192,9 @@
       ],
       "schema:additionalProperty": [
         {
-          "@type": "schema:PropertyValue",
+          "@type": [
+            "schema:PropertyValue"
+          ],
           "schema:name": "merge_inputs",
           "schema:value": {
             "@type": "schema:StructuredValue",
@@ -172,7 +212,9 @@
           }
         },
         {
-          "@type": "schema:PropertyValue",
+          "@type": [
+            "schema:PropertyValue"
+          ],
           "schema:name": "processing.rebin",
           "schema:value": 0
         }
@@ -205,7 +247,10 @@
       },
       "prov:used": [
         {
-          "@type": "schema:Thing",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
           "@id": "#input-B data",
           "schema:name": "B data"
         }
@@ -224,7 +269,9 @@
       ],
       "schema:additionalProperty": [
         {
-          "@type": "schema:PropertyValue",
+          "@type": [
+            "schema:PropertyValue"
+          ],
           "schema:name": "merge_inputs",
           "schema:value": {
             "@type": "schema:StructuredValue",
@@ -242,7 +289,9 @@
           }
         },
         {
-          "@type": "schema:PropertyValue",
+          "@type": [
+            "schema:PropertyValue"
+          ],
           "schema:name": "processing.rebin",
           "schema:value": 0
         }
@@ -275,7 +324,10 @@
       },
       "prov:used": [
         {
-          "@type": "schema:Thing",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
           "@id": "#input-C data",
           "schema:name": "C data"
         }
@@ -294,7 +346,9 @@
       ],
       "schema:additionalProperty": [
         {
-          "@type": "schema:PropertyValue",
+          "@type": [
+            "schema:PropertyValue"
+          ],
           "schema:name": "merge_inputs",
           "schema:value": {
             "@type": "schema:StructuredValue",
@@ -312,7 +366,9 @@
           }
         },
         {
-          "@type": "schema:PropertyValue",
+          "@type": [
+            "schema:PropertyValue"
+          ],
           "schema:name": "processing.rebin",
           "schema:value": 0
         }
@@ -345,7 +401,10 @@
       },
       "prov:used": [
         {
-          "@type": "schema:Thing",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
           "@id": "#input-D data",
           "schema:name": "D data"
         }
@@ -359,7 +418,9 @@
       ],
       "schema:additionalProperty": [
         {
-          "@type": "schema:PropertyValue",
+          "@type": [
+            "schema:PropertyValue"
+          ],
           "schema:name": "merge_inputs",
           "schema:value": {
             "@type": "schema:StructuredValue",
@@ -377,7 +438,9 @@
           }
         },
         {
-          "@type": "schema:PropertyValue",
+          "@type": [
+            "schema:PropertyValue"
+          ],
           "schema:name": "processing.rebin",
           "schema:value": 0
         }
@@ -410,7 +473,10 @@
       },
       "prov:used": [
         {
-          "@type": "schema:Thing",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
           "@id": "#input-Fe Metal",
           "schema:name": "Fe Metal"
         }
@@ -424,7 +490,9 @@
       ],
       "schema:additionalProperty": [
         {
-          "@type": "schema:PropertyValue",
+          "@type": [
+            "schema:PropertyValue"
+          ],
           "schema:name": "merge_inputs",
           "schema:value": {
             "@type": "schema:StructuredValue",
@@ -442,7 +510,9 @@
           }
         },
         {
-          "@type": "schema:PropertyValue",
+          "@type": [
+            "schema:PropertyValue"
+          ],
           "schema:name": "processing.rebin",
           "schema:value": 0
         }
@@ -475,7 +545,10 @@
       },
       "prov:used": [
         {
-          "@type": "schema:Thing",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
           "@id": "#input-FeBr",
           "schema:name": "FeBr"
         }
@@ -494,7 +567,9 @@
       ],
       "schema:additionalProperty": [
         {
-          "@type": "schema:PropertyValue",
+          "@type": [
+            "schema:PropertyValue"
+          ],
           "schema:name": "merge_inputs",
           "schema:value": {
             "@type": "schema:StructuredValue",
@@ -508,7 +583,9 @@
           }
         },
         {
-          "@type": "schema:PropertyValue",
+          "@type": [
+            "schema:PropertyValue"
+          ],
           "schema:name": "processing.rebin",
           "schema:value": 0
         }
@@ -541,7 +618,10 @@
       },
       "prov:used": [
         {
-          "@type": "schema:Thing",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
           "@id": "#input-7a",
           "schema:name": "7a"
         }
@@ -555,7 +635,9 @@
       ],
       "schema:additionalProperty": [
         {
-          "@type": "schema:PropertyValue",
+          "@type": [
+            "schema:PropertyValue"
+          ],
           "schema:name": "merge_inputs",
           "schema:value": {
             "@type": "schema:StructuredValue",
@@ -573,7 +655,9 @@
           }
         },
         {
-          "@type": "schema:PropertyValue",
+          "@type": [
+            "schema:PropertyValue"
+          ],
           "schema:name": "processing.rebin",
           "schema:value": 0
         }
@@ -623,27 +707,42 @@
       ],
       "prov:used": [
         {
-          "@type": "schema:Thing",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
           "@id": "#output-7-athena_project_file",
           "schema:name": "7/athena_project_file"
         },
         {
-          "@type": "schema:Thing",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
           "@id": "#output-8-athena_project_file",
           "schema:name": "8/athena_project_file"
         },
         {
-          "@type": "schema:Thing",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
           "@id": "#output-9-athena_project_file",
           "schema:name": "9/athena_project_file"
         },
         {
-          "@type": "schema:Thing",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
           "@id": "#output-10-athena_project_file",
           "schema:name": "10/athena_project_file"
         },
         {
-          "@type": "schema:Thing",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
           "@id": "#output-11-athena_project_file",
           "schema:name": "11/athena_project_file"
         }
@@ -657,7 +756,9 @@
       ],
       "schema:additionalProperty": [
         {
-          "@type": "schema:PropertyValue",
+          "@type": [
+            "schema:PropertyValue"
+          ],
           "schema:name": "plots[0].variable",
           "schema:value": {
             "@type": "schema:StructuredValue",
@@ -715,32 +816,50 @@
       ],
       "prov:used": [
         {
-          "@type": "schema:Thing",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
           "@id": "#output-7-athena_project_file",
           "schema:name": "7/athena_project_file"
         },
         {
-          "@type": "schema:Thing",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
           "@id": "#output-8-athena_project_file",
           "schema:name": "8/athena_project_file"
         },
         {
-          "@type": "schema:Thing",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
           "@id": "#output-9-athena_project_file",
           "schema:name": "9/athena_project_file"
         },
         {
-          "@type": "schema:Thing",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
           "@id": "#output-10-athena_project_file",
           "schema:name": "10/athena_project_file"
         },
         {
-          "@type": "schema:Thing",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
           "@id": "#output-11-athena_project_file",
           "schema:name": "11/athena_project_file"
         },
         {
-          "@type": "schema:Thing",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
           "@id": "#output-12-athena_project_file",
           "schema:name": "12/athena_project_file"
         }
@@ -754,7 +873,9 @@
       ],
       "schema:additionalProperty": [
         {
-          "@type": "schema:PropertyValue",
+          "@type": [
+            "schema:PropertyValue"
+          ],
           "schema:name": "plots[0].variable",
           "schema:value": {
             "@type": "schema:StructuredValue",
@@ -812,32 +933,50 @@
       ],
       "prov:used": [
         {
-          "@type": "schema:Thing",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
           "@id": "#output-7-athena_project_file",
           "schema:name": "7/athena_project_file"
         },
         {
-          "@type": "schema:Thing",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
           "@id": "#output-8-athena_project_file",
           "schema:name": "8/athena_project_file"
         },
         {
-          "@type": "schema:Thing",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
           "@id": "#output-9-athena_project_file",
           "schema:name": "9/athena_project_file"
         },
         {
-          "@type": "schema:Thing",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
           "@id": "#output-10-athena_project_file",
           "schema:name": "10/athena_project_file"
         },
         {
-          "@type": "schema:Thing",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
           "@id": "#output-11-athena_project_file",
           "schema:name": "11/athena_project_file"
         },
         {
-          "@type": "schema:Thing",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
           "@id": "#output-12-athena_project_file",
           "schema:name": "12/athena_project_file"
         }
@@ -851,7 +990,9 @@
       ],
       "schema:additionalProperty": [
         {
-          "@type": "schema:PropertyValue",
+          "@type": [
+            "schema:PropertyValue"
+          ],
           "schema:name": "plots[0].variable",
           "schema:value": {
             "@type": "schema:StructuredValue",
@@ -906,27 +1047,42 @@
       ],
       "prov:used": [
         {
-          "@type": "schema:Thing",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
           "@id": "#output-7-athena_project_file",
           "schema:name": "7/athena_project_file"
         },
         {
-          "@type": "schema:Thing",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
           "@id": "#output-8-athena_project_file",
           "schema:name": "8/athena_project_file"
         },
         {
-          "@type": "schema:Thing",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
           "@id": "#output-9-athena_project_file",
           "schema:name": "9/athena_project_file"
         },
         {
-          "@type": "schema:Thing",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
           "@id": "#output-10-athena_project_file",
           "schema:name": "10/athena_project_file"
         },
         {
-          "@type": "schema:Thing",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
           "@id": "#output-13-athena_project_file",
           "schema:name": "13/athena_project_file"
         }
@@ -940,7 +1096,9 @@
       ],
       "schema:additionalProperty": [
         {
-          "@type": "schema:PropertyValue",
+          "@type": [
+            "schema:PropertyValue"
+          ],
           "schema:name": "plots[0].variable",
           "schema:value": {
             "@type": "schema:StructuredValue",

@@ -2,9 +2,37 @@
   "@context": {
     "schema": "http://schema.org/",
     "prov": "http://www.w3.org/ns/prov#",
-    "bios": "https://bioschemas.org/"
+    "bios": "https://bioschemas.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "dcat": "http://www.w3.org/ns/dcat#"
   },
-  "@graph": [
+  "@id": "#dataset",
+  "@type": [
+    "schema:Dataset"
+  ],
+  "schema:name": "FeS2 Analysis",
+  "schema:dateModified": "2024-10-23",
+  "schema:subjectOf": {
+    "@type": [
+      "schema:Dataset",
+      "dcat:CatalogRecord"
+    ],
+    "schema:additionalType": [
+      {
+        "@id": "dcat:CatalogRecord"
+      }
+    ],
+    "@id": "#metadata",
+    "schema:about": {
+      "@id": "#dataset"
+    },
+    "dcterms:conformsTo": [
+      {
+        "@id": "https://w3id.org/cdif/provenance/1.1"
+      }
+    ]
+  },
+  "prov:wasGeneratedBy": [
     {
       "@type": [
         "schema:Action",
@@ -52,6 +80,7 @@
       "prov:used": [
         {
           "@type": [
+            "prov:Entity",
             "schema:MediaObject"
           ],
           "@id": "datasets/fes2_rt01_mar02.xmu_df0bac1ee137448a.txt",
@@ -60,6 +89,7 @@
         },
         {
           "@type": [
+            "prov:Entity",
             "schema:MediaObject"
           ],
           "@id": "datasets/1564889.cif_df02c7af9dfe5b62.cif",
@@ -153,7 +183,10 @@
       },
       "prov:used": [
         {
-          "@type": "schema:Thing",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
           "@id": "#input-fes2_rt01_mar02.xmu",
           "schema:name": "fes2_rt01_mar02.xmu"
         }
@@ -172,7 +205,9 @@
       ],
       "schema:additionalProperty": [
         {
-          "@type": "schema:PropertyValue",
+          "@type": [
+            "schema:PropertyValue"
+          ],
           "schema:name": "merge_inputs",
           "schema:value": {
             "@type": "schema:StructuredValue",
@@ -186,7 +221,9 @@
           }
         },
         {
-          "@type": "schema:PropertyValue",
+          "@type": [
+            "schema:PropertyValue"
+          ],
           "schema:name": "processing",
           "schema:value": {
             "@type": "schema:StructuredValue",
@@ -231,7 +268,10 @@
       },
       "prov:used": [
         {
-          "@type": "schema:Thing",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
           "@id": "#input-1564889.cif",
           "schema:name": "1564889.cif"
         }
@@ -250,7 +290,9 @@
       ],
       "schema:additionalProperty": [
         {
-          "@type": "schema:PropertyValue",
+          "@type": [
+            "schema:PropertyValue"
+          ],
           "schema:name": "feff_outputs[0].selection",
           "schema:value": {
             "@type": "schema:StructuredValue",
@@ -330,7 +372,9 @@
           }
         },
         {
-          "@type": "schema:PropertyValue",
+          "@type": [
+            "schema:PropertyValue"
+          ],
           "schema:name": "variables",
           "schema:value": {
             "@type": "schema:StructuredValue",
@@ -394,12 +438,18 @@
       ],
       "prov:used": [
         {
-          "@type": "schema:Thing",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
           "@id": "#output-3-out_dir",
           "schema:name": "3/out_dir"
         },
         {
-          "@type": "schema:Thing",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
           "@id": "#output-3-out_csv",
           "schema:name": "3/out_csv"
         }
@@ -418,12 +468,16 @@
       ],
       "schema:additionalProperty": [
         {
-          "@type": "schema:PropertyValue",
+          "@type": [
+            "schema:PropertyValue"
+          ],
           "schema:name": "execution.execution",
           "schema:value": "parallel"
         },
         {
-          "@type": "schema:PropertyValue",
+          "@type": [
+            "schema:PropertyValue"
+          ],
           "schema:name": "fit_vars",
           "schema:value": {
             "@type": "schema:StructuredValue",
@@ -477,22 +531,34 @@
       ],
       "prov:used": [
         {
-          "@type": "schema:Thing",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
           "@id": "#output-4-gds_csv",
           "schema:name": "4/gds_csv"
         },
         {
-          "@type": "schema:Thing",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
           "@id": "#output-4-sp_csv",
           "schema:name": "4/sp_csv"
         },
         {
-          "@type": "schema:Thing",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
           "@id": "#output-3-out_dir",
           "schema:name": "3/out_dir"
         },
         {
-          "@type": "schema:Thing",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
           "@id": "#output-2-athena_project_file",
           "schema:name": "2/athena_project_file"
         }
@@ -516,7 +582,9 @@
       ],
       "schema:additionalProperty": [
         {
-          "@type": "schema:PropertyValue",
+          "@type": [
+            "schema:PropertyValue"
+          ],
           "schema:name": "format",
           "schema:value": {
             "@type": "schema:StructuredValue",

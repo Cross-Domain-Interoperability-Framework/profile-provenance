@@ -2,9 +2,37 @@
   "@context": {
     "schema": "http://schema.org/",
     "prov": "http://www.w3.org/ns/prov#",
-    "bios": "https://bioschemas.org/"
+    "bios": "https://bioschemas.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "dcat": "http://www.w3.org/ns/dcat#"
   },
-  "@graph": [
+  "@id": "#dataset",
+  "@type": [
+    "schema:Dataset"
+  ],
+  "schema:name": "Paper 5 LaMnO3 Catalytic Behaviour",
+  "schema:dateModified": "2024-10-30",
+  "schema:subjectOf": {
+    "@type": [
+      "schema:Dataset",
+      "dcat:CatalogRecord"
+    ],
+    "schema:additionalType": [
+      {
+        "@id": "dcat:CatalogRecord"
+      }
+    ],
+    "@id": "#metadata",
+    "schema:about": {
+      "@id": "#dataset"
+    },
+    "dcterms:conformsTo": [
+      {
+        "@id": "https://w3id.org/cdif/provenance/1.1"
+      }
+    ]
+  },
+  "prov:wasGeneratedBy": [
     {
       "@type": [
         "schema:Action",
@@ -52,6 +80,7 @@
       "prov:used": [
         {
           "@type": [
+            "prov:Entity",
             "schema:MediaObject"
           ],
           "@id": "datasets/Upload__Figure_2-5__Mn_K_edge_LMOA_time_series.prj_4bf0dfdd37d908b6.prj",
@@ -60,6 +89,7 @@
         },
         {
           "@type": [
+            "prov:Entity",
             "schema:MediaObject"
           ],
           "@id": "datasets/Upload__Figure_2-5__La_L3_edge_LMOA_time_series.prj_a22d0f72d1f36993.prj",
@@ -68,6 +98,7 @@
         },
         {
           "@type": [
+            "prov:Entity",
             "schema:MediaObject"
           ],
           "@id": "datasets/mp-565203_Mn2O3.cif_acaef9f591c8f62d.cif",
@@ -76,6 +107,7 @@
         },
         {
           "@type": [
+            "prov:Entity",
             "schema:MediaObject"
           ],
           "@id": "datasets/1667441.cif_7be2e841c9ddb917.cif",
@@ -101,7 +133,10 @@
       },
       "prov:used": [
         {
-          "@type": "schema:Thing",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
           "@id": "#input-Upload: Figure 2-5_ Mn_K_edge_LMOA_time_series.prj",
           "schema:name": "Upload: Figure 2-5_ Mn_K_edge_LMOA_time_series.prj"
         }
@@ -124,7 +159,10 @@
       },
       "prov:used": [
         {
-          "@type": "schema:Thing",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
           "@id": "#input-Upload: Figure 2-5_ Mn_K_edge_LMOA_time_series.prj",
           "schema:name": "Upload: Figure 2-5_ Mn_K_edge_LMOA_time_series.prj"
         }
@@ -147,7 +185,10 @@
       },
       "prov:used": [
         {
-          "@type": "schema:Thing",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
           "@id": "#input-Upload: Figure 2-5_ La_L3_edge_LMOA_time_series.prj",
           "schema:name": "Upload: Figure 2-5_ La_L3_edge_LMOA_time_series.prj"
         }
@@ -170,7 +211,10 @@
       },
       "prov:used": [
         {
-          "@type": "schema:Thing",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
           "@id": "#input-mp-565203_Mn2O3.cif",
           "schema:name": "mp-565203_Mn2O3.cif"
         }
@@ -193,7 +237,10 @@
       },
       "prov:used": [
         {
-          "@type": "schema:Thing",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
           "@id": "#input-1667441.cif",
           "schema:name": "1667441.cif"
         }
@@ -221,7 +268,10 @@
       ],
       "prov:used": [
         {
-          "@type": "schema:Thing",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
           "@id": "#output-4-athena_project_file_collection",
           "schema:name": "4/athena_project_file_collection"
         }
@@ -249,7 +299,10 @@
       ],
       "prov:used": [
         {
-          "@type": "schema:Thing",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
           "@id": "#output-4-athena_project_file_collection",
           "schema:name": "4/athena_project_file_collection"
         }
@@ -277,7 +330,10 @@
       ],
       "prov:used": [
         {
-          "@type": "schema:Thing",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
           "@id": "#output-6-athena_project_file_collection",
           "schema:name": "6/athena_project_file_collection"
         }
@@ -305,7 +361,10 @@
       ],
       "prov:used": [
         {
-          "@type": "schema:Thing",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
           "@id": "#output-6-athena_project_file_collection",
           "schema:name": "6/athena_project_file_collection"
         }
@@ -333,12 +392,18 @@
       ],
       "prov:used": [
         {
-          "@type": "schema:Thing",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
           "@id": "#output-7-out_dir",
           "schema:name": "7/out_dir"
         },
         {
-          "@type": "schema:Thing",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
           "@id": "#output-7-out_csv",
           "schema:name": "7/out_csv"
         }
@@ -366,12 +431,18 @@
       ],
       "prov:used": [
         {
-          "@type": "schema:Thing",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
           "@id": "#output-8-out_dir",
           "schema:name": "8/out_dir"
         },
         {
-          "@type": "schema:Thing",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
           "@id": "#output-8-out_csv",
           "schema:name": "8/out_csv"
         }
@@ -405,22 +476,34 @@
       ],
       "prov:used": [
         {
-          "@type": "schema:Thing",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
           "@id": "#output-13-gds_csv",
           "schema:name": "13/gds_csv"
         },
         {
-          "@type": "schema:Thing",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
           "@id": "#output-13-sp_csv",
           "schema:name": "13/sp_csv"
         },
         {
-          "@type": "schema:Thing",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
           "@id": "#output-7-out_dir",
           "schema:name": "7/out_dir"
         },
         {
-          "@type": "schema:Thing",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
           "@id": "#output-4-athena_project_file_collection",
           "schema:name": "4/athena_project_file_collection"
         }
@@ -454,22 +537,34 @@
       ],
       "prov:used": [
         {
-          "@type": "schema:Thing",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
           "@id": "#output-14-gds_csv",
           "schema:name": "14/gds_csv"
         },
         {
-          "@type": "schema:Thing",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
           "@id": "#output-14-sp_csv",
           "schema:name": "14/sp_csv"
         },
         {
-          "@type": "schema:Thing",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
           "@id": "#output-8-out_dir",
           "schema:name": "8/out_dir"
         },
         {
-          "@type": "schema:Thing",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
           "@id": "#output-5-athena_project_file",
           "schema:name": "5/athena_project_file"
         }
