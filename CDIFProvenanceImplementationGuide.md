@@ -86,6 +86,7 @@ schema for cdif profile of schema.org/Person
 
 - **Cardinality:** Optional
 - **Content:** string
+- **Description:** Other useful information about the person.
 
 ### schema:identifier
 
