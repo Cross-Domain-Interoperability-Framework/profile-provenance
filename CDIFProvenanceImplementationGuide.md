@@ -301,4 +301,4 @@ An RDF literal value with a language tag, serialized as a JSON-LD value object. 
 
 - **Cardinality:** Optional
 - **Content:** string
-- **Description:** BCP 47 language tag (e.g. en, fr, de).
+- **Description:** LanguageTaggedValue/properties/@language values specify the language of the element content using BCP 47 language tag (e.g. en, fr, de).
