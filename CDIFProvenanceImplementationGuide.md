@@ -53,6 +53,7 @@ Building block that defines the prov:wasGeneratedBy property for CDIF metadata r
 
 - **Cardinality:** Optional
 - **Content:** —
+- **Description:** information about the metadata record itself, as opposed to the resource it describes.
 
 ### prov:wasGeneratedBy
 
@@ -161,6 +162,7 @@ Properties for a schema.org identifier (schema:PropertyValue pattern). **Union-t
 
 - **Cardinality:** Optional
 - **Content:** array of one of: [object reference](#/$defs/DefinedTerm), string
+- **Description:** other type names or identifiers to classify an organization in more detail
 
 ### schema:name
 
@@ -178,6 +180,7 @@ Properties for a schema.org identifier (schema:PropertyValue pattern). **Union-t
 
 - **Cardinality:** Optional
 - **Content:** string
+- **Description:** Free text description providing additional information about an organization
 
 ### schema:identifier
 
@@ -210,6 +213,7 @@ schema.org Defined Term schema. **Union-type policy:** In CDIF profile UML model
 
 - **Cardinality:** Optional
 - **Content:** one of: string, [object reference](#/$defs/Identifier)
+- **Description:** an identifier string or PropertyValue object specifying the identifier for a term
 
 ### schema:inDefinedTermSet
 
@@ -236,11 +240,13 @@ For more granularity on how a person contributed to a Dataset, use schema:Role. 
 
 - **Cardinality:** Required
 - **Content:** one of: string, [object reference](#/$defs/DefinedTerm)
+- **Description:** a label that identifies the role played by the contributor
 
 ### schema:contributor
 
 - **Cardinality:** Required
 - **Content:** one of: object, [object reference](#/$defs/Person), [object reference](#/$defs/Organization)
+- **Description:** in the schema.org construct assigning a role to an agent, this object specifies the person or organization.
 
 ## AdditionalProperty {#sec-additionalproperty}
 
@@ -261,21 +267,25 @@ PropertyValue values required to define a soft-typed property with a value.
 
 - **Cardinality:** Required
 - **Content:** string
+- **Description:** a label for the property
 
 ### schema:value
 
 - **Cardinality:** Required
 - **Content:** one of: string, number, boolean, object
+- **Description:** a string representation of the value assigned to a property
 
 ### schema:unitCode
 
 - **Cardinality:** Optional
 - **Content:** one of: string, [object reference](#/$defs/DefinedTerm)
+- **Description:** short string to identify the unit of measure
 
 ### schema:unitText
 
 - **Cardinality:** Optional
 - **Content:** string
+- **Description:** full text name for unit of measure.
 
 ## LanguageTaggedValue {#sec-languagetaggedvalue}
 
