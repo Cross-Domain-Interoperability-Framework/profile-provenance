@@ -223,7 +223,7 @@ schema.org Defined Term schema. **Union-type policy:** In CDIF profile UML model
 
 ### schema:termCode
 
-- **Cardinality:** Optional
+- **Cardinality:** Conditional -- a schema:DefinedTerm, if present, requires at least one of schema:name, schema:identifier, schema:termCode
 - **Content:** string
 - **Description:** A representative code for this keyword in the controlled vocabulary. Analogous to skos:Notation
 
@@ -299,6 +299,6 @@ An RDF literal value with a language tag, serialized as a JSON-LD value object. 
 
 ### @language
 
-- **Cardinality:** Optional
+- **Cardinality:** Required in a LanguageTaggedValue
 - **Content:** string
 - **Description:** LanguageTaggedValue/properties/@language values specify the language of the element content using BCP 47 language tag (e.g. en, fr, de).
