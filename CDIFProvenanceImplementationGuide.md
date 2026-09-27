@@ -53,7 +53,7 @@ Building block that defines the prov:wasGeneratedBy property for CDIF metadata r
 
 - **Cardinality:** Optional
 - **Content:** —
-- **Description:** information about the metadata record itself, as opposed to the resource it describes.
+- **Description:** used with schema:additionalType = dcat:CatalogRecord to specify properties of the metadata object, distinct from the resource is describes.
 
 ### prov:wasGeneratedBy
 
@@ -162,7 +162,7 @@ Properties for a schema.org identifier (schema:PropertyValue pattern). **Union-t
 
 - **Cardinality:** Optional
 - **Content:** array of one of: [object reference](#/$defs/DefinedTerm), string
-- **Description:** other type names or identifiers to classify an organization in more detail
+- **Description:** schema.org property used to assign other type names or identifiers to extend the rdf @type for semantic purposes, without adding property requirements on the object from those types
 
 ### schema:name
 
