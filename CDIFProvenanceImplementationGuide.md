@@ -53,7 +53,7 @@ Building block that defines the prov:wasGeneratedBy property for CDIF metadata r
 
 - **Cardinality:** Optional
 - **Content:** —
-- **Description:** used with schema:additionalType = dcat:CatalogRecord to specify properties of the metadata object, distinct from the resource is describes.
+- **Description:** used with schema:additionalType = dcat:CatalogRecord to specify properties of the metadata object, distinct from the resource it describes.
 
 ### prov:wasGeneratedBy
 
