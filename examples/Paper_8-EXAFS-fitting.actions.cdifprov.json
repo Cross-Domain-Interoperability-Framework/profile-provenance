@@ -38,27 +38,6 @@
         "schema:Action",
         "prov:Activity"
       ],
-      "@id": "#c5250654-d18b-4657-b066-d3311ce7d2a5",
-      "schema:name": "Run of Galaxy workflow engine",
-      "schema:additionalType": [
-        "schema:OrganizeAction"
-      ],
-      "schema:actionStatus": "schema:CompletedActionStatus",
-      "schema:startTime": "2024-10-28T17:49:11.644661",
-      "schema:endTime": "2024-10-28T17:49:27.648788",
-      "schema:instrument": {
-        "@type": [
-          "schema:SoftwareApplication"
-        ],
-        "schema:name": "Galaxy workflow engine",
-        "schema:version": "24.1"
-      }
-    },
-    {
-      "@type": [
-        "schema:Action",
-        "prov:Activity"
-      ],
       "@id": "#5b1292dc-6021-45f6-8f81-40d977069fc9",
       "schema:name": "Workflow to reproduce paper 8 EXAFS fitting",
       "schema:additionalType": [
@@ -113,6 +92,15 @@
           "@id": "datasets/Pd_cif_file.cif_b0b2392468d82f00.cif",
           "schema:name": "Pd_cif_file.cif",
           "schema:encodingFormat": "text/plain"
+        },
+        {
+          "bios:computationalTool": {
+            "@type": [
+              "schema:SoftwareApplication"
+            ],
+            "schema:name": "Galaxy workflow engine",
+            "schema:version": "24.1"
+          }
         }
       ]
     },
@@ -137,7 +125,7 @@
             "prov:Entity",
             "schema:Thing"
           ],
-          "@id": "#input-Washcoat Athena project file from paper",
+          "@id": "#input-Washcoat%20Athena%20project%20file%20from%20paper",
           "schema:name": "Washcoat Athena project file from paper"
         }
       ]
@@ -163,7 +151,7 @@
             "prov:Entity",
             "schema:Thing"
           ],
-          "@id": "#input-20g ash Athena project file from paper",
+          "@id": "#input-20g%20ash%20Athena%20project%20file%20from%20paper",
           "schema:name": "20g ash Athena project file from paper"
         }
       ]
@@ -189,7 +177,7 @@
             "prov:Entity",
             "schema:Thing"
           ],
-          "@id": "#input-PdO cif file",
+          "@id": "#input-PdO%20cif%20file",
           "schema:name": "PdO cif file"
         }
       ]
@@ -215,7 +203,7 @@
             "prov:Entity",
             "schema:Thing"
           ],
-          "@id": "#input-Pd cif file",
+          "@id": "#input-Pd%20cif%20file",
           "schema:name": "Pd cif file"
         }
       ]

@@ -38,27 +38,6 @@
         "schema:Action",
         "prov:Activity"
       ],
-      "@id": "#28904568-12b4-478c-815e-015203e5caf4",
-      "schema:name": "Run of Galaxy workflow engine",
-      "schema:additionalType": [
-        "schema:OrganizeAction"
-      ],
-      "schema:actionStatus": "schema:CompletedActionStatus",
-      "schema:startTime": "2024-09-11T16:12:55.771086",
-      "schema:endTime": "2024-09-11T16:12:57.977262",
-      "schema:instrument": {
-        "@type": [
-          "schema:SoftwareApplication"
-        ],
-        "schema:name": "Galaxy workflow engine",
-        "schema:version": "23.2"
-      }
-    },
-    {
-      "@type": [
-        "schema:Action",
-        "prov:Activity"
-      ],
       "@id": "#b37e0481-a1a1-4919-a3b7-c4ea91c07339",
       "schema:name": "Paper_2_Diphosphine-WF",
       "schema:additionalType": [
@@ -140,6 +119,15 @@
           "@id": "#dataset_collection-2623",
           "schema:name": "Reading 7a",
           "schema:description": "Collection of 3 items"
+        },
+        {
+          "bios:computationalTool": {
+            "@type": [
+              "schema:SoftwareApplication"
+            ],
+            "schema:name": "Galaxy workflow engine",
+            "schema:version": "23.2"
+          }
         }
       ]
     },
@@ -174,7 +162,7 @@
             "prov:Entity",
             "schema:Thing"
           ],
-          "@id": "#input-A data",
+          "@id": "#input-A%20data",
           "schema:name": "A data"
         }
       ],
@@ -251,7 +239,7 @@
             "prov:Entity",
             "schema:Thing"
           ],
-          "@id": "#input-B data",
+          "@id": "#input-B%20data",
           "schema:name": "B data"
         }
       ],
@@ -328,7 +316,7 @@
             "prov:Entity",
             "schema:Thing"
           ],
-          "@id": "#input-C data",
+          "@id": "#input-C%20data",
           "schema:name": "C data"
         }
       ],
@@ -405,7 +393,7 @@
             "prov:Entity",
             "schema:Thing"
           ],
-          "@id": "#input-D data",
+          "@id": "#input-D%20data",
           "schema:name": "D data"
         }
       ],
@@ -477,7 +465,7 @@
             "prov:Entity",
             "schema:Thing"
           ],
-          "@id": "#input-Fe Metal",
+          "@id": "#input-Fe%20Metal",
           "schema:name": "Fe Metal"
         }
       ],
@@ -750,7 +738,7 @@
       "schema:result": [
         {
           "@type": "schema:Thing",
-          "@id": "#step-8-14/output-plot_collection|0_chir_mag",
+          "@id": "#step-8-14/output-plot_collection%7C0_chir_mag",
           "schema:name": "14/plot_collection|0_chir_mag"
         }
       ],
@@ -867,7 +855,7 @@
       "schema:result": [
         {
           "@type": "schema:Thing",
-          "@id": "#step-9-15/output-plot_collection|0_flat",
+          "@id": "#step-9-15/output-plot_collection%7C0_flat",
           "schema:name": "15/plot_collection|0_flat"
         }
       ],
@@ -984,7 +972,7 @@
       "schema:result": [
         {
           "@type": "schema:Thing",
-          "@id": "#step-10-16/output-plot_collection|0_dmude",
+          "@id": "#step-10-16/output-plot_collection%7C0_dmude",
           "schema:name": "16/plot_collection|0_dmude"
         }
       ],
@@ -1090,7 +1078,7 @@
       "schema:result": [
         {
           "@type": "schema:Thing",
-          "@id": "#step-11-17/output-plot_collection|0_flat",
+          "@id": "#step-11-17/output-plot_collection%7C0_flat",
           "schema:name": "17/plot_collection|0_flat"
         }
       ],

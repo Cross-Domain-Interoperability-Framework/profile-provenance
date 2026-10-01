@@ -38,27 +38,6 @@
         "schema:Action",
         "prov:Activity"
       ],
-      "@id": "#194b7c6e-aeed-4b9e-8117-49621cccb965",
-      "schema:name": "Run of Galaxy workflow engine",
-      "schema:additionalType": [
-        "schema:OrganizeAction"
-      ],
-      "schema:actionStatus": "schema:CompletedActionStatus",
-      "schema:startTime": "2024-09-27T10:30:38.975410",
-      "schema:endTime": "2024-09-27T10:30:40.690532",
-      "schema:instrument": {
-        "@type": [
-          "schema:SoftwareApplication"
-        ],
-        "schema:name": "Galaxy workflow engine",
-        "schema:version": "23.2"
-      }
-    },
-    {
-      "@type": [
-        "schema:Action",
-        "prov:Activity"
-      ],
       "@id": "#c11186ad-4e77-43ae-8f18-21f1744094d5",
       "schema:name": "Workflow constructed from history ''Extracting structural information of Au colloids at ultra-dilute concentrations: identification of growth during nanoparticle immobilization (paper-3''",
       "schema:additionalType": [
@@ -86,6 +65,15 @@
           "@id": "datasets/Compiled_XAS_data_Colloid_and_TiO2_supported_Au.prj_1.prj",
           "schema:name": "Compiled_XAS_data_Colloid_and_TiO2_supported_Au.prj",
           "schema:encodingFormat": "text/plain"
+        },
+        {
+          "bios:computationalTool": {
+            "@type": [
+              "schema:SoftwareApplication"
+            ],
+            "schema:name": "Galaxy workflow engine",
+            "schema:version": "23.2"
+          }
         }
       ]
     },
@@ -568,77 +556,77 @@
       "schema:result": [
         {
           "@type": "schema:Thing",
-          "@id": "#step-8-8/output-athena_project_file_collection|Au_foil",
+          "@id": "#step-8-8/output-athena_project_file_collection%7CAu_foil",
           "schema:name": "8/athena_project_file_collection|Au_foil"
         },
         {
           "@type": "schema:Thing",
-          "@id": "#step-8-8/output-athena_project_file_collection|K2AuCl4_ref",
+          "@id": "#step-8-8/output-athena_project_file_collection%7CK2AuCl4_ref",
           "schema:name": "8/athena_project_file_collection|K2AuCl4_ref"
         },
         {
           "@type": "schema:Thing",
-          "@id": "#step-8-8/output-athena_project_file_collection|d_0_05mM_Au_1C_Colloid",
+          "@id": "#step-8-8/output-athena_project_file_collection%7Cd_0_05mM_Au_1C_Colloid",
           "schema:name": "8/athena_project_file_collection|d_0_05mM_Au_1C_Colloid"
         },
         {
           "@type": "schema:Thing",
-          "@id": "#step-8-8/output-athena_project_file_collection|d_0_05mM_Au_1C_TiO2",
+          "@id": "#step-8-8/output-athena_project_file_collection%7Cd_0_05mM_Au_1C_TiO2",
           "schema:name": "8/athena_project_file_collection|d_0_05mM_Au_1C_TiO2"
         },
         {
           "@type": "schema:Thing",
-          "@id": "#step-8-8/output-athena_project_file_collection|d_0_1mM_Au_1C_Colloid",
+          "@id": "#step-8-8/output-athena_project_file_collection%7Cd_0_1mM_Au_1C_Colloid",
           "schema:name": "8/athena_project_file_collection|d_0_1mM_Au_1C_Colloid"
         },
         {
           "@type": "schema:Thing",
-          "@id": "#step-8-8/output-athena_project_file_collection|d_0_1mM_Au_1C_TiO2",
+          "@id": "#step-8-8/output-athena_project_file_collection%7Cd_0_1mM_Au_1C_TiO2",
           "schema:name": "8/athena_project_file_collection|d_0_1mM_Au_1C_TiO2"
         },
         {
           "@type": "schema:Thing",
-          "@id": "#step-8-8/output-athena_project_file_collection|d_0_1mM_Au_25C_Colloid",
+          "@id": "#step-8-8/output-athena_project_file_collection%7Cd_0_1mM_Au_25C_Colloid",
           "schema:name": "8/athena_project_file_collection|d_0_1mM_Au_25C_Colloid"
         },
         {
           "@type": "schema:Thing",
-          "@id": "#step-8-8/output-athena_project_file_collection|d_0_1mM_Au_25C_TiO2",
+          "@id": "#step-8-8/output-athena_project_file_collection%7Cd_0_1mM_Au_25C_TiO2",
           "schema:name": "8/athena_project_file_collection|d_0_1mM_Au_25C_TiO2"
         },
         {
           "@type": "schema:Thing",
-          "@id": "#step-8-8/output-athena_project_file_collection|d_0_1mM_Au_50C_Colloid",
+          "@id": "#step-8-8/output-athena_project_file_collection%7Cd_0_1mM_Au_50C_Colloid",
           "schema:name": "8/athena_project_file_collection|d_0_1mM_Au_50C_Colloid"
         },
         {
           "@type": "schema:Thing",
-          "@id": "#step-8-8/output-athena_project_file_collection|d_0_1mM_Au_50C_TiO2",
+          "@id": "#step-8-8/output-athena_project_file_collection%7Cd_0_1mM_Au_50C_TiO2",
           "schema:name": "8/athena_project_file_collection|d_0_1mM_Au_50C_TiO2"
         },
         {
           "@type": "schema:Thing",
-          "@id": "#step-8-8/output-athena_project_file_collection|d_0_1mM_Au_75C_Colloid",
+          "@id": "#step-8-8/output-athena_project_file_collection%7Cd_0_1mM_Au_75C_Colloid",
           "schema:name": "8/athena_project_file_collection|d_0_1mM_Au_75C_Colloid"
         },
         {
           "@type": "schema:Thing",
-          "@id": "#step-8-8/output-athena_project_file_collection|d_0_1mM_Au_75C_TiO2",
+          "@id": "#step-8-8/output-athena_project_file_collection%7Cd_0_1mM_Au_75C_TiO2",
           "schema:name": "8/athena_project_file_collection|d_0_1mM_Au_75C_TiO2"
         },
         {
           "@type": "schema:Thing",
-          "@id": "#step-8-8/output-athena_project_file_collection|d_0_625mM_Au_1C_TiO2",
+          "@id": "#step-8-8/output-athena_project_file_collection%7Cd_0_625mM_Au_1C_TiO2",
           "schema:name": "8/athena_project_file_collection|d_0_625mM_Au_1C_TiO2"
         },
         {
           "@type": "schema:Thing",
-          "@id": "#step-8-8/output-athena_project_file_collection|d_1_25mM_Au_1C_Colloid",
+          "@id": "#step-8-8/output-athena_project_file_collection%7Cd_1_25mM_Au_1C_Colloid",
           "schema:name": "8/athena_project_file_collection|d_1_25mM_Au_1C_Colloid"
         },
         {
           "@type": "schema:Thing",
-          "@id": "#step-8-8/output-athena_project_file_collection|d_1_25mM_Au_1C_TiO2",
+          "@id": "#step-8-8/output-athena_project_file_collection%7Cd_1_25mM_Au_1C_TiO2",
           "schema:name": "8/athena_project_file_collection|d_1_25mM_Au_1C_TiO2"
         }
       ],
@@ -762,22 +750,22 @@
       "schema:result": [
         {
           "@type": "schema:Thing",
-          "@id": "#step-9-9/output-plot_collection|0_flat",
+          "@id": "#step-9-9/output-plot_collection%7C0_flat",
           "schema:name": "9/plot_collection|0_flat"
         },
         {
           "@type": "schema:Thing",
-          "@id": "#step-9-9/output-plot_collection|1_flat",
+          "@id": "#step-9-9/output-plot_collection%7C1_flat",
           "schema:name": "9/plot_collection|1_flat"
         },
         {
           "@type": "schema:Thing",
-          "@id": "#step-9-9/output-plot_collection|2_dmude",
+          "@id": "#step-9-9/output-plot_collection%7C2_dmude",
           "schema:name": "9/plot_collection|2_dmude"
         },
         {
           "@type": "schema:Thing",
-          "@id": "#step-9-9/output-plot_collection|3_chir_mag",
+          "@id": "#step-9-9/output-plot_collection%7C3_chir_mag",
           "schema:name": "9/plot_collection|3_chir_mag"
         }
       ],
@@ -908,22 +896,22 @@
       "schema:result": [
         {
           "@type": "schema:Thing",
-          "@id": "#step-10-10/output-plot_collection|0_flat",
+          "@id": "#step-10-10/output-plot_collection%7C0_flat",
           "schema:name": "10/plot_collection|0_flat"
         },
         {
           "@type": "schema:Thing",
-          "@id": "#step-10-10/output-plot_collection|1_flat",
+          "@id": "#step-10-10/output-plot_collection%7C1_flat",
           "schema:name": "10/plot_collection|1_flat"
         },
         {
           "@type": "schema:Thing",
-          "@id": "#step-10-10/output-plot_collection|2_dmude",
+          "@id": "#step-10-10/output-plot_collection%7C2_dmude",
           "schema:name": "10/plot_collection|2_dmude"
         },
         {
           "@type": "schema:Thing",
-          "@id": "#step-10-10/output-plot_collection|3_chir_mag",
+          "@id": "#step-10-10/output-plot_collection%7C3_chir_mag",
           "schema:name": "10/plot_collection|3_chir_mag"
         }
       ],

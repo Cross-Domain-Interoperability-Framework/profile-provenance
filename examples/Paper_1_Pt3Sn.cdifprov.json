@@ -38,27 +38,6 @@
         "schema:Action",
         "prov:Activity"
       ],
-      "@id": "#db926013-bea1-4ace-a395-27dd3d89fbc7",
-      "schema:name": "Run of Galaxy workflow engine",
-      "schema:additionalType": [
-        "schema:OrganizeAction"
-      ],
-      "schema:actionStatus": "schema:CompletedActionStatus",
-      "schema:startTime": "2024-10-14T16:47:45.570110",
-      "schema:endTime": "2024-10-14T16:47:49.924132",
-      "schema:instrument": {
-        "@type": [
-          "schema:SoftwareApplication"
-        ],
-        "schema:name": "Galaxy workflow engine",
-        "schema:version": "24.1"
-      }
-    },
-    {
-      "@type": [
-        "schema:Action",
-        "prov:Activity"
-      ],
       "@id": "#bdb469cd-b85a-4ca3-b220-a041f0172418",
       "schema:name": "Paper 1: XANES, LCF, EXAFS",
       "schema:additionalType": [
@@ -1786,7 +1765,7 @@
             "prov:Entity",
             "schema:MediaObject"
           ],
-          "@id": "#Sn foil Calibration-pv",
+          "@id": "#Sn%20foil%20Calibration-pv",
           "schema:name": "Sn foil Calibration"
         },
         {
@@ -1794,7 +1773,7 @@
             "prov:Entity",
             "schema:MediaObject"
           ],
-          "@id": "#SnO2 Calibration-pv",
+          "@id": "#SnO2%20Calibration-pv",
           "schema:name": "SnO2 Calibration"
         },
         {
@@ -1802,7 +1781,7 @@
             "prov:Entity",
             "schema:MediaObject"
           ],
-          "@id": "#Sn K edge under H2 Calibration-pv",
+          "@id": "#Sn%20K%20edge%20under%20H2%20Calibration-pv",
           "schema:name": "Sn K edge under H2 Calibration"
         },
         {
@@ -1810,7 +1789,7 @@
             "prov:Entity",
             "schema:MediaObject"
           ],
-          "@id": "#Sn3Pt Sn Calibration-pv",
+          "@id": "#Sn3Pt%20Sn%20Calibration-pv",
           "schema:name": "Sn3Pt Sn Calibration"
         },
         {
@@ -1818,7 +1797,7 @@
             "prov:Entity",
             "schema:MediaObject"
           ],
-          "@id": "#Pt L3 edge under H2 Calibration-pv",
+          "@id": "#Pt%20L3%20edge%20under%20H2%20Calibration-pv",
           "schema:name": "Pt L3 edge under H2 Calibration"
         },
         {
@@ -1826,8 +1805,17 @@
             "prov:Entity",
             "schema:MediaObject"
           ],
-          "@id": "#Sn3Pt Pt Calibration-pv",
+          "@id": "#Sn3Pt%20Pt%20Calibration-pv",
           "schema:name": "Sn3Pt Pt Calibration"
+        },
+        {
+          "bios:computationalTool": {
+            "@type": [
+              "schema:SoftwareApplication"
+            ],
+            "schema:name": "Galaxy workflow engine",
+            "schema:version": "24.1"
+          }
         }
       ]
     }

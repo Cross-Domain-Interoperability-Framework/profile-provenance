@@ -38,27 +38,6 @@
         "schema:Action",
         "prov:Activity"
       ],
-      "@id": "#28904568-12b4-478c-815e-015203e5caf4",
-      "schema:name": "Run of Galaxy workflow engine",
-      "schema:additionalType": [
-        "schema:OrganizeAction"
-      ],
-      "schema:actionStatus": "schema:CompletedActionStatus",
-      "schema:startTime": "2024-09-11T16:12:55.771086",
-      "schema:endTime": "2024-09-11T16:12:57.977262",
-      "schema:instrument": {
-        "@type": [
-          "schema:SoftwareApplication"
-        ],
-        "schema:name": "Galaxy workflow engine",
-        "schema:version": "23.2"
-      }
-    },
-    {
-      "@type": [
-        "schema:Action",
-        "prov:Activity"
-      ],
       "@id": "#b37e0481-a1a1-4919-a3b7-c4ea91c07339",
       "schema:name": "Paper_2_Diphosphine-WF",
       "schema:additionalType": [
@@ -610,6 +589,15 @@
           "@id": "#dataset_collection-2623",
           "schema:name": "Reading 7a",
           "schema:description": "Collection of 3 items"
+        },
+        {
+          "bios:computationalTool": {
+            "@type": [
+              "schema:SoftwareApplication"
+            ],
+            "schema:name": "Galaxy workflow engine",
+            "schema:version": "23.2"
+          }
         }
       ]
     }

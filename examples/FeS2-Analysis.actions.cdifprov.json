@@ -38,27 +38,6 @@
         "schema:Action",
         "prov:Activity"
       ],
-      "@id": "#a5a33e97-2433-492b-8185-0e11c32cd595",
-      "schema:name": "Run of Galaxy workflow engine",
-      "schema:additionalType": [
-        "schema:OrganizeAction"
-      ],
-      "schema:actionStatus": "schema:CompletedActionStatus",
-      "schema:startTime": "2024-10-23T14:09:56.604071",
-      "schema:endTime": "2024-10-23T14:09:57.188610",
-      "schema:instrument": {
-        "@type": [
-          "schema:SoftwareApplication"
-        ],
-        "schema:name": "Galaxy workflow engine",
-        "schema:version": "24.1"
-      }
-    },
-    {
-      "@type": [
-        "schema:Action",
-        "prov:Activity"
-      ],
       "@id": "#d5787109-088d-4886-a72e-03f42a4ec5cc",
       "schema:name": "FeS2 Analysis",
       "schema:additionalType": [
@@ -95,6 +74,15 @@
           "@id": "datasets/1564889.cif_df02c7af9dfe5b62.cif",
           "schema:name": "1564889.cif",
           "schema:encodingFormat": "text/plain"
+        },
+        {
+          "bios:computationalTool": {
+            "@type": [
+              "schema:SoftwareApplication"
+            ],
+            "schema:name": "Galaxy workflow engine",
+            "schema:version": "24.1"
+          }
         }
       ],
       "schema:result": [

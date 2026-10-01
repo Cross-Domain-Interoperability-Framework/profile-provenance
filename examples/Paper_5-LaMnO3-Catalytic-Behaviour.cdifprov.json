@@ -38,27 +38,6 @@
         "schema:Action",
         "prov:Activity"
       ],
-      "@id": "#2a5c0a80-1273-4077-8509-3c55eae0ddfd",
-      "schema:name": "Run of Galaxy workflow engine",
-      "schema:additionalType": [
-        "schema:OrganizeAction"
-      ],
-      "schema:actionStatus": "schema:CompletedActionStatus",
-      "schema:startTime": "2024-10-30T14:10:21.773632",
-      "schema:endTime": "2024-10-30T14:10:33.822661",
-      "schema:instrument": {
-        "@type": [
-          "schema:SoftwareApplication"
-        ],
-        "schema:name": "Galaxy workflow engine",
-        "schema:version": "24.1"
-      }
-    },
-    {
-      "@type": [
-        "schema:Action",
-        "prov:Activity"
-      ],
       "@id": "#0b43a0c7-a2a8-4c17-98ac-da8d89c9bb16",
       "schema:name": "LaMnO3 Catalytic Behaviour",
       "schema:additionalType": [
@@ -261,6 +240,15 @@
           "@id": "datasets/1667441.cif_7be2e841c9ddb917.cif",
           "schema:name": "1667441.cif",
           "schema:encodingFormat": "text/plain"
+        },
+        {
+          "bios:computationalTool": {
+            "@type": [
+              "schema:SoftwareApplication"
+            ],
+            "schema:name": "Galaxy workflow engine",
+            "schema:version": "24.1"
+          }
         }
       ]
     }

@@ -38,27 +38,6 @@
         "schema:Action",
         "prov:Activity"
       ],
-      "@id": "#194b7c6e-aeed-4b9e-8117-49621cccb965",
-      "schema:name": "Run of Galaxy workflow engine",
-      "schema:additionalType": [
-        "schema:OrganizeAction"
-      ],
-      "schema:actionStatus": "schema:CompletedActionStatus",
-      "schema:startTime": "2024-09-27T10:30:38.975410",
-      "schema:endTime": "2024-09-27T10:30:40.690532",
-      "schema:instrument": {
-        "@type": [
-          "schema:SoftwareApplication"
-        ],
-        "schema:name": "Galaxy workflow engine",
-        "schema:version": "23.2"
-      }
-    },
-    {
-      "@type": [
-        "schema:Action",
-        "prov:Activity"
-      ],
       "@id": "#c11186ad-4e77-43ae-8f18-21f1744094d5",
       "schema:name": "Workflow constructed from history ''Extracting structural information of Au colloids at ultra-dilute concentrations: identification of growth during nanoparticle immobilization (paper-3''",
       "schema:additionalType": [
@@ -540,6 +519,15 @@
           "@id": "datasets/Compiled_XAS_data_Colloid_and_TiO2_supported_Au.prj_1.prj",
           "schema:name": "Compiled_XAS_data_Colloid_and_TiO2_supported_Au.prj",
           "schema:encodingFormat": "text/plain"
+        },
+        {
+          "bios:computationalTool": {
+            "@type": [
+              "schema:SoftwareApplication"
+            ],
+            "schema:name": "Galaxy workflow engine",
+            "schema:version": "23.2"
+          }
         }
       ]
     }
