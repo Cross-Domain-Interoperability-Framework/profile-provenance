@@ -78,6 +78,24 @@ That is expected: the example exists to exercise the schema.org Action pattern w
 
 Worth knowing because a useful sanity check — frame every example and compare the framed `@id` against the source `@id` — flags this one. It is the only expected mismatch here. Anything else appearing in that check is a real problem: the validator would be reporting on something other than the document it was given, **and reporting PASS while doing so**. That selection lives in `pick_main_entity`, which is generated from the normative source in the [validation](https://github.com/Cross-Domain-Interoperability-Framework/validation) repo — fix it there, never in this copy, which carries a DO-NOT-EDIT banner and a drift hash that CI checks.
 
+#### An `@id` that is not a valid IRI silently loses the triple
+
+Galaxy writes RO-Crate `@id`s containing spaces and pipes (`#input-Sn Foil`,
+`…/output-plot_collection|0_flat`). A JSON-LD parser cannot turn those into a usable
+IRI, so it drops the node **and the incoming triple with it**. In
+`Paper_1_Pt3Sn.actions.cdifprov.json` 28 `prov:used` keys collapsed to 6 subjects in
+the graph: 22 activities that do name their inputs looked like activities naming none.
+
+**Nothing warned.** The JSON Schema gate sees the key present and is satisfied, which
+is why this survived a clean 17/17 schema run while 12 examples failed conformance —
+the loss happens after the gate, during RDF expansion. The converters now
+percent-encode `@id`s, applied to definitions and references alike so the two stay in
+step; a rename that touched only one side would break the join instead.
+
+When adding an example, check `@id`s against the graph rather than the file: parse it
+and compare the triple count for a property against the number of keys in the JSON.
+Equal counts are the invariant; a shortfall means a node was dropped.
+
 ## Related Repositories
 
 - [usgin/metadataBuildingBlocks](https://github.com/usgin/metadataBuildingBlocks) — CDIF metadata building blocks (cdifProv, provActivity, ddicdiProv schemas and SHACL shapes)
@@ -113,6 +131,21 @@ synced from the CDIF **metadataBuildingBlocks** source (see
 - **Examples** conformed to the tightened schemas throughout (PrimaryKey →
   `cdi:ComponentPosition`, reference slots → `{@id}`, CVE `hasIntendedDataType` →
   string, `skos:notation` → string, `schema:additionalType` URI → `{@id}`).
+- **Galaxy converter corrections (2026-10-01)** — two defects that together failed
+  conformance on all 12 Galaxy-derived examples, both fixed in the converters as
+  well as the generated files:
+  - An `OrganizeAction` is **not** a generator. Both converters swept
+    `{CreateAction, OrganizeAction}` into the activity list, so "Run of Galaxy
+    workflow engine" became an object of `prov:wasGeneratedBy`. The crate does not
+    say that — across all eight source crates the root's `mentions` names the
+    `CreateAction` every time and the `OrganizeAction` never. It is also the one
+    action with no `object` and no `result` to map, so the `cdifProvActivity`
+    `prov:used` Violation was reporting the mis-mapping rather than a missing value.
+    The engine is preserved as a `bios:computationalTool` role entry on the workflow
+    execution, where it is true.
+  - `@id` values carried IRI-illegal characters through from the crate — 170 spaces
+    and 31 pipes across 96 distinct `@id`s in 6 files, e.g. `#input-Sn Foil`. See
+    the note below; now percent-encoded.
 
 
 ## Development branch
