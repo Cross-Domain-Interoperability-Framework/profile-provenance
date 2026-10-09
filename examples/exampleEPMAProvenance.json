@@ -214,9 +214,11 @@
           "@id": "#PolishedMount-A"
         }
       ],
-      "schema:object": {
-        "@id": "#SamplePreparation"
-      },
+      "schema:object": [
+        {
+          "@id": "#SamplePreparation"
+        }
+      ],
       "schema:result": [
         {
           "@id": "#OlivineCompositions",
@@ -341,9 +343,11 @@
           ]
         }
       ],
-      "schema:object": {
-        "@id": "#EPMAAnalysis"
-      },
+      "schema:object": [
+        {
+          "@id": "#EPMAAnalysis"
+        }
+      ],
       "schema:result": [
         {
           "@id": "ex:dataset_epma_olivine_001",

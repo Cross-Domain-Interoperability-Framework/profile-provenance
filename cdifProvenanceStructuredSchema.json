@@ -205,23 +205,7 @@
                               "description": "Domain-specific type classifications. Should include a scientific instrument type URI (e.g. wd:Q3099911 for Wikidata scientific instrument).",
                               "type": "array",
                               "items": {
-                                "anyOf": [
-                                  {
-                                    "type": "string"
-                                  },
-                                  {
-                                    "type": "object",
-                                    "additionalProperties": false,
-                                    "required": [
-                                      "@id"
-                                    ],
-                                    "properties": {
-                                      "@id": {
-                                        "type": "string"
-                                      }
-                                    }
-                                  }
-                                ]
+                                "$ref": "#/$defs/cdifConceptOrTermOrString"
                               },
                               "minItems": 1
                             },
@@ -425,23 +409,7 @@
                                         "description": "Component type classification.",
                                         "type": "array",
                                         "items": {
-                                          "anyOf": [
-                                            {
-                                              "type": "string"
-                                            },
-                                            {
-                                              "type": "object",
-                                              "additionalProperties": false,
-                                              "required": [
-                                                "@id"
-                                              ],
-                                              "properties": {
-                                                "@id": {
-                                                  "type": "string"
-                                                }
-                                              }
-                                            }
-                                          ]
+                                          "$ref": "#/$defs/cdifConceptOrTermOrString"
                                         }
                                       },
                                       "schema:additionalProperty": {
@@ -558,7 +526,9 @@
                                 "type": "object",
                                 "properties": {
                                   "@type": {
-                                    "default": "schema:LinkRole",
+                                    "default": [
+                                      "schema:LinkRole"
+                                    ],
                                     "type": "array",
                                     "items": {
                                       "type": "string"
@@ -570,14 +540,17 @@
                                   },
                                   "schema:linkRelationship": {
                                     "$ref": "#/$defs/cdifConceptOrTermOrString",
-                                    "description": "How the target relates to the subject, as a controlled-vocabulary value or a plain string label."
+                                    "description": "How the target relates to the subject, as a controlled-vocabulary value or a plain string label. Required: a typed link whose relationship is unstated carries no more information than a bare URL, which is what schemaorgProperties/labeledLink is for.",
+                                    "default": "missing"
                                   },
                                   "schema:target": {
                                     "type": "object",
                                     "description": "The entry point being linked to. Deliberately not sealed: real targets also carry schema:httpMethod, schema:urlTemplate, schema:contentType and domain-specific properties, and JSON-LD is open-world.",
                                     "properties": {
                                       "@type": {
-                                        "default": "schema:EntryPoint",
+                                        "default": [
+                                          "schema:EntryPoint"
+                                        ],
                                         "type": "array",
                                         "items": {
                                           "type": "string"
@@ -602,7 +575,8 @@
                                   }
                                 },
                                 "required": [
-                                  "@type"
+                                  "@type",
+                                  "schema:linkRelationship"
                                 ]
                               }
                             },
@@ -775,17 +749,11 @@
                     "description": "Inline schema:Thing object describing the input entity.",
                     "properties": {
                       "@type": {
-                        "anyOf": [
-                          {
-                            "type": "string"
-                          },
-                          {
-                            "type": "array",
-                            "items": {
-                              "type": "string"
-                            }
-                          }
-                        ]
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        },
+                        "minItems": 1
                       }
                     },
                     "required": [
@@ -832,17 +800,11 @@
                     "description": "Inline schema:Thing object describing the output entity.",
                     "properties": {
                       "@type": {
-                        "anyOf": [
-                          {
-                            "type": "string"
-                          },
-                          {
-                            "type": "array",
-                            "items": {
-                              "type": "string"
-                            }
-                          }
-                        ]
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        },
+                        "minItems": 1
                       }
                     },
                     "required": [
@@ -891,7 +853,9 @@
                     "type": "object",
                     "properties": {
                       "@type": {
-                        "default": "schema:Place",
+                        "default": [
+                          "schema:Place"
+                        ],
                         "type": "array",
                         "items": {
                           "type": "string"
@@ -905,27 +869,7 @@
                         "description": "Domain-specific type classifications for this place (e.g. facility type,laboratory classification, feature type).",
                         "type": "array",
                         "items": {
-                          "anyOf": [
-                            {
-                              "type": "string"
-                            },
-                            {
-                              "$ref": "#/$defs/DefinedTerm"
-                            },
-                            {
-                              "type": "object",
-                              "additionalProperties": false,
-                              "required": [
-                                "@id"
-                              ],
-                              "properties": {
-                                "@id": {
-                                  "type": "string",
-                                  "description": "reference to a term defined elsewhere"
-                                }
-                              }
-                            }
-                          ]
+                          "$ref": "#/$defs/cdifConceptOrTermOrString"
                         }
                       },
                       "schema:name": {
@@ -972,7 +916,9 @@
                             "description": "A point location. Point locations are recommended for data that is associated with specific sample locations, particularly if these are widely spaced such that an enclosing bounding box would be a misleading representation of the spatial location. Be aware that some client applications might only index or display bounding box extents or a single point location.",
                             "properties": {
                               "@type": {
-                                "default": "schema:GeoCoordinates",
+                                "default": [
+                                  "schema:GeoCoordinates"
+                                ],
                                 "type": "array",
                                 "items": {
                                   "type": "string"
@@ -1004,7 +950,9 @@
                             "description": "A schema:GeoShape bounding box. The geometry is described with a set of latitude/longitude pairs (in that order).The documentation for schema:GeoShape states 'Either whitespace or commas can be used to separate latitude and longitude; whitespace should be used when writing a list of several such points.'",
                             "properties": {
                               "@type": {
-                                "default": "schema:GeoShape",
+                                "default": [
+                                  "schema:GeoShape"
+                                ],
                                 "type": "array",
                                 "items": {
                                   "type": "string"
@@ -1029,7 +977,9 @@
                             "description": "A schema:GeoShape curvilinear trace, for resource related to a linear trace like a ship track or airplane flight line",
                             "properties": {
                               "@type": {
-                                "default": "schema:GeoShape",
+                                "default": [
+                                  "schema:GeoShape"
+                                ],
                                 "type": "array",
                                 "items": {
                                   "type": "string"
@@ -1095,7 +1045,10 @@
                               }
                             }
                           }
-                        }
+                        },
+                        "required": [
+                          "geosparql:asWKT"
+                        ]
                       }
                     },
                     "anyOf": [
@@ -1288,7 +1241,8 @@
           "description": "string label for person that is meaningful for human users, should format consistently. Recommend 'Family Name, Given name' format."
         },
         "schema:description": {
-          "type": "string"
+          "type": "string",
+          "description": "additional information about the agent or their relation to the described resource"
         },
         "schema:identifier": {
           "description": "identifier for person, recommend ORCID",
@@ -1314,7 +1268,9 @@
           "description": "restrict to email only. Schema.org allows telephone and postal contacts as well",
           "properties": {
             "@type": {
-              "default": "schema:ContactPoint",
+              "default": [
+                "schema:ContactPoint"
+              ],
               "type": "array",
               "items": {
                 "type": "string"
@@ -1452,7 +1408,9 @@
           "type": "string"
         },
         "@type": {
-          "default": "schema:Organization",
+          "default": [
+            "schema:Organization"
+          ],
           "type": "array",
           "items": {
             "anyOf": [
@@ -1493,7 +1451,8 @@
           "description": "other labels by which the organization might be known"
         },
         "schema:description": {
-          "type": "string"
+          "type": "string",
+          "description": "additional information about the agent or their relation to the described resource"
         },
         "schema:identifier": {
           "description": "identifier for organization",
@@ -1670,7 +1629,9 @@
       "type": "object",
       "properties": {
         "@type": {
-          "default": "schema:Role",
+          "default": [
+            "schema:Role"
+          ],
           "type": "array",
           "items": {
             "type": "string"
