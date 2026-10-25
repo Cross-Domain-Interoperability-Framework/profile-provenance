@@ -1,13 +1,13 @@
 # CDIF Provenance Options: Building Blocks and External Profile Integration
 
-**Date:** 2026-03-11
+**Date:** 2026-03-11; revised 2026-10-25 (see [§15 Revision notes](#15-revision-notes-2026-10-25))
 **Status:** Draft for review
 
 ## 1. Overview
 
 CDIF provides multiple building blocks for describing the activities that produce datasets. All follow the W3C PROV pattern: `Dataset --prov:wasGeneratedBy--> Activity`. Each building block uses a different primary vocabulary while describing the same provenance concepts: what was done, who did it, what was used, what was produced, and how it was done.
 
-In addition to the native CDIF building blocks, the research community has developed RO-Crate-based provenance profiles — particularly the **Workflow Run RO-Crate (WRROC)** family and the **ARC Workflow Run RO-Crate** profile — that describe computational and laboratory workflows. This document compares all approaches and discusses how WRROC and ARC provenance can be integrated into CDIF.
+In addition to the native CDIF building blocks, the research community has developed RO-Crate-based provenance profiles — particularly the **Workflow Run RO-Crate (WRROC)** family and the **ARC Workflow Run RO-Crate** profile — that describe computational and laboratory workflows. This document compares all approaches and discusses how WRROC and ARC provenance can be integrated into CDIF. It also covers the 2024 W3C Member Submission **PROV-JSONLD** ([§13](#13-prov-jsonld-w3c-member-submission-2024)), and how a domain profile, the ADA geochemistry profile in geochemBuildingBlocks, builds on cdifProvActivity ([§12](#12-a-domain-profile-built-on-cdifprovactivity-geochemistry-ada)).
 
 ### CDIF Building Blocks
 
@@ -15,9 +15,11 @@ In addition to the native CDIF building blocks, the research community has devel
 |---|---|---|---|
 | **cdifProvActivity** | schema.org + PROV-O | `["schema:Action", "prov:Activity"]` | [cdifDataType/cdifProvActivity](https://github.com/Cross-Domain-Interoperability-Framework/metadataBuildingBlocks/tree/main/_sources/cdifDataType/cdifProvActivity) |
 | **provActivity** | W3C PROV-O | `["prov:Activity"]` | [provProperties/provActivity](https://github.com/Cross-Domain-Interoperability-Framework/metadataBuildingBlocks/tree/main/_sources/provProperties/provActivity) |
-| **ddicdiActivity** | DDI-CDI 1.0 | `cdi:Activity` | [ddiProperties/ddicdiActivity](https://github.com/Cross-Domain-Interoperability-Framework/metadataBuildingBlocks/tree/main/_sources/ddiProperties/ddicdiActivity) |
+| **ddicdiActivity** *(archived)* | DDI-CDI 1.0 | `cdi:Activity` | [archive/ddiProperties/ddicdiActivity](https://github.com/Cross-Domain-Interoperability-Framework/metadataBuildingBlocks/tree/main/archive/ddiProperties/ddicdiActivity) |
 
-### External Provenance Profiles
+On 2026-10-05 the whole `ddiProperties` tree in metadataBuildingBlocks was moved to `archive/` as "reference-only, referenced by nothing active" (commit `aec9bcca81`). ddicdiActivity is kept in this comparison because DDI-CDI remains a CDIF vocabulary. It is no longer a maintained building block, however, and no CDIF profile composes it.
+
+### External Provenance Profiles and Serializations
 
 | Profile | Vocabulary | Activity Type | Specification |
 |---|---|---|---|
@@ -25,8 +27,11 @@ In addition to the native CDIF building blocks, the research community has devel
 | **Workflow Run Crate** | schema.org | `schema:CreateAction` + `schema:OrganizeAction` | [w3id.org/ro/wfrun/workflow/0.5](https://w3id.org/ro/wfrun/workflow/0.5) |
 | **Provenance Run Crate** | schema.org + CWLProv | `schema:CreateAction` + `schema:OrganizeAction` | [w3id.org/ro/wfrun/provenance/0.1](https://w3id.org/ro/wfrun/provenance/0.1) |
 | **ARC WR RO-Crate** | schema.org + Bioschemas | `schema:CreateAction` + `LabProcess` | [nfdi4plants/arc-wr-ro-crate-profile](https://github.com/nfdi4plants/arc-wr-ro-crate-profile) |
+| **PROV-JSONLD** *(W3C Member Submission, 2024)* | PROV-DM / PROV-O | `Activity` (qualified relations as their own objects) | [SUBM-prov-jsonld-20240825](https://www.w3.org/submissions/2024/SUBM-prov-jsonld-20240825/) |
 
-see also activityStream https://www.w3.org/TR/activitystreams-core/
+PROV-JSONLD is not an application profile like the RO-Crate profiles. It is a JSON-LD *serialization of the PROV data model itself*, so it is compared separately in [§13](#13-prov-jsonld-w3c-member-submission-2024).
+
+[Activity Streams 2.0](https://www.w3.org/TR/activitystreams-core/) is another activity vocabulary, noted here for completeness; it is not otherwise compared.
 
 ### Links to Schemas and Examples
 
@@ -34,7 +39,8 @@ see also activityStream https://www.w3.org/TR/activitystreams-core/
 |---|---|---|
 | cdifProvActivity | [resolvedSchema.json](https://github.com/Cross-Domain-Interoperability-Framework/metadataBuildingBlocks/blob/main/_sources/cdifDataType/cdifProvActivity/resolvedSchema.json) | [exampleCdifProvActivity.json](https://github.com/Cross-Domain-Interoperability-Framework/metadataBuildingBlocks/blob/main/_sources/cdifDataType/cdifProvActivity/exampleCdifProvActivity.json) |
 | provActivity | [provActivitySchema.json](https://github.com/Cross-Domain-Interoperability-Framework/metadataBuildingBlocks/blob/main/_sources/provProperties/provActivity/provActivitySchema.json) | [exampleProvActivity.json](https://github.com/Cross-Domain-Interoperability-Framework/metadataBuildingBlocks/blob/main/_sources/provProperties/provActivity/exampleProvActivity.json) |
-| ddicdiActivity | [ddicdiActivitySchema.json](https://github.com/Cross-Domain-Interoperability-Framework/metadataBuildingBlocks/blob/main/_sources/ddiProperties/ddicdiActivity/ddicdiActivitySchema.json) | [exampleDdicdiActivity.json](https://github.com/Cross-Domain-Interoperability-Framework/metadataBuildingBlocks/blob/main/_sources/ddiProperties/ddicdiActivity/exampleDdicdiActivity.json) |
+| ddicdiActivity *(archived)* | [ddicdiActivitySchema.json](https://github.com/Cross-Domain-Interoperability-Framework/metadataBuildingBlocks/blob/main/archive/ddiProperties/ddicdiActivity/ddicdiActivitySchema.json) | [exampleDdicdiActivity.json](https://github.com/Cross-Domain-Interoperability-Framework/metadataBuildingBlocks/blob/main/archive/ddiProperties/ddicdiActivity/exampleDdicdiActivity.json) |
+| PROV-JSONLD | [schema.json](https://openprovenance.org/prov-jsonld/schema.json) (JSON Schema draft-07) | [context.jsonld](https://openprovenance.org/prov-jsonld/context.jsonld) |
 
 WRROC conversion examples (Galaxy workflow RO-Crates from [Zenodo record 13842780](https://zenodo.org/records/13842780) and Bennu py-GC-MS analytical workflow) are available in the [prov-context-quality/Examples](./examples/) folder.
 
@@ -49,13 +55,27 @@ Activity nodes carry dual types `["schema:Action", "prov:Activity"]` so that:
 - PROV-aware consumers (provenance trackers, RDF reasoners) see a `prov:Activity`
 - The `prov:used` property provides backward-compatible input listing
 
-Key properties: `schema:agent`, `schema:object` (inputs), `schema:result` (outputs), `schema:instrument`, `schema:actionProcess` → `schema:HowTo` (methodology), `schema:startTime`, `schema:endTime`, `schema:location`, `schema:actionStatus`.
+Key properties: `schema:agent`, `schema:participant`, `schema:object` (inputs), `schema:result` (outputs), `prov:used` (what was used, including instruments; see below), `schema:actionProcess` → `schema:HowTo` (methodology), `schema:additionalProperty` (parameters), `schema:startTime`, `schema:endTime`, `schema:location`, `schema:actionStatus`, `schema:error`.
+
+**How `prov:used` items are shaped (2026-08 to 2026-10).** The base `generatedBy` block admits five kinds of `prov:used` item:
+
+1. a string (URI or free-text reference);
+2. an `{@id}` reference, which is the sealed [objectReference](https://github.com/Cross-Domain-Interoperability-Framework/metadataBuildingBlocks/tree/main/_sources/cdifDataType/objectReference) building block (`additionalProperties: false`, `required: ['@id']`);
+3. an inline entity whose `@type` array includes `prov:Entity`;
+4. a **role-keyed wrapper** under one of three recognized role names: `schema:instrument`, `bios:computationalTool` or `prov:reagent`;
+5. *(since 2026-10-22, metadataBuildingBlocks #52)* a role-keyed wrapper under **any** prefixed role name, admitted by shape rather than by name.
+
+The wrapper names the role through the property key, e.g. `"prov:used": [{"schema:instrument": [ {…Instrument…} ]}]`. cdifProvActivity then *pins* the `schema:instrument` wrapper's value to an array of its Instrument definition, using a constraint-only `if/then`. It deliberately does not narrow the base `anyOf`, because an `allOf` intersection with a narrowed `anyOf` would silently exclude the other base shapes. Domain profiles are expected to **close** the set of role names they accept (see [§12](#12-a-domain-profile-built-on-cdifprovactivity-geochemistry-ada)).
+
+cdifProvActivity itself has no activity-level `schema:instrument` property; instruments are reached through the `prov:used` wrapper. All 0..*/1..* properties are JSON arrays, and `@type` is always an array, including on inline `schema:Thing` objects (2026-10-03).
+
+The RDF consequence of the wrapper is discussed in [§13.3](#133-what-the-comparison-shows-about-cdif).
 
 ### provActivity — PROV-O-first with schema.org fallbacks
 
 Prioritizes W3C PROV-O vocabulary, using native PROV-O properties where they exist (`prov:wasAssociatedWith`, `prov:generated`, `prov:startedAtTime`, `prov:wasInformedBy`) and falling back to schema.org for concepts PROV-O does not cover (name, description, instrument, methodology, status). Appropriate for communities invested in PROV-O tooling or where formal provenance reasoning is needed.
 
-### ddicdiActivity — DDI-CDI native workflow description
+### ddicdiActivity — DDI-CDI native workflow description *(archived 2026-10-05)*
 
 Uses the [DDI-CDI 1.0](https://ddialliance.org/Specification/DDI-CDI/1.0/) vocabulary natively, generated from the DDI-CDI Enterprise Architect UML model with all structured data types resolved. Designed for communities using DDI-CDI for statistical and survey data, with detailed workflow modeling capabilities (Steps, Parameters, data flow between steps). Includes `cdi:definition` (InternationalString), `cdi:start`/`cdi:end` (timestamps), and `cdi:hasInternal` (ControlLogic) properties not present in the earlier ddicdiProv building block. Companion building blocks `ddicdiAgent` (Individual, Machine, Organization, ProcessingAgent) and `ddicdiValueDomain` (SubstantiveValueDomain, SentinelValueDomain) cover related DDI-CDI classes.
 
@@ -101,7 +121,7 @@ Key alignment points:
 Key differences:
 - WRROC uses `schema:CreateAction` (no PROV-O dual typing); cdifProvActivity uses `["schema:Action", "prov:Activity"]`
 - WRROC uses `schema:object`/`schema:result` for action I/O; cdifProvActivity uses `prov:used` for inputs (inherited from the `generatedBy` base building block) alongside `schema:result` for outputs
-- WRROC uses `schema:instrument` at the action level for the tool/workflow; cdifProvActivity nests instruments within `prov:used` items
+- WRROC uses `schema:instrument` at the action level for the tool/workflow; cdifProvActivity places instruments in a role-keyed `prov:used` wrapper (`{"schema:instrument": [...]}`)
 - WRROC defines methodology implicitly through the workflow structure; cdifProvActivity uses explicit `schema:actionProcess` → `schema:HowTo` for methodology
 
 ## 4. ARC Workflow Run RO-Crate Profile
@@ -157,7 +177,7 @@ The [converted cdifProvActivity output](./examples/Bennu-py-GC-MSarc.cdifprov.js
 
 ## 5. Mapping WRROC/ARC to cdifProvActivity
 
-A converter tool ([WRROCToCdifProv.py](https://github.com/Cross-Domain-Interoperability-Framework/packaging/tree/main/tools/WRROCToCdifProv.py)) has been developed to transform WRROC and ARC RO-Crate files into cdifProvActivity-compatible `@graph` documents.
+A converter tool ([tools/WRROCToCdifProv.py](tools/WRROCToCdifProv.py) in this repository; also in the [packaging](https://github.com/Cross-Domain-Interoperability-Framework/packaging/tree/main/tools) repository) transforms WRROC and ARC RO-Crate files into cdifProvActivity-compatible `@graph` documents. Two Galaxy-specific converters, [tools/galaxyROCrateToCDIF.py](tools/galaxyROCrateToCDIF.py) and [tools/galaxyROCrateToCDIFActions.py](tools/galaxyROCrateToCDIFActions.py), produce the HowTo/step form and the one-Action-per-step form respectively ([§6](#6-representing-multi-step-provenance)).
 
 ### 5.1 Property Mapping
 
@@ -165,21 +185,21 @@ A converter tool ([WRROCToCdifProv.py](https://github.com/Cross-Domain-Interoper
 |---|---|---|
 | `@type: CreateAction` | `@type: ["schema:Action", "prov:Activity"]` | Original type preserved in `schema:additionalType` |
 | `@type: LabProcess` | `schema:additionalType: ["schema:LabProcess"]` | ARC-specific action subtype |
-| `@type: OrganizeAction` | `schema:additionalType: ["schema:OrganizeAction"]` | Orchestration actions |
+| `@type: OrganizeAction` | not a generator; recorded as a `bios:computationalTool` role entry on the workflow execution | Corrected 2026-10-01: the Galaxy engine run is never the root's `mentions` and has no `object` or `result`, so it does not belong in `prov:wasGeneratedBy` |
 | `object` (inputs) | `prov:used` | cdifProvActivity inherits `prov:used` from base |
 | `result` (outputs) | `schema:result` | Direct mapping |
-| `instrument` (tool) | `schema:instrument` on `prov:used` items, or `schema:actionProcess` | Depends on type — workflows become actionProcess |
+| `instrument` (tool) | `schema:instrument` on the activity, or `schema:actionProcess` | Depends on type — workflows become actionProcess. See §5.4 on the placement difference from the role-keyed wrapper |
 | `agent` | `schema:agent` | Direct mapping (Person, Organization) |
 | `startTime` / `endTime` | `schema:startTime` / `schema:endTime` | Direct mapping |
 | `actionStatus` | `schema:actionStatus` | Normalized to prefixed form |
 | `error` | `schema:error` | Direct mapping |
-| `executesLabProtocol` | `schema:actionProcess` | Protocol → HowTo methodology |
-| `parameterValue` | `schema:additionalProperty` | PropertyValue objects preserved |
+| `executesLabProtocol` | `schema:actionProcess` | Protocol → HowTo methodology; the converter also keeps `bios:executesLabProtocol` |
+| `parameterValue` | `schema:additionalProperty` | PropertyValue objects preserved; the converter also keeps `bios:parameterValue` |
 | `labEquipment` | `schema:instrument` (on actionProcess node) | Equipment on protocol, not action |
 | `ComputationalWorkflow` | `schema:SoftwareApplication` | With additionalType preserving original |
 | `LabProtocol` | `schema:HowTo` | Methodology description |
 | `FormalParameter` | `schema:MediaObject` | With `additionalType: ["schema:FormalParameter"]` |
-| `Sample` | `schema:Thing` | With `additionalType: ["bioschemas:Sample"]` |
+| `Sample` | `schema:Thing` | With `additionalType: ["bios:Sample"]` |
 | `DefinedTerm` (instrument) | `["schema:Thing", "schema:DefinedTerm"]` | Physical instrument description |
 
 ### 5.2 Structural Transformation
@@ -213,15 +233,16 @@ RO-Crate flat @graph:          cdifProvActivity nested @graph:
 ### 5.4 What Requires Interpretation
 
 - **FormalParameter → MediaObject**: WRROC's `FormalParameter` (which describes expected I/O slots) has no direct schema.org equivalent. Since `schema:object`/`prov:used` and `schema:result` expect `schema:CreativeWork` or similar, and most FormalParameters describe file-like entities, `schema:MediaObject` with `additionalType: ["schema:FormalParameter"]` is used.
-- **Nested instrument placement**: WRROC places `instrument` directly on the action; cdifProvActivity nests instruments within `prov:used` items. The converter places instruments either on the `schema:actionProcess` (workflow/protocol) node or as `schema:instrument` on the activity, depending on context.
+- **Instrument placement**: WRROC places `instrument` directly on the action; cdifProvActivity places instruments in the role-keyed `prov:used` wrapper. The converters currently follow WRROC: they put `schema:instrument` directly on the activity (68 occurrences across the examples here) or on the `schema:actionProcess` node. cdifProvActivity is an open schema, so this validates, but it is not the placement CDIF documents. Software tools, by contrast, are already emitted in the wrapper form (`prov:used` → `bios:computationalTool`). **Open item:** either move the converters' instruments into the wrapper, or document activity-level `schema:instrument` as an accepted alternative.
 - **Workflow as methodology vs. instrument**: In WRROC, the `ComputationalWorkflow` is the `instrument` of an `OrganizeAction`. In cdifProvActivity, it's more natural to treat it as `schema:actionProcess` (methodology). The converter maps it to `schema:actionProcess` for actions that `executesLabProtocol`, and as `schema:instrument` context otherwise.
-- **Bioschemas vocabulary**: Terms like `LabProcess`, `LabProtocol`, `Sample` are Bioschemas extensions not in the core schema.org vocabulary. These are preserved as `additionalType` values with a `bioschemas:` prefix where appropriate.
+- **Bioschemas vocabulary**: Terms like `LabProcess`, `LabProtocol`, `Sample` are Bioschemas extensions not in the core schema.org vocabulary. These are preserved as `additionalType` values with the `bios:` prefix (`https://bioschemas.org/`). CDIF defines the Bioschemas properties it uses (`bios:executesLabProtocol`, `bios:parameterValue`, `bios:labEquipment`, `bios:computationalTool`, `bios:reagent`) in the [cdifBioschemasProperties](https://github.com/Cross-Domain-Interoperability-Framework/metadataBuildingBlocks/tree/main/_sources/bioschemasProperties/cdifBioschemasProperties) building block.
+- **`@id`s that are not valid IRIs**: Galaxy crates carry spaces and pipes in `@id`s (`#input-Sn Foil`). A JSON-LD processor drops such a node *and its incoming triple*, after the JSON Schema check has already passed. The converters now percent-encode `@id`s, applying the same encoding to definitions and references so they still match (2026-10-01).
 
 ### 5.5 Conversion Examples
 
 Six Galaxy workflow RO-Crates from [Zenodo record 13842780](https://zenodo.org/records/13842780) have been converted, demonstrating computational workflow provenance (FeS2 analysis, Pt3Sn catalyst, Au colloids, LaMnO3 catalytic behaviour, EXAFS fitting, Diphosphine workflow). The Bennu py-GC-MS example demonstrates both standard WRROC and ARC profile conversion for laboratory analytical workflows.
 
-All examples are in the [Examples](./examples/) folder with `.rocrate.json` (source) and `.cdifprov.json` (converted) pairs.
+All examples are in the [examples](./examples/) folder. Source RO-Crates are in [examples/ROCRATE](./examples/ROCRATE/), and the converted documents are the `.cdifprov.json` (HowTo/step form) and `.actions.cdifprov.json` (one Action per step) files beside them.
 
 ## 6. Representing Multi-Step Provenance
 
@@ -303,25 +324,30 @@ Both approaches are valid cdifProvActivity. The choice depends on the level of d
 - **Use Option B** (HowTo steps) when the methodology is the primary concern and step-level execution detail is not needed — e.g., describing a standard operating procedure without per-step timestamps or parameter values.
 - **Combine both**: Use Option A for the retrospective provenance (what was done) and include `schema:actionProcess` on each activity pointing to the protocol/methodology (how it should be done). This is what the ARC profile naturally produces — `LabProcess` activities with `executesLabProtocol` → `LabProtocol`.
 
+The Galaxy examples here exist in both forms for side-by-side comparison. `galaxyROCrateToCDIF.py` produces Option B, and `galaxyROCrateToCDIFActions.py` produces Option A. In the Option A output, each step is linked to its upstream steps with `prov:wasInformedBy` and back to the parent workflow action with `prov:wasInfluencedBy`.
+
+The geochemistry profile ([§12](#12-a-domain-profile-built-on-cdifprovactivity-geochemistry-ada)) takes the "combine both" route one step further. The procedure is a separately published **plan** carrying the HowTo steps, and the analysis record is an activity that references that plan.
+
 ## 7. Property Mapping Across All Approaches
 
-| Concept | cdifProvActivity | provActivity | ddicdiActivity | WRROC | ARC Profile |
-|---|---|---|---|---|---|
-| **Activity type** | `["schema:Action", "prov:Activity"]` | `["prov:Activity"]` | `cdi:Activity` | `CreateAction` | `CreateAction` + `LabProcess` |
-| **Name** | `schema:name` | `schema:name` | `cdi:name` | `name` | `name` |
-| **Description** | `schema:description` | `schema:description` | `cdi:description` | `description` | `description` |
-| **Inputs** | `prov:used` | `prov:used` | `cdi:entityUsed` | `object` | `object` |
-| **Outputs** | `schema:result` | `prov:generated` | `cdi:entityProduced` | `result` | `result` |
-| **Agent** | `schema:agent` | `prov:wasAssociatedWith` | `cdi:ProcessingAgent` | `agent` | `agent` |
-| **Instrument** | `schema:instrument` (in `prov:used`) | `schema:instrument` (in `prov:used`) | `cdi:entityUsed` | `instrument` | `labEquipment` (on protocol) |
-| **Methodology** | `schema:actionProcess` → `HowTo` | `schema:actionProcess` → `HowTo` | `cdi:has_Step` | `ComputationalWorkflow` | `executesLabProtocol` → `LabProtocol` |
-| **Start time** | `schema:startTime` | `prov:startedAtTime` | `cdi:start` | `startTime` | `startTime` |
-| **End time** | `schema:endTime` | `prov:endedAtTime` | `cdi:end` | `endTime` | `endTime` |
-| **Parameters** | `schema:additionalProperty` | — | `cdi:Parameter` | — | `parameterValue` |
-| **Status** | `schema:actionStatus` | `schema:actionStatus` | — | `actionStatus` | `actionStatus` |
-| **Error** | `schema:error` | `schema:error` | — | `error` | `error` |
-| **Activity chain** | `schema:object`/`result` | `prov:wasInformedBy` | `cdi:receives`/`produces` | `object`/`result` | `object`/`result` |
-| **Samples** | `schema:Thing` | `prov:Entity` | `cdi:entityUsed` | `File` | `Sample` |
+| Concept | cdifProvActivity | provActivity | ddicdiActivity *(archived)* | WRROC | ARC Profile | PROV-JSONLD |
+|---|---|---|---|---|---|---|
+| **Activity type** | `["schema:Action", "prov:Activity"]` | `["prov:Activity"]` | `cdi:Activity` | `CreateAction` | `CreateAction` + `LabProcess` | `Activity` |
+| **Name** | `schema:name` | `schema:name` | `cdi:name` | `name` | `name` | `label` (`rdfs:label`) |
+| **Description** | `schema:description` | `schema:description` | `cdi:description` | `description` | `description` | prefixed attribute (flat value) |
+| **Inputs** | `prov:used` | `prov:used` | `cdi:entityUsed` | `object` | `object` | `Usage` object (`activity`, `entity`) |
+| **Outputs** | `schema:result` | `prov:generated` | `cdi:entityProduced` | `result` | `result` | `Generation` object (`entity`, `activity`) |
+| **Agent** | `schema:agent` | `prov:wasAssociatedWith` | `cdi:ProcessingAgent` | `agent` | `agent` | `Association` object (`activity`, `agent`) |
+| **Agent role** | `schema:Role` wrapper | — | implicit | — | — | `role` on `Association` (`prov:hadRole`) |
+| **Instrument** | `prov:used` → `{"schema:instrument": [...]}` | `schema:instrument` (in `prov:used`) | `cdi:entityUsed` | `instrument` | `labEquipment` (on protocol) | `Usage` with `role` |
+| **Methodology** | `schema:actionProcess` → `HowTo` | `schema:actionProcess` → `HowTo` | `cdi:has_Step` | `ComputationalWorkflow` | `executesLabProtocol` → `LabProtocol` | `plan` on `Association` (`prov:hadPlan`) |
+| **Start time** | `schema:startTime` | `prov:startedAtTime` | `cdi:start` | `startTime` | `startTime` | `startTime` (or a `Start` object) |
+| **End time** | `schema:endTime` | `prov:endedAtTime` | `cdi:end` | `endTime` | `endTime` | `endTime` (or an `End` object) |
+| **Parameters** | `schema:additionalProperty` | — | `cdi:Parameter` | — | `parameterValue` | — (flat prefixed attributes only) |
+| **Status** | `schema:actionStatus` | `schema:actionStatus` | — | `actionStatus` | `actionStatus` | — |
+| **Error** | `schema:error` | `schema:error` | — | `error` | `error` | — |
+| **Activity chain** | `schema:object`/`result`; `prov:wasInformedBy` (multi-activity converter output) | `prov:wasInformedBy` | `cdi:receives`/`produces` | `object`/`result` | `object`/`result` | `Communication` object, or `Usage` of a generated entity |
+| **Samples** | `schema:Thing` (as `prov:used` or `schema:object`) | `prov:Entity` | `cdi:entityUsed` | `File` | `Sample` | `Entity` |
 
 ## 8. Benefits and Challenges
 
@@ -351,7 +377,7 @@ Both approaches are valid cdifProvActivity. The choice depends on the level of d
 - Mixed `prov:` and `schema:` prefixes may confuse implementers
 - No native methodology property in PROV-O outside of qualified associations
 
-### ddicdiActivity
+### ddicdiActivity *(archived)*
 
 **Benefits:**
 - Native DDI-CDI vocabulary compatible with DDI-CDI statistical infrastructure
@@ -366,6 +392,7 @@ Both approaches are valid cdifProvActivity. The choice depends on the level of d
 - Multi-node graph structure ~2.5× more verbose for the same scenario
 - No dedicated instrument class
 - Not understood by web search engines
+- Archived in metadataBuildingBlocks (2026-10-05); no CDIF profile composes it
 
 ### WRROC / ARC
 
@@ -420,8 +447,9 @@ The Bennu py-GC-MS/MS analysis ([standard](./examples/Bennu-py-GC-MS.cdifprov.js
 2. **For new analytical provenance**, author directly in cdifProvActivity using ARC-inspired patterns:
    - Use `schema:additionalProperty` with PropertyValue objects for instrument parameters
    - Use `schema:actionProcess` → `schema:HowTo` for protocol/methodology
-   - Use `schema:DefinedTerm` for physical instruments (as opposed to `schema:SoftwareApplication` for software tools)
+   - Describe physical instruments with the CDIF [instrument](https://github.com/Cross-Domain-Interoperability-Framework/metadataBuildingBlocks/tree/main/_sources/schemaorgProperties/instrument) building block (a `schema:Thing` with `schema:hasPart` for sub-components), under the `schema:instrument` role in `prov:used`. Describe software with `schema:SoftwareApplication` under the `bios:computationalTool` role. A bare `schema:DefinedTerm` is enough when only the kind of instrument is known.
    - Chain activities through `schema:object`/`prov:used` → `schema:result` references
+   - If you need a role the three named ones do not cover, define it in your profile as a role-keyed wrapper and close your profile's role set to it ([§12](#12-a-domain-profile-built-on-cdifprovactivity-geochemistry-ada) shows how)
 
 3. **Preserve domain-specific types** via `schema:additionalType`. When converting from ARC, keep `LabProcess`, `LabProtocol`, `Sample` as additionalType values so domain-specific consumers can identify them.
 
@@ -432,10 +460,11 @@ The Bennu py-GC-MS/MS analysis ([standard](./examples/Bennu-py-GC-MS.cdifprov.js
 | General CDIF metadata with web discoverability | **cdifProvActivity** |
 | Interoperability with ODIS / Ocean InfoHub | **cdifProvActivity** |
 | Converting existing WRROC/ARC workflow provenance | **cdifProvActivity** (via converter) |
-| PROV-O tooling and formal provenance reasoning | **provActivity** |
-| DDI-CDI infrastructure and statistical workflows | **ddicdiActivity** |
-| Detailed data-flow modeling between processing steps | **ddicdiActivity** |
+| PROV-O tooling and formal provenance reasoning | **provActivity**; for exchange with PROV tools, a PROV-JSONLD export (see [§13.4](#134-options-for-cdif)) |
+| DDI-CDI infrastructure and statistical workflows | **ddicdiActivity** (archived; reference only) |
+| Detailed data-flow modeling between processing steps | **ddicdiActivity** (archived), or cdifProvActivity in the multi-activity form (§6 Option A) |
 | Lab analytical workflows with rich parameterization | **cdifProvActivity** with ARC-inspired patterns |
+| A registered, reusable procedure followed by many analyses | **cdifProvActivity** activity referencing a published plan (see §12) |
 | Minimal authoring effort | **cdifProvActivity** or **provActivity** |
 
 Multiple building blocks can coexist. A Dataset's `prov:wasGeneratedBy` can point to an activity described using any approach, and the base `generatedBy` building block provides a minimal common denominator that all PROV-aware consumers can process.
@@ -444,22 +473,154 @@ Multiple building blocks can coexist. A Dataset's `prov:wasGeneratedBy` can poin
 
 ### Base generatedBy building block
 
-Both cdifProvActivity and provActivity extend the [generatedBy](https://github.com/Cross-Domain-Interoperability-Framework/metadataBuildingBlocks/tree/main/_sources/provProperties/generatedBy) building block via JSON Schema `allOf`. The base requires `@type` containing `prov:Activity` and a `prov:used` array, ensuring any consumer that understands these can extract basic provenance from any CDIF document.
+Both cdifProvActivity and provActivity extend the [generatedBy](https://github.com/Cross-Domain-Interoperability-Framework/metadataBuildingBlocks/tree/main/_sources/provProperties/generatedBy) building block via JSON Schema `allOf`. The base requires only an `@type` array containing `prov:Activity`. `prov:used` is optional, and it defines the five `prov:used` item shapes described in §2. Any consumer that understands these can extract basic provenance from any CDIF document. The layering is deliberate: **the base is permissive and the profile is restrictive**, which `allOf` composes correctly because an intersection can only narrow.
+
+### objectReference building block
+
+[objectReference](https://github.com/Cross-Domain-Interoperability-Framework/metadataBuildingBlocks/tree/main/_sources/cdifDataType/objectReference) is the strict node reference `{"@id": "..."}`: `@id` required, nothing else allowed. Since 2026-10-09 the building blocks reference it rather than restating it (115 sites). Every `prov:used`, `schema:location` and `schema:actionProcess` slot that accepts "a reference to something defined elsewhere" uses it.
 
 ### Instrument building block
 
-The generic [instrument](https://github.com/Cross-Domain-Interoperability-Framework/metadataBuildingBlocks/tree/main/_sources/schemaorgProperties/instrument) building block provides a reusable `schema:Thing`-based instrument description with `schema:hasPart` for hierarchical instrument systems.
+The generic [instrument](https://github.com/Cross-Domain-Interoperability-Framework/metadataBuildingBlocks/tree/main/_sources/schemaorgProperties/instrument) building block provides a reusable `schema:Thing`-based instrument description with `schema:hasPart` for hierarchical instrument systems. Since 2026-08-17 its `schema:additionalProperty` accepts a `schema:PropertyValueSpecification` (a setting a plan prescribes) as well as a `schema:PropertyValue` (a setting actually used), which a plan/activity split needs (§12).
 
 ### SHACL validation
 
-All three building blocks include companion `rules.shacl` files providing SHACL validation shapes at three severity levels: Violation (required), Warning (recommended), Info (optional).
+cdifProvActivity, provActivity and the archived ddicdiActivity each have a companion `rules.shacl` file, with SHACL validation shapes at three severity levels: Violation (required), Warning (recommended) and Info (optional). This repository publishes the merged shapes for the CDIF Provenance profile as [provenanceRules.shacl](provenanceRules.shacl).
 
-## 12. Sources and References
+## 12. A Domain Profile Built on cdifProvActivity: Geochemistry (ADA)
+
+The [geochemBuildingBlocks](https://github.com/amds-ldeo/geochemBuildingBlocks) repository (the Astromat Data Archive, ADA) is the most developed consumer of cdifProvActivity. It shows what a domain profile adds once provenance has to describe thousands of real analyses. Several of the 2026 changes to the CDIF base blocks came from this work.
+
+### 12.1 Plan and activity are separate documents
+
+ADA separates the **procedure** from the **analysis that followed it**:
+
+- **The plan.** A registered *Technique-Aligned Protocol Profile* (TAPP) definition is typed `prov:Plan` and `bios:LabProtocol`, together with `cdi:Activity`, `schema:Action` and `ada:TAPPDefinition` for the DDI-CDI process description ([tappDefinition](https://github.com/amds-ldeo/geochemBuildingBlocks/tree/main/_sources/BaseSchema/tappDefinition)). It is published once and referenced by every analysis that followed it. Its workflow is a `schema:actionProcess` → `schema:HowTo` whose `schema:step`s are the standard stages (sample preparation, calibration, data acquisition, data processing, quality control). Because it is a plan, its instruments, `bios:computationalTool`s and `bios:reagent`s are stated directly on the plan as the resources it *prescribes*, not as `prov:used` entities.
+- **The activity.** The analysis record's `prov:wasGeneratedBy` item is a cdifProvActivity. It references the plan through `prov:used`, records the instruments, software and reagents *actually used* in that run, and carries `schema:object` (the samples analysed) and `schema:location` (the laboratory).
+
+This is §6's "combine both" pattern at the level of separate documents. A record does not duplicate a plan hundreds of times; it points at the plan.
+
+### 12.2 Role-keyed `prov:used`, closed at the profile
+
+The geochemistry product schema pins four roles in `prov:used`, each with a constraint-only `if/then`:
+
+| role key | pinned value |
+|---|---|
+| `schema:instrument` | array of the geochem instrument building block |
+| `bios:computationalTool` | array of software actually used |
+| `prov:reagent` | array of reagents / reference materials actually used |
+| `ada:tappDefinition` | the plan: a closed `{@id}` reference, or the plan inline |
+
+`ada:tappDefinition` is a profile-defined role. It reaches CDIF through the generic wrapper branch added to the base in metadataBuildingBlocks #52, and the profile closes the set to the roles it names. The reason for keying the plan link on a property name rather than on `@type` is that the **role is then readable without dereferencing anything**. An inline `prov:Entity` carries `ada:TAPPDefinition` in its `@type` too, so `@type` could never separate "the plan this run followed" from "a document that happens to be a plan".
+
+The earlier spelling, a `prov:used` item with `@type` containing `ada:TAPPDefinition`, is now **rejected** in both its reference and inline forms (2026-10-24). That was not done until the corpus had moved: 7,263 of 7,447 ADA records used the old reference form, and the schema was tightened only after the migration measured zero remaining in both stores. Any profile retiring a shape that real records use faces the same ordering: migrate the records first, then tighten the schema.
+
+### 12.3 Parameters: prescribed on the plan, actual on the activity
+
+The same split applies to parameters:
+
+| side | node | parameter type |
+|---|---|---|
+| plan (TAPP) | `schema:additionalProperty` on the plan or a step | `schema:PropertyValueSpecification`: a named, typed setting, optionally with a fixed value |
+| activity (analysis) | `schema:additionalProperty` | `schema:PropertyValue`: the value actually used |
+
+This corresponds to ARC's `LabProtocol` (prospective) and `LabProcess.parameterValue` (retrospective), and it is why the CDIF instrument block now accepts both forms (§11).
+
+### 12.4 Step names are identities
+
+A workflow step is matched by its literal name. The vocabulary is sentence-case (`'Sample preparation'`, `'Data acquisition'`, `'Data processing'`), and `'Data processing'` replaced `'Data reduction'` on 2026-10-12. Two spellings for one step silently produce two different steps, and a step-specific constraint written as an `if/then` then does not fire, so a misnamed step validates clean. **Any profile that constrains steps by name needs a controlled step vocabulary.** The CDIF base does not yet provide one.
+
+## 13. PROV-JSONLD (W3C Member Submission, 2024)
+
+### 13.1 What it is
+
+[*The PROV-JSONLD Serialization*](https://www.w3.org/submissions/2024/SUBM-prov-jsonld-20240825/) (Luc Moreau and Dong Huynh, King's College London; W3C Member Submission, 25 August 2024) is a JSON-LD representation of the PROV Data Model. A Member Submission is **not a W3C Recommendation**: W3C publishes it without endorsing it, and no chartered group has reviewed it. Its stated goals are a serialization that is lightweight, natural, semantic and efficient. It ships with three artifacts:
+
+- a JSON-LD 1.1 context at `https://openprovenance.org/prov-jsonld/context.jsonld`;
+- a JSON Schema (draft-07) at `https://openprovenance.org/prov-jsonld/schema.json`;
+- a small OWL extension ontology (`provext`) for the PROV relations PROV-O has no qualified form for (specialization, alternate, membership).
+
+The design is **relation-centric**. A document is a flat `@graph` of self-contained objects, one per PROV statement:
+- `Entity`, `Activity` and `Agent` objects need an `@id`;
+- each *relation* (`Usage`, `Generation`, `Association`, `Derivation`, `Communication`, `Start`, `End`, `Attribution`, `Delegation`, …) is its own object with an `@type`, pointing at its participants by identifier.
+
+JSON-LD 1.1 type-scoped contexts let one short key mean different things depending on the object. For example, `activity` on a `Usage` maps to `@reverse prov:qualifiedUsage`, and on an `Association` to `@reverse prov:qualifiedAssociation`. So every relation expands to the **PROV-O qualified pattern**. `role` maps to `prov:hadRole`, `plan` to `prov:hadPlan`, and `time` to `prov:atTime`. The context defines **no** unqualified relation terms (`used`, `wasGeneratedBy`, `wasAssociatedWith`): PROV-JSONLD emits only qualified forms.
+
+The JSON Schema is closed (`additionalProperties: false` on every statement type). Extension attributes are allowed only as **prefixed keys whose values are flat arrays** of strings, typed values, language strings or `{@id}` references. A nested object, such as a `schema:Person` with an identifier and affiliation, or a `schema:PropertyValue` with a unit, cannot be carried inline.
+
+### 13.2 The same facts in both encodings
+
+Below, the same facts are written in both encodings: a run used an ICP-MS as its instrument and a sample, and followed a plan. Each is followed by the triples it parses to (verified with rdflib).
+
+cdifProvActivity:
+```json
+{ "@id": "ex:run1", "@type": ["schema:Action", "prov:Activity"],
+  "prov:used": [ {"schema:instrument": [ {"@id": "ex:icpms"} ]}, {"@id": "ex:sample1"} ] }
+```
+```turtle
+ex:run1 a schema:Action, prov:Activity ;
+    prov:used [ schema:instrument ex:icpms ], ex:sample1 .
+```
+
+PROV-JSONLD:
+```json
+{ "@context": ["https://openprovenance.org/prov-jsonld/context.jsonld", {"ex": "http://example.org/"}],
+  "@graph": [
+    { "@type": "Activity", "@id": "ex:run1" },
+    { "@type": "Usage", "activity": "ex:run1", "entity": "ex:icpms", "role": ["ex:instrument"] },
+    { "@type": "Association", "activity": "ex:run1", "agent": "ex:lab", "plan": "ex:tapp1" } ] }
+```
+```turtle
+ex:run1 a prov:Activity ;
+    prov:qualifiedUsage [ a prov:Usage ; prov:entity ex:icpms ; prov:hadRole ex:instrument ] ;
+    prov:qualifiedAssociation [ a prov:Association ; prov:agent ex:lab ; prov:hadPlan ex:tapp1 ] .
+```
+
+### 13.3 What the comparison shows about CDIF
+
+1. **In RDF, the role-keyed wrapper makes the wrapper the used entity.** `prov:used [ schema:instrument ex:icpms ]` says the activity used an *anonymous node*, and that node's instrument is the ICP-MS. It does not say the activity used the ICP-MS. A SPARQL query for `?activity prov:used ex:icpms` finds nothing. The wrapper is a sound **JSON** device: the role can be read from the key, and JSON Schema can pin each role's value. But its RDF reading is not PROV's. PROV-O expresses "used X in role R" as a qualified usage, `prov:qualifiedUsage [ prov:entity X ; prov:hadRole R ]`, which is exactly what PROV-JSONLD produces.
+2. **The plan link.** In PROV-O an activity follows a plan through its association (`prov:qualifiedAssociation` / `prov:hadPlan`). CDIF expresses this as `schema:actionProcess` (methodology), and the ADA profile also as a `prov:used` role (`ada:tappDefinition`). Saying the run *used* the plan is permissible in PROV, since a plan is a `prov:Entity`, but a PROV consumer looking for `prov:hadPlan` will not find it.
+3. **Qualified-only output has its own cost.** A PROV-JSONLD document contains no unqualified `prov:used` / `prov:wasGeneratedBy` triples. Consumers that query the unqualified relations, which is what CDIF's `generatedBy` base and most schema.org-oriented harvesters read, need a rule that derives them.
+4. **The two fit different jobs.** PROV-JSONLD is a faithful, lossless carrier for the PROV *graph*. cdifProvActivity is a validatable, nested JSON description of an activity, carrying rich schema.org content. Because of PROV-JSONLD's closed schema and flat attribute values, a CDIF activity's agents, instruments, parameters and HowTo steps cannot be carried in it except as references to nodes it has no way to describe.
+
+### 13.4 Options for CDIF
+
+| option | what it means | cost |
+|---|---|---|
+| **A. Note only** | Cite PROV-JSONLD; change nothing | Leaves item 1 above unaddressed |
+| **B. Export** | A converter from cdifProvActivity to PROV-JSONLD, so CDIF provenance can be handed to PROV tooling (ProvToolbox, PROV validators) | Lossy by design: descriptive content is reduced to references and flat attributes |
+| **C. Align provActivity** | Give the PROV-O-first block the qualified forms (`prov:qualifiedUsage` with `prov:hadRole`, `prov:qualifiedAssociation` with `prov:hadPlan`), using PROV-JSONLD's shapes as the reference | provActivity currently has no qualified association ([agents.md §3.2](agents.md)); new schema work |
+| **D. Give the wrapper a PROV reading** | Document the mapping from each role key to a `prov:qualifiedUsage` / `prov:hadRole` (and from `ada:tappDefinition` / `schema:actionProcess` to `prov:hadPlan`), and publish it as a SPARQL CONSTRUCT or SHACL rule a consumer can run | Small; keeps every existing record valid |
+| **E. Adopt PROV-JSONLD as CDIF's serialization** | Replace the nested activity form | Not recommended: a Member Submission with no endorsement, a closed schema that cannot carry schema.org descriptions, and loss of the search-engine-readable `schema:Action` |
+
+**Recommendation for review: D now, then B, and consider C.** D fixes the semantic gap in item 1 without invalidating any record. B and C give CDIF a standards-shaped path into PROV tooling. cdifProvActivity stays the primary authoring and validation shape.
+
+## 14. Open Issues
+
+1. **`prov:reagent` is not a PROV-O term.** The `generatedBy` base names `prov:reagent` as a recognized role, and the ADA profile pins it, but the PROV-O namespace defines no `reagent`. Meanwhile the ADA plan uses `bios:reagent`, which cdifBioschemasProperties does define. So one concept has two spellings across the plan and the activity, and one of them is a term minted in a namespace CDIF does not control. Options: rename the role to `bios:reagent`, or record `prov:reagent` as a CDIF-minted term with a definition.
+2. **The RDF reading of role-keyed wrappers** (§13.3 item 1; option D).
+3. **Converter instrument placement** differs from the documented wrapper placement (§5.4).
+4. **No controlled step vocabulary** in the CDIF base for `schema:step` names (§12.4).
+5. **`schema:actionProcess`** is on the schema.org website (V29.4+) but still not in the downloadable vocabulary files (§8).
+6. **ddicdiActivity is archived.** Decide whether DDI-CDI provenance stays in scope for this document or moves to an appendix.
+
+## 15. Revision notes (2026-10-25)
+
+Changes in this revision, against metadataBuildingBlocks `main` at `31b890a802` and geochemBuildingBlocks `main`:
+
+- ddicdiActivity marked archived (moved to `archive/ddiProperties/` on 2026-10-05); links repointed.
+- §2 and §11: the five `prov:used` item shapes, including role-keyed wrappers and the generic profile-defined wrapper (#52, 2026-10-22); the sealed objectReference; the base requiring only `@type`; array `@type` throughout.
+- §5: converter placement of instruments; the `OrganizeAction` and `@id`-encoding corrections of 2026-10-01; `bios:` prefix; converter files in this repository.
+- §7: added PROV-JSONLD and agent-role rows.
+- New §12 (ADA geochemistry profile), §13 (PROV-JSONLD), §14 (open issues).
+
+## 16. Sources and References
 
 ### Standards and specifications
 
 - [W3C PROV-O: The PROV Ontology](https://www.w3.org/TR/prov-o/)
 - [W3C PROV-DM: The PROV Data Model](https://www.w3.org/TR/prov-dm/)
+- [The PROV-JSONLD Serialization](https://www.w3.org/submissions/2024/SUBM-prov-jsonld-20240825/) — W3C Member Submission, 25 August 2024 ([context](https://openprovenance.org/prov-jsonld/context.jsonld), [JSON Schema](https://openprovenance.org/prov-jsonld/schema.json))
 - [DDI-CDI 1.0 Specification](https://ddialliance.org/Specification/DDI-CDI/1.0/)
 - [schema.org Action](https://schema.org/Action)
 - [schema.org actionProcess](https://schema.org/actionProcess) (V29.4+)
@@ -481,6 +642,7 @@ All three building blocks include companion `rules.shacl` files providing SHACL 
 
 - [ODIS Architecture: Common Provenance Cases](https://github.com/iodepo/odis-arch/blob/414-update-provenance-recommendations/book/thematics/provenance/common-provenance-cases.md)
 - [Ocean InfoHub (OIH)](https://oceaninfohub.org/)
+- [geochemBuildingBlocks](https://github.com/amds-ldeo/geochemBuildingBlocks) — ADA geochemistry profile; [tappDefinition](https://github.com/amds-ldeo/geochemBuildingBlocks/tree/main/_sources/BaseSchema/tappDefinition) (the plan) and [geochemProduct](https://github.com/amds-ldeo/geochemBuildingBlocks/tree/main/_sources/BaseSchema/geochemProduct) (the activity's role-keyed `prov:used`)
 - [BBeuster EU-SoGreen-Prov DDI-CDI Provenance Examples](https://github.com/ddialliance/ddi-cdi_provenance-examples)
 - [UNECE Generic Statistical Business Process Model (GSBPM) v5.1](https://statswiki.unece.org/display/GSBPM/)
 
@@ -492,5 +654,6 @@ All three building blocks include companion `rules.shacl` files providing SHACL 
 
 ### Tools
 
-- [WRROCToCdifProv.py](https://github.com/Cross-Domain-Interoperability-Framework/packaging/tree/main/tools/WRROCToCdifProv.py) — WRROC/ARC to cdifProvActivity converter
+- [WRROCToCdifProv.py](tools/WRROCToCdifProv.py) — WRROC/ARC to cdifProvActivity converter
+- [galaxyROCrateToCDIF.py](tools/galaxyROCrateToCDIF.py) / [galaxyROCrateToCDIFActions.py](tools/galaxyROCrateToCDIFActions.py) — Galaxy RO-Crate to cdifProvActivity, HowTo/step and multi-activity forms
 - [ROCrateToCDIF.py](https://github.com/Cross-Domain-Interoperability-Framework/packaging/tree/main/tools/ROCrateToCDIF.py) — RO-Crate to full CDIF metadata converter
