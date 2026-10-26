@@ -75,7 +75,7 @@ README changelog for the evidence.
 ## Modelling conventions the converters and examples follow
 
 - `prov:used` holds role-keyed wrappers (`schema:instrument`, `bios:computationalTool`,
-  `prov:reagent`) alongside string / `{@id}` / inline `prov:Entity`; profiles pin a wrapper's shape
+  `bios:reagent`) alongside string / `{@id}` / inline `prov:Entity`; profiles pin a wrapper's shape
   with a constraint-only `if/then`, never a narrowed `anyOf`.
 - Bare reference slots are sealed `{@id}` objects (`additionalProperties: false`, `required: ['@id']`).
 - Agents: `schema:agent` for the primary agent, `schema:participant` for the rest, `schema:Role`
