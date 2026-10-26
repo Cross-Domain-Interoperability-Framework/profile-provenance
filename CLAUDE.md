@@ -27,7 +27,11 @@ Most of the root is NOT authored here. Edit the source, never the copy:
 | `examples/*.cdifprov.json` (Galaxy, Bennu) | `examples/ROCRATE/*` | the converters in `tools/` — fix the converter and regenerate, not the output |
 
 Authored here: `cdifProvenance-frame.jsonld`, the converters in `tools/`, `ODIS_provExampleJulesVerne.json`,
-and the docs (`README.md`, `ProvenanceOptions.md`, `agents.md`, `PROV_Classes.ttl`).
+the docs (`README.md`, `ProvenanceOptions.md`, `agents.md`, `PROV_Classes.ttl`), and
+`vocabularies/activityTypes.jsonld`, the activity-type vocabulary for workflow steps. Validate a change to it
+against the CDIF concept-scheme profile: `profile-conceptscheme`'s `FrameAndValidate.py -v` plus pyshacl
+with its `conceptSchemeRules.shacl`. Keep each `skos:closeMatch`/`skos:broadMatch` pointing at a class that
+exists in `PROV_Classes.ttl`.
 `CDIFProvenanceImplementationGuide.md` is an auto-generated draft from the StructuredSchema.
 Note `agents.md` here is a design analysis of *provenance agents*, not an agent-instructions file.
 
