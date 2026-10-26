@@ -2,43 +2,50 @@
   "@context": {
     "schema": "http://schema.org/",
     "prov": "http://www.w3.org/ns/prov#",
-    "bios": "https://bioschemas.org/"
+    "bios": "https://bioschemas.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "dcat": "http://www.w3.org/ns/dcat#"
   },
-  "@graph": [
-    {
-      "@type": [
-        "schema:Action",
-        "prov:Activity"
-      ],
-      "@id": "#28904568-12b4-478c-815e-015203e5caf4",
-      "schema:name": "Run of Galaxy workflow engine",
-      "schema:additionalType": [
-        "schema:OrganizeAction"
-      ],
-      "schema:actionStatus": "schema:CompletedActionStatus",
-      "schema:startTime": "2024-09-11T16:12:55.771086",
-      "schema:endTime": "2024-09-11T16:12:57.977262",
-      "schema:instrument": {
-        "@type": [
-          "schema:SoftwareApplication"
-        ],
-        "schema:name": "Galaxy workflow engine",
-        "schema:version": "23.2"
+  "@id": "#dataset",
+  "@type": [
+    "schema:Dataset"
+  ],
+  "schema:name": "Paper 3 Au colloids",
+  "schema:dateModified": "2024-09-27",
+  "schema:subjectOf": {
+    "@type": [
+      "schema:Dataset",
+      "dcat:CatalogRecord"
+    ],
+    "schema:additionalType": [
+      {
+        "@id": "dcat:CatalogRecord"
       }
+    ],
+    "@id": "#metadata",
+    "schema:about": {
+      "@id": "#dataset"
     },
+    "dcterms:conformsTo": [
+      {
+        "@id": "https://w3id.org/cdif/provenance/1.1"
+      }
+    ]
+  },
+  "prov:wasGeneratedBy": [
     {
       "@type": [
         "schema:Action",
         "prov:Activity"
       ],
-      "@id": "#b37e0481-a1a1-4919-a3b7-c4ea91c07339",
-      "schema:name": "Paper_2_Diphosphine-WF",
+      "@id": "#c11186ad-4e77-43ae-8f18-21f1744094d5",
+      "schema:name": "Workflow constructed from history ''Extracting structural information of Au colloids at ultra-dilute concentrations: identification of growth during nanoparticle immobilization (paper-3''",
       "schema:additionalType": [
         "schema:CreateAction"
       ],
       "schema:actionStatus": "schema:CompletedActionStatus",
-      "schema:startTime": "2024-09-11T16:11:48.596770",
-      "schema:endTime": "2024-09-11T16:11:48.628535",
+      "schema:startTime": "2024-09-27T10:28:59.043893",
+      "schema:endTime": "2024-09-27T10:28:59.043905",
       "schema:actionProcess": {
         "@type": [
           "schema:HowTo"
@@ -46,8 +53,8 @@
         "schema:additionalType": [
           "bios:ComputationalWorkflow"
         ],
-        "schema:name": "Paper_2_Diphosphine-WF workflow",
-        "@id": "workflows/1967248db44ca916.gxwf.yml",
+        "schema:name": "Workflow constructed from history ''Extracting structural information of Au colloids at ultra-dilute concentrations: identification of growth during nanoparticle immobilization (paper-3'' workflow",
+        "@id": "workflows/1a5c6ad02e8082a6.gxwf.yml",
         "bios:computationalTool": [
           {
             "@type": [
@@ -68,12 +75,14 @@
         ],
         "schema:step": [
           {
-            "@type": "schema:HowToStep",
-            "schema:name": "7",
+            "@type": [
+              "schema:HowToStep"
+            ],
+            "schema:name": "1",
             "schema:position": 1,
-            "schema:description": "Inputs from: A data",
-            "schema:startTime": "2024-09-11T16:12:56.389335",
-            "schema:endTime": "2024-09-11T16:13:07.296691",
+            "schema:description": "Inputs from: workflow input (merge_inputs|format|dat_file)",
+            "schema:startTime": "2024-09-27T10:30:39.342295",
+            "schema:endTime": "2024-09-27T10:30:46.390132",
             "schema:additionalProperty": [
               {
                 "@type": "schema:PropertyValue",
@@ -88,20 +97,11 @@
               },
               {
                 "@type": "schema:PropertyValue",
-                "schema:name": "merge_inputs",
+                "schema:name": "merge_inputs.format",
                 "schema:value": {
                   "@type": "schema:StructuredValue",
-                  "format": {
-                    "@type": "schema:StructuredValue",
-                    "energy_column.energy_column": "auto",
-                    "format": "plaintext",
-                    "mu_column": {
-                      "@type": "schema:StructuredValue",
-                      "mu_column": "other",
-                      "mu_column_text": "lnItIref"
-                    }
-                  },
-                  "merge_inputs": "true"
+                  "extract_group.extract_group": "single",
+                  "format": "athena"
                 }
               },
               {
@@ -112,12 +112,14 @@
             ]
           },
           {
-            "@type": "schema:HowToStep",
-            "schema:name": "8",
+            "@type": [
+              "schema:HowToStep"
+            ],
+            "schema:name": "2",
             "schema:position": 2,
-            "schema:description": "Inputs from: B data",
-            "schema:startTime": "2024-09-11T16:12:56.564968",
-            "schema:endTime": "2024-09-11T16:13:07.333407",
+            "schema:description": "Inputs from: workflow input (merge_inputs|format|dat_file)",
+            "schema:startTime": "2024-09-27T10:30:39.437429",
+            "schema:endTime": "2024-09-27T10:30:46.672024",
             "schema:additionalProperty": [
               {
                 "@type": "schema:PropertyValue",
@@ -132,20 +134,11 @@
               },
               {
                 "@type": "schema:PropertyValue",
-                "schema:name": "merge_inputs",
+                "schema:name": "merge_inputs.format",
                 "schema:value": {
                   "@type": "schema:StructuredValue",
-                  "format": {
-                    "@type": "schema:StructuredValue",
-                    "energy_column.energy_column": "auto",
-                    "format": "plaintext",
-                    "mu_column": {
-                      "@type": "schema:StructuredValue",
-                      "mu_column": "other",
-                      "mu_column_text": "lnItIref"
-                    }
-                  },
-                  "merge_inputs": "true"
+                  "extract_group.extract_group": "single",
+                  "format": "athena"
                 }
               },
               {
@@ -156,12 +149,14 @@
             ]
           },
           {
-            "@type": "schema:HowToStep",
-            "schema:name": "9",
+            "@type": [
+              "schema:HowToStep"
+            ],
+            "schema:name": "3",
             "schema:position": 3,
-            "schema:description": "Inputs from: C data",
-            "schema:startTime": "2024-09-11T16:12:56.731893",
-            "schema:endTime": "2024-09-11T16:13:07.150182",
+            "schema:description": "Inputs from: workflow input (merge_inputs|format|dat_file)",
+            "schema:startTime": "2024-09-27T10:30:39.530865",
+            "schema:endTime": "2024-09-27T10:30:46.990772",
             "schema:additionalProperty": [
               {
                 "@type": "schema:PropertyValue",
@@ -176,20 +171,11 @@
               },
               {
                 "@type": "schema:PropertyValue",
-                "schema:name": "merge_inputs",
+                "schema:name": "merge_inputs.format",
                 "schema:value": {
                   "@type": "schema:StructuredValue",
-                  "format": {
-                    "@type": "schema:StructuredValue",
-                    "energy_column.energy_column": "auto",
-                    "format": "plaintext",
-                    "mu_column": {
-                      "@type": "schema:StructuredValue",
-                      "mu_column": "other",
-                      "mu_column_text": "lnItIref"
-                    }
-                  },
-                  "merge_inputs": "true"
+                  "extract_group.extract_group": "single",
+                  "format": "athena"
                 }
               },
               {
@@ -200,12 +186,14 @@
             ]
           },
           {
-            "@type": "schema:HowToStep",
-            "schema:name": "10",
+            "@type": [
+              "schema:HowToStep"
+            ],
+            "schema:name": "4",
             "schema:position": 4,
-            "schema:description": "Inputs from: D data",
-            "schema:startTime": "2024-09-11T16:12:56.898903",
-            "schema:endTime": "2024-09-11T16:13:06.812148",
+            "schema:description": "Inputs from: workflow input (merge_inputs|format|dat_file)",
+            "schema:startTime": "2024-09-27T10:30:39.619530",
+            "schema:endTime": "2024-09-27T10:30:50.040010",
             "schema:additionalProperty": [
               {
                 "@type": "schema:PropertyValue",
@@ -220,20 +208,11 @@
               },
               {
                 "@type": "schema:PropertyValue",
-                "schema:name": "merge_inputs",
+                "schema:name": "merge_inputs.format",
                 "schema:value": {
                   "@type": "schema:StructuredValue",
-                  "format": {
-                    "@type": "schema:StructuredValue",
-                    "energy_column.energy_column": "auto",
-                    "format": "plaintext",
-                    "mu_column": {
-                      "@type": "schema:StructuredValue",
-                      "mu_column": "other",
-                      "mu_column_text": "lnItIref"
-                    }
-                  },
-                  "merge_inputs": "true"
+                  "extract_group.extract_group": "single",
+                  "format": "athena"
                 }
               },
               {
@@ -244,12 +223,14 @@
             ]
           },
           {
-            "@type": "schema:HowToStep",
-            "schema:name": "11",
+            "@type": [
+              "schema:HowToStep"
+            ],
+            "schema:name": "5",
             "schema:position": 5,
-            "schema:description": "Inputs from: Fe Metal",
-            "schema:startTime": "2024-09-11T16:12:57.027034",
-            "schema:endTime": "2024-09-11T16:13:05.268725",
+            "schema:description": "Inputs from: workflow input (merge_inputs|format|dat_file)",
+            "schema:startTime": "2024-09-27T10:30:39.707046",
+            "schema:endTime": "2024-09-27T10:30:49.524233",
             "schema:additionalProperty": [
               {
                 "@type": "schema:PropertyValue",
@@ -264,20 +245,11 @@
               },
               {
                 "@type": "schema:PropertyValue",
-                "schema:name": "merge_inputs",
+                "schema:name": "merge_inputs.format",
                 "schema:value": {
                   "@type": "schema:StructuredValue",
-                  "format": {
-                    "@type": "schema:StructuredValue",
-                    "energy_column.energy_column": "auto",
-                    "format": "plaintext",
-                    "mu_column": {
-                      "@type": "schema:StructuredValue",
-                      "mu_column": "other",
-                      "mu_column_text": "lnItIref"
-                    }
-                  },
-                  "merge_inputs": "true"
+                  "extract_group.extract_group": "single",
+                  "format": "athena"
                 }
               },
               {
@@ -288,12 +260,14 @@
             ]
           },
           {
-            "@type": "schema:HowToStep",
-            "schema:name": "12",
+            "@type": [
+              "schema:HowToStep"
+            ],
+            "schema:name": "6",
             "schema:position": 6,
-            "schema:description": "Inputs from: FeBr",
-            "schema:startTime": "2024-09-11T16:12:57.197674",
-            "schema:endTime": "2024-09-11T16:13:09.247415",
+            "schema:description": "Inputs from: workflow input (merge_inputs|format|dat_file)",
+            "schema:startTime": "2024-09-27T10:30:39.798614",
+            "schema:endTime": "2024-09-27T10:30:49.542732",
             "schema:additionalProperty": [
               {
                 "@type": "schema:PropertyValue",
@@ -308,16 +282,11 @@
               },
               {
                 "@type": "schema:PropertyValue",
-                "schema:name": "merge_inputs",
+                "schema:name": "merge_inputs.format",
                 "schema:value": {
                   "@type": "schema:StructuredValue",
-                  "format": {
-                    "@type": "schema:StructuredValue",
-                    "energy_column.energy_column": "auto",
-                    "format": "plaintext",
-                    "mu_column.mu_column": "auto"
-                  },
-                  "merge_inputs": "true"
+                  "extract_group.extract_group": "single",
+                  "format": "athena"
                 }
               },
               {
@@ -328,12 +297,14 @@
             ]
           },
           {
-            "@type": "schema:HowToStep",
-            "schema:name": "13",
+            "@type": [
+              "schema:HowToStep"
+            ],
+            "schema:name": "7",
             "schema:position": 7,
-            "schema:description": "Inputs from: 7a",
-            "schema:startTime": "2024-09-11T16:12:57.361991",
-            "schema:endTime": "2024-09-11T16:13:08.186289",
+            "schema:description": "Inputs from: workflow input (merge_inputs|format|dat_file)",
+            "schema:startTime": "2024-09-27T10:30:39.900525",
+            "schema:endTime": "2024-09-27T10:30:49.710736",
             "schema:additionalProperty": [
               {
                 "@type": "schema:PropertyValue",
@@ -348,20 +319,11 @@
               },
               {
                 "@type": "schema:PropertyValue",
-                "schema:name": "merge_inputs",
+                "schema:name": "merge_inputs.format",
                 "schema:value": {
                   "@type": "schema:StructuredValue",
-                  "format": {
-                    "@type": "schema:StructuredValue",
-                    "energy_column.energy_column": "auto",
-                    "format": "plaintext",
-                    "mu_column": {
-                      "@type": "schema:StructuredValue",
-                      "mu_column": "other",
-                      "mu_column_text": "lnItIref"
-                    }
-                  },
-                  "merge_inputs": "true"
+                  "extract_group.extract_group": "single",
+                  "format": "athena"
                 }
               },
               {
@@ -372,12 +334,63 @@
             ]
           },
           {
-            "@type": "schema:HowToStep",
-            "schema:name": "14",
+            "@type": [
+              "schema:HowToStep"
+            ],
+            "schema:name": "8",
             "schema:position": 8,
-            "schema:description": "Inputs from: 7, 8, 9, 10, 11",
-            "schema:startTime": "2024-09-11T16:12:57.521719",
-            "schema:endTime": "2024-09-11T16:13:15.496196",
+            "schema:description": "Inputs from: Compiled_XAS_data_Colloid_and_TiO2_supported_Au.prj",
+            "schema:startTime": "2024-09-27T10:30:40.032227",
+            "schema:endTime": "2024-09-27T10:30:51.940457",
+            "schema:additionalProperty": [
+              {
+                "@type": "schema:PropertyValue",
+                "schema:name": "tool",
+                "schema:value": "larch_athena",
+                "schema:propertyID": "toolshed.g2.bx.psu.edu/repos/muon-spectroscopy-computational-project/larch_athena/larch_athena/0.9.80+galaxy1"
+              },
+              {
+                "@type": "schema:PropertyValue",
+                "schema:name": "toolVersion",
+                "schema:value": "0.9.80+galaxy1"
+              },
+              {
+                "@type": "schema:PropertyValue",
+                "schema:name": "merge_inputs.format",
+                "schema:value": {
+                  "@type": "schema:StructuredValue",
+                  "extract_group.extract_group": "all",
+                  "format": "athena"
+                }
+              },
+              {
+                "@type": "schema:PropertyValue",
+                "schema:name": "processing",
+                "schema:value": {
+                  "@type": "schema:StructuredValue",
+                  "rebin": 0,
+                  "xftf": {
+                    "@type": "schema:StructuredValue",
+                    "dk": 3.5,
+                    "kmax": 11.5,
+                    "kmin": 3,
+                    "kweight": 3,
+                    "window": "gaussian",
+                    "xftf": "true"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "@type": [
+              "schema:HowToStep"
+            ],
+            "schema:name": "9",
+            "schema:position": 9,
+            "schema:description": "Inputs from: 1, 2, 3, 4, 5",
+            "schema:startTime": "2024-09-27T10:30:40.350505",
+            "schema:endTime": "2024-09-27T10:31:00.598912",
             "schema:additionalProperty": [
               {
                 "@type": "schema:PropertyValue",
@@ -393,6 +406,36 @@
               {
                 "@type": "schema:PropertyValue",
                 "schema:name": "plots[0].variable",
+                "schema:value": {
+                  "@type": "schema:StructuredValue",
+                  "variable": "flat",
+                  "x_limit_max": 11960,
+                  "x_limit_min": 11900
+                }
+              },
+              {
+                "@type": "schema:PropertyValue",
+                "schema:name": "plots[1].variable",
+                "schema:value": {
+                  "@type": "schema:StructuredValue",
+                  "variable": "flat",
+                  "x_limit_max": 11960,
+                  "x_limit_min": 11920
+                }
+              },
+              {
+                "@type": "schema:PropertyValue",
+                "schema:name": "plots[2].variable",
+                "schema:value": {
+                  "@type": "schema:StructuredValue",
+                  "variable": "dmude",
+                  "x_limit_max": 11980,
+                  "x_limit_min": 11900
+                }
+              },
+              {
+                "@type": "schema:PropertyValue",
+                "schema:name": "plots[3].variable",
                 "schema:value": {
                   "@type": "schema:StructuredValue",
                   "variable": "chir_mag",
@@ -403,12 +446,14 @@
             ]
           },
           {
-            "@type": "schema:HowToStep",
-            "schema:name": "15",
-            "schema:position": 9,
-            "schema:description": "Inputs from: 7, 8, 9, 10, 11, 12",
-            "schema:startTime": "2024-09-11T16:12:57.681972",
-            "schema:endTime": "2024-09-11T16:13:18.630077",
+            "@type": [
+              "schema:HowToStep"
+            ],
+            "schema:name": "10",
+            "schema:position": 10,
+            "schema:description": "Inputs from: 1, 2, 6, 7",
+            "schema:startTime": "2024-09-27T10:30:40.614112",
+            "schema:endTime": "2024-09-27T10:31:00.230629",
             "schema:additionalProperty": [
               {
                 "@type": "schema:PropertyValue",
@@ -427,70 +472,38 @@
                 "schema:value": {
                   "@type": "schema:StructuredValue",
                   "variable": "flat",
-                  "x_limit_max": 7160,
-                  "x_limit_min": 7100
+                  "x_limit_max": 11960,
+                  "x_limit_min": 11900
                 }
-              }
-            ]
-          },
-          {
-            "@type": "schema:HowToStep",
-            "schema:name": "16",
-            "schema:position": 10,
-            "schema:description": "Inputs from: 7, 8, 9, 10, 11, 12",
-            "schema:startTime": "2024-09-11T16:12:57.810520",
-            "schema:endTime": "2024-09-11T16:13:18.652992",
-            "schema:additionalProperty": [
-              {
-                "@type": "schema:PropertyValue",
-                "schema:name": "tool",
-                "schema:value": "larch_plot",
-                "schema:propertyID": "toolshed.g2.bx.psu.edu/repos/muon-spectroscopy-computational-project/larch_plot/larch_plot/0.9.80+galaxy1"
               },
               {
                 "@type": "schema:PropertyValue",
-                "schema:name": "toolVersion",
-                "schema:value": "0.9.80+galaxy1"
+                "schema:name": "plots[1].variable",
+                "schema:value": {
+                  "@type": "schema:StructuredValue",
+                  "variable": "flat",
+                  "x_limit_max": 11960,
+                  "x_limit_min": 11920
+                }
               },
               {
                 "@type": "schema:PropertyValue",
-                "schema:name": "plots[0].variable",
+                "schema:name": "plots[2].variable",
                 "schema:value": {
                   "@type": "schema:StructuredValue",
                   "variable": "dmude",
-                  "x_limit_max": 7160,
-                  "x_limit_min": 7100
+                  "x_limit_max": 11980,
+                  "x_limit_min": 11900
                 }
-              }
-            ]
-          },
-          {
-            "@type": "schema:HowToStep",
-            "schema:name": "17",
-            "schema:position": 11,
-            "schema:description": "Inputs from: 7, 8, 9, 10, 13",
-            "schema:startTime": "2024-09-11T16:12:57.938754",
-            "schema:endTime": "2024-09-11T16:13:16.432877",
-            "schema:additionalProperty": [
-              {
-                "@type": "schema:PropertyValue",
-                "schema:name": "tool",
-                "schema:value": "larch_plot",
-                "schema:propertyID": "toolshed.g2.bx.psu.edu/repos/muon-spectroscopy-computational-project/larch_plot/larch_plot/0.9.80+galaxy1"
               },
               {
                 "@type": "schema:PropertyValue",
-                "schema:name": "toolVersion",
-                "schema:value": "0.9.80+galaxy1"
-              },
-              {
-                "@type": "schema:PropertyValue",
-                "schema:name": "plots[0].variable",
+                "schema:name": "plots[3].variable",
                 "schema:value": {
                   "@type": "schema:StructuredValue",
-                  "variable": "flat",
-                  "x_limit_max": 7135,
-                  "x_limit_min": 7100
+                  "variable": "chir_mag",
+                  "x_limit_max": 6,
+                  "x_limit_min": 0
                 }
               }
             ]
@@ -500,59 +513,21 @@
       "prov:used": [
         {
           "@type": [
-            "schema:CreativeWorkSeries"
+            "prov:Entity",
+            "schema:MediaObject"
           ],
-          "@id": "#dataset_collection-2617",
-          "schema:name": "A Time",
-          "schema:description": "Collection of 10 items"
+          "@id": "datasets/Compiled_XAS_data_Colloid_and_TiO2_supported_Au.prj_1.prj",
+          "schema:name": "Compiled_XAS_data_Colloid_and_TiO2_supported_Au.prj",
+          "schema:encodingFormat": "text/plain"
         },
         {
-          "@type": [
-            "schema:CreativeWorkSeries"
-          ],
-          "@id": "#dataset_collection-2618",
-          "schema:name": "B Time",
-          "schema:description": "Collection of 10 items"
-        },
-        {
-          "@type": [
-            "schema:CreativeWorkSeries"
-          ],
-          "@id": "#dataset_collection-2619",
-          "schema:name": "C Time",
-          "schema:description": "Collection of 11 items"
-        },
-        {
-          "@type": [
-            "schema:CreativeWorkSeries"
-          ],
-          "@id": "#dataset_collection-2620",
-          "schema:name": "D Time",
-          "schema:description": "Collection of 10 items"
-        },
-        {
-          "@type": [
-            "schema:CreativeWorkSeries"
-          ],
-          "@id": "#dataset_collection-2621",
-          "schema:name": "Fe metal",
-          "schema:description": "Collection of 3 items"
-        },
-        {
-          "@type": [
-            "schema:CreativeWorkSeries"
-          ],
-          "@id": "#dataset_collection-2622",
-          "schema:name": "FrBr Standard",
-          "schema:description": "Collection of 10 items"
-        },
-        {
-          "@type": [
-            "schema:CreativeWorkSeries"
-          ],
-          "@id": "#dataset_collection-2623",
-          "schema:name": "Reading 7a",
-          "schema:description": "Collection of 3 items"
+          "bios:computationalTool": {
+            "@type": [
+              "schema:SoftwareApplication"
+            ],
+            "schema:name": "Galaxy workflow engine",
+            "schema:version": "23.2"
+          }
         }
       ]
     }

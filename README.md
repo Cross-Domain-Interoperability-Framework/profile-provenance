@@ -8,6 +8,7 @@ There is a related [Google drive](https://drive.google.com/drive/folders/1TGToyv
 
 ### Documentation
 
+- **[CDIFProvenanceImplementationGuide.md](CDIFProvenanceImplementationGuide.md)** — Implementation guide (auto-generated draft from the StructuredSchema; hand-curated content pending). Properties, classes, and conformance.
 - **[ProvenanceOptions.md](ProvenanceOptions.md)** — Comprehensive comparison of provenance approaches available in CDIF: the three native building blocks (cdifProv, provActivity, ddicdiProv) and external RO-Crate-based profiles (WRROC, ARC). Covers property mappings, multi-step provenance patterns, and guidance for implementing ARC profile support in CDIF.
 - **[agents.md](agents.md)** — Analysis of how agents (people, organizations, software) are represented across provenance vocabularies used in CDIF, with recommendations for consistent implementation.
 
@@ -69,8 +70,85 @@ The [Examples/](Examples/) folder contains provenance instance documents in vari
 
 Galaxy workflow RO-Crates originate from [Zenodo record 13842780](https://zenodo.org/records/13842780). Galaxy `.cdifprov.json` files were generated using [tools/galaxyROCrateToCDIF.py](tools/galaxyROCrateToCDIF.py) (HowTo/step approach) and `.actions.cdifprov.json` files using [tools/galaxyROCrateToCDIFActions.py](tools/galaxyROCrateToCDIFActions.py) (multi-activity approach). Bennu ARC examples were generated using [tools/WRROCToCdifProv.py](tools/WRROCToCdifProv.py).
 
+#### One example reports on a different node, by design
+
+Framing selects the node matching the frame's root `@type`, which in `cdifProvenance-frame.jsonld` is `schema:Dataset`. **`ODIS_provExampleJulesVerne.json` has a root typed `Action`**, so framing does not match it and the framed output describes a different node — `…/Dataset-015481461` rather than the source's `…/Action-00252231.json`.
+
+That is expected: the example exists to exercise the schema.org Action pattern with an Action at the root, and **the frame should not be widened to accommodate it** — a frame's job is to match the shape this profile actually publishes.
+
+Worth knowing because a useful sanity check — frame every example and compare the framed `@id` against the source `@id` — flags this one. It is the only expected mismatch here. Anything else appearing in that check is a real problem: the validator would be reporting on something other than the document it was given, **and reporting PASS while doing so**. That selection lives in `pick_main_entity`, which is generated from the normative source in the [validation](https://github.com/Cross-Domain-Interoperability-Framework/validation) repo — fix it there, never in this copy, which carries a DO-NOT-EDIT banner and a drift hash that CI checks.
+
+#### An `@id` that is not a valid IRI silently loses the triple
+
+Galaxy writes RO-Crate `@id`s containing spaces and pipes (`#input-Sn Foil`,
+`…/output-plot_collection|0_flat`). A JSON-LD parser cannot turn those into a usable
+IRI, so it drops the node **and the incoming triple with it**. In
+`Paper_1_Pt3Sn.actions.cdifprov.json` 28 `prov:used` keys collapsed to 6 subjects in
+the graph: 22 activities that do name their inputs looked like activities naming none.
+
+**Nothing warned.** The JSON Schema gate sees the key present and is satisfied, which
+is why this survived a clean 17/17 schema run while 12 examples failed conformance —
+the loss happens after the gate, during RDF expansion. The converters now
+percent-encode `@id`s, applied to definitions and references alike so the two stay in
+step; a rename that touched only one side would break the join instead.
+
+When adding an example, check `@id`s against the graph rather than the file: parse it
+and compare the triple count for a property against the number of keys in the JSON.
+Equal counts are the invariant; a shortfall means a node was dropped.
+
 ## Related Repositories
 
 - [usgin/metadataBuildingBlocks](https://github.com/usgin/metadataBuildingBlocks) — CDIF metadata building blocks (cdifProv, provActivity, ddicdiProv schemas and SHACL shapes)
 - [Cross-Domain-Interoperability-Framework/packaging](https://github.com/Cross-Domain-Interoperability-Framework/packaging) — CDIF packaging tools including RO-Crate and WRROC converters
 - [Cross-Domain-Interoperability-Framework/validation](https://github.com/Cross-Domain-Interoperability-Framework/validation) — CDIF validation schemas and SHACL shapes
+
+## Changelog — reviewRevision202606 (updates since branched from `main`)
+
+This release-review branch has diverged from `main` with the following updates,
+synced from the CDIF **metadataBuildingBlocks** source (see
+`git log main..reviewRevision202606` for the full per-commit history):
+
+- **Populated from metadataBuildingBlocks** — `*StructuredSchema.json`, merged SHACL,
+  JSON-LD frame, examples, and the normative `FrameAndValidate.py` generated from the
+  building-block source; `Examples/` renamed to `examples/`.
+- **CDIF v1.1** — profile conformance URIs migrated `/1.0` → `/1.1`.
+- **License** standardized on CC-BY-4.0.
+- **`@id`-reference tightening** — bare `{@id}` reference slots sealed
+  (`additionalProperties: false` + `required: ['@id']`); a canonical `objectReference`
+  building block introduced as the strict node reference.
+- **`prov:used` wrapper reconciliation** — the base `generatedBy.prov:used` accepts
+  role-keyed wrappers (`schema:instrument` / `bios:computationalTool` / `prov:reagent`)
+  alongside string / `{@id}` / inline `prov:Entity`; profiles pin a wrapper's shape via
+  a constraint-only `if/then` (never a narrowed `anyOf`).
+- **`skos:notation` → single string** at concept level (consistent with the codelist
+  single-notation design).
+- **`FrameAndValidate.py`** (normative, drift-checked against
+  `Cross-Domain-Interoperability-Framework/validation`) — two-frame root-`@type`
+  selection, context-aware `schema:about`, `--conformance` detection, `cdif:`-`@id`
+  re-expansion, and (2026-08) reference-collapse on all document types + blank-node
+  dedupe + agent `schema:identifier` unwrap, so `@embed:@always`-framed documents
+  validate against the tightened schemas.
+- **Examples** conformed to the tightened schemas throughout (PrimaryKey →
+  `cdi:ComponentPosition`, reference slots → `{@id}`, CVE `hasIntendedDataType` →
+  string, `skos:notation` → string, `schema:additionalType` URI → `{@id}`).
+- **Galaxy converter corrections (2026-10-01)** — two defects that together failed
+  conformance on all 12 Galaxy-derived examples, both fixed in the converters as
+  well as the generated files:
+  - An `OrganizeAction` is **not** a generator. Both converters swept
+    `{CreateAction, OrganizeAction}` into the activity list, so "Run of Galaxy
+    workflow engine" became an object of `prov:wasGeneratedBy`. The crate does not
+    say that — across all eight source crates the root's `mentions` names the
+    `CreateAction` every time and the `OrganizeAction` never. It is also the one
+    action with no `object` and no `result` to map, so the `cdifProvActivity`
+    `prov:used` Violation was reporting the mis-mapping rather than a missing value.
+    The engine is preserved as a `bios:computationalTool` role entry on the workflow
+    execution, where it is true.
+  - `@id` values carried IRI-illegal characters through from the crate — 170 spaces
+    and 31 pipes across 96 distinct `@id`s in 6 files, e.g. `#input-Sn Foil`. See
+    the note below; now percent-encoded.
+
+
+## Development branch
+
+Active work for the 2026-06 review revision is on the `reviewRevision202606` branch. `main` reflects the prior release state. New changes should target the review branch; it is merged to main on release.
+

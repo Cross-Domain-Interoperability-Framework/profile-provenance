@@ -2,30 +2,37 @@
   "@context": {
     "schema": "http://schema.org/",
     "prov": "http://www.w3.org/ns/prov#",
-    "bios": "https://bioschemas.org/"
+    "bios": "https://bioschemas.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "dcat": "http://www.w3.org/ns/dcat#"
   },
-  "@graph": [
-    {
-      "@type": [
-        "schema:Action",
-        "prov:Activity"
-      ],
-      "@id": "#db926013-bea1-4ace-a395-27dd3d89fbc7",
-      "schema:name": "Run of Galaxy workflow engine",
-      "schema:additionalType": [
-        "schema:OrganizeAction"
-      ],
-      "schema:actionStatus": "schema:CompletedActionStatus",
-      "schema:startTime": "2024-10-14T16:47:45.570110",
-      "schema:endTime": "2024-10-14T16:47:49.924132",
-      "schema:instrument": {
-        "@type": [
-          "schema:SoftwareApplication"
-        ],
-        "schema:name": "Galaxy workflow engine",
-        "schema:version": "24.1"
+  "@id": "#dataset",
+  "@type": [
+    "schema:Dataset"
+  ],
+  "schema:name": "Paper 1 Pt3Sn",
+  "schema:dateModified": "2024-10-14",
+  "schema:subjectOf": {
+    "@type": [
+      "schema:Dataset",
+      "dcat:CatalogRecord"
+    ],
+    "schema:additionalType": [
+      {
+        "@id": "dcat:CatalogRecord"
       }
+    ],
+    "@id": "#metadata",
+    "schema:about": {
+      "@id": "#dataset"
     },
+    "dcterms:conformsTo": [
+      {
+        "@id": "https://w3id.org/cdif/provenance/1.1"
+      }
+    ]
+  },
+  "prov:wasGeneratedBy": [
     {
       "@type": [
         "schema:Action",
@@ -100,7 +107,9 @@
         ],
         "schema:step": [
           {
-            "@type": "schema:HowToStep",
+            "@type": [
+              "schema:HowToStep"
+            ],
             "schema:name": "Extract Sn Foil",
             "schema:position": 1,
             "schema:description": "Inputs from: Sn Foil, Sn foil Calibration",
@@ -147,7 +156,9 @@
             ]
           },
           {
-            "@type": "schema:HowToStep",
+            "@type": [
+              "schema:HowToStep"
+            ],
             "schema:name": "Extract SnO2",
             "schema:position": 2,
             "schema:description": "Inputs from: SnO2, SnO2 Calibration",
@@ -194,7 +205,9 @@
             ]
           },
           {
-            "@type": "schema:HowToStep",
+            "@type": [
+              "schema:HowToStep"
+            ],
             "schema:name": "Merge Sn K edge H2 under H2",
             "schema:position": 3,
             "schema:description": "Inputs from: Sn K edge H2 under H2, Sn K edge under H2 Calibration",
@@ -242,7 +255,9 @@
             ]
           },
           {
-            "@type": "schema:HowToStep",
+            "@type": [
+              "schema:HowToStep"
+            ],
             "schema:name": "Merge Sn K edge H2",
             "schema:position": 4,
             "schema:description": "Inputs from: Sn K edge H2, Sn3Pt Sn Calibration",
@@ -290,7 +305,9 @@
             ]
           },
           {
-            "@type": "schema:HowToStep",
+            "@type": [
+              "schema:HowToStep"
+            ],
             "schema:name": "Merge Sn K edge Ar",
             "schema:position": 5,
             "schema:description": "Inputs from: Sn K edge Ar, Sn3Pt Sn Calibration",
@@ -338,7 +355,9 @@
             ]
           },
           {
-            "@type": "schema:HowToStep",
+            "@type": [
+              "schema:HowToStep"
+            ],
             "schema:name": "Merge Sn K edge Air",
             "schema:position": 6,
             "schema:description": "Inputs from: Sn K edge Air, Sn3Pt Sn Calibration",
@@ -386,7 +405,9 @@
             ]
           },
           {
-            "@type": "schema:HowToStep",
+            "@type": [
+              "schema:HowToStep"
+            ],
             "schema:name": "Merge Pt L3 edge H2 under H2",
             "schema:position": 7,
             "schema:description": "Inputs from: Pt L3 edge H2 under H2, Pt L3 edge under H2 Calibration",
@@ -430,7 +451,9 @@
             ]
           },
           {
-            "@type": "schema:HowToStep",
+            "@type": [
+              "schema:HowToStep"
+            ],
             "schema:name": "Merge Pt L3 edge H2",
             "schema:position": 8,
             "schema:description": "Inputs from: Pt L3 edge H2, Sn3Pt Pt Calibration",
@@ -474,7 +497,9 @@
             ]
           },
           {
-            "@type": "schema:HowToStep",
+            "@type": [
+              "schema:HowToStep"
+            ],
             "schema:name": "Merge Pt L3 edge Ar",
             "schema:position": 9,
             "schema:description": "Inputs from: Pt L3 edge Ar, Sn3Pt Pt Calibration",
@@ -518,7 +543,9 @@
             ]
           },
           {
-            "@type": "schema:HowToStep",
+            "@type": [
+              "schema:HowToStep"
+            ],
             "schema:name": "Merge Pt L3 edge Air",
             "schema:position": 10,
             "schema:description": "Inputs from: Pt L3 edge Air, Sn3Pt Pt Calibration",
@@ -562,7 +589,9 @@
             ]
           },
           {
-            "@type": "schema:HowToStep",
+            "@type": [
+              "schema:HowToStep"
+            ],
             "schema:name": "Pt3Sn FEFF: Sn",
             "schema:position": 11,
             "schema:description": "Inputs from: Pt3Sn Cif",
@@ -593,7 +622,9 @@
             ]
           },
           {
-            "@type": "schema:HowToStep",
+            "@type": [
+              "schema:HowToStep"
+            ],
             "schema:name": "Pt3Sn FEFF: Pt",
             "schema:position": 12,
             "schema:description": "Inputs from: Pt3Sn Cif",
@@ -624,7 +655,9 @@
             ]
           },
           {
-            "@type": "schema:HowToStep",
+            "@type": [
+              "schema:HowToStep"
+            ],
             "schema:name": "SnO2 FEFF",
             "schema:position": 13,
             "schema:description": "Inputs from: SnO2 Cif",
@@ -655,7 +688,9 @@
             ]
           },
           {
-            "@type": "schema:HowToStep",
+            "@type": [
+              "schema:HowToStep"
+            ],
             "schema:name": "PtO2 FEFF",
             "schema:position": 14,
             "schema:description": "Inputs from: PtO2 Cif",
@@ -686,7 +721,9 @@
             ]
           },
           {
-            "@type": "schema:HowToStep",
+            "@type": [
+              "schema:HowToStep"
+            ],
             "schema:name": "LCF: Sn Foil / SnO2, H2",
             "schema:position": 15,
             "schema:description": "Inputs from: Extract Sn Foil, Extract SnO2, Merge Sn K edge H2",
@@ -747,7 +784,9 @@
             ]
           },
           {
-            "@type": "schema:HowToStep",
+            "@type": [
+              "schema:HowToStep"
+            ],
             "schema:name": "LCF: Pt3Sn / SnO2, H2",
             "schema:position": 16,
             "schema:description": "Inputs from: Merge Sn K edge H2 under H2, Extract SnO2, Merge Sn K edge H2",
@@ -808,7 +847,9 @@
             ]
           },
           {
-            "@type": "schema:HowToStep",
+            "@type": [
+              "schema:HowToStep"
+            ],
             "schema:name": "LCF: Sn Foil / SnO2, Ar",
             "schema:position": 17,
             "schema:description": "Inputs from: Extract Sn Foil, Extract SnO2, Merge Sn K edge Ar",
@@ -869,7 +910,9 @@
             ]
           },
           {
-            "@type": "schema:HowToStep",
+            "@type": [
+              "schema:HowToStep"
+            ],
             "schema:name": "LCF: Pt3Sn / SnO2, Ar",
             "schema:position": 18,
             "schema:description": "Inputs from: Merge Sn K edge H2 under H2, Extract SnO2, Merge Sn K edge Ar",
@@ -930,7 +973,9 @@
             ]
           },
           {
-            "@type": "schema:HowToStep",
+            "@type": [
+              "schema:HowToStep"
+            ],
             "schema:name": "Sn K XANES Plot",
             "schema:position": 19,
             "schema:description": "Inputs from: Extract Sn Foil, Extract SnO2, Merge Sn K edge H2 under H2, Merge Sn K edge H2, Merge Sn K edge Ar, Merge Sn K edge Air",
@@ -972,7 +1017,9 @@
             ]
           },
           {
-            "@type": "schema:HowToStep",
+            "@type": [
+              "schema:HowToStep"
+            ],
             "schema:name": "LCF: Sn Foil / SnO2, Air",
             "schema:position": 20,
             "schema:description": "Inputs from: Extract Sn Foil, Extract SnO2, Merge Sn K edge Air",
@@ -1033,7 +1080,9 @@
             ]
           },
           {
-            "@type": "schema:HowToStep",
+            "@type": [
+              "schema:HowToStep"
+            ],
             "schema:name": "LCF: Pt3Sn / SnO2, Air",
             "schema:position": 21,
             "schema:description": "Inputs from: Merge Sn K edge H2 under H2, Extract SnO2, Merge Sn K edge Air",
@@ -1094,7 +1143,9 @@
             ]
           },
           {
-            "@type": "schema:HowToStep",
+            "@type": [
+              "schema:HowToStep"
+            ],
             "schema:name": "Pt L3 XANES Plot",
             "schema:position": 22,
             "schema:description": "Inputs from: Merge Pt L3 edge H2 under H2, Merge Pt L3 edge H2, Merge Pt L3 edge Ar, Merge Pt L3 edge Air",
@@ -1136,7 +1187,9 @@
             ]
           },
           {
-            "@type": "schema:HowToStep",
+            "@type": [
+              "schema:HowToStep"
+            ],
             "schema:name": "41",
             "schema:position": 23,
             "schema:description": "Inputs from: PtO2 FEFF, SnO2 FEFF, Pt3Sn FEFF: Sn, Pt3Sn FEFF: Pt",
@@ -1360,7 +1413,9 @@
             ]
           },
           {
-            "@type": "schema:HowToStep",
+            "@type": [
+              "schema:HowToStep"
+            ],
             "schema:name": "Artemis: H2 under H2",
             "schema:position": 24,
             "schema:description": "Inputs from: Merge Pt L3 edge H2 under H2, Merge Sn K edge H2 under H2, 41",
@@ -1415,7 +1470,9 @@
             ]
           },
           {
-            "@type": "schema:HowToStep",
+            "@type": [
+              "schema:HowToStep"
+            ],
             "schema:name": "Artemis: H2",
             "schema:position": 25,
             "schema:description": "Inputs from: Merge Pt L3 edge H2, Merge Sn K edge H2, 41",
@@ -1470,7 +1527,9 @@
             ]
           },
           {
-            "@type": "schema:HowToStep",
+            "@type": [
+              "schema:HowToStep"
+            ],
             "schema:name": "Artemis: Ar",
             "schema:position": 26,
             "schema:description": "Inputs from: Merge Pt L3 edge Ar, Merge Sn K edge Ar, 41",
@@ -1525,7 +1584,9 @@
             ]
           },
           {
-            "@type": "schema:HowToStep",
+            "@type": [
+              "schema:HowToStep"
+            ],
             "schema:name": "Artemis: Air",
             "schema:position": 27,
             "schema:description": "Inputs from: Merge Pt L3 edge Air, Merge Sn K edge Air, 41",
@@ -1584,6 +1645,7 @@
       "prov:used": [
         {
           "@type": [
+            "prov:Entity",
             "schema:CreativeWorkSeries"
           ],
           "@id": "#dataset_collection-9118",
@@ -1592,6 +1654,7 @@
         },
         {
           "@type": [
+            "prov:Entity",
             "schema:CreativeWorkSeries"
           ],
           "@id": "#dataset_collection-9119",
@@ -1600,6 +1663,7 @@
         },
         {
           "@type": [
+            "prov:Entity",
             "schema:CreativeWorkSeries"
           ],
           "@id": "#dataset_collection-9120",
@@ -1608,6 +1672,7 @@
         },
         {
           "@type": [
+            "prov:Entity",
             "schema:CreativeWorkSeries"
           ],
           "@id": "#dataset_collection-9121",
@@ -1616,6 +1681,7 @@
         },
         {
           "@type": [
+            "prov:Entity",
             "schema:CreativeWorkSeries"
           ],
           "@id": "#dataset_collection-9122",
@@ -1624,6 +1690,7 @@
         },
         {
           "@type": [
+            "prov:Entity",
             "schema:CreativeWorkSeries"
           ],
           "@id": "#dataset_collection-9123",
@@ -1632,6 +1699,7 @@
         },
         {
           "@type": [
+            "prov:Entity",
             "schema:CreativeWorkSeries"
           ],
           "@id": "#dataset_collection-9124",
@@ -1640,6 +1708,7 @@
         },
         {
           "@type": [
+            "prov:Entity",
             "schema:CreativeWorkSeries"
           ],
           "@id": "#dataset_collection-9125",
@@ -1648,6 +1717,7 @@
         },
         {
           "@type": [
+            "prov:Entity",
             "schema:MediaObject"
           ],
           "@id": "datasets/Sn_foil.prj_b9b199e627b0df6d.prj",
@@ -1656,6 +1726,7 @@
         },
         {
           "@type": [
+            "prov:Entity",
             "schema:MediaObject"
           ],
           "@id": "datasets/SnO2_0.9_2.6-13.5_gbkg.prj_48b3093bef30842b.prj",
@@ -1664,6 +1735,7 @@
         },
         {
           "@type": [
+            "prov:Entity",
             "schema:MediaObject"
           ],
           "@id": "datasets/1692395.cif_d28c7de7a4bf240d.cif",
@@ -1672,6 +1744,7 @@
         },
         {
           "@type": [
+            "prov:Entity",
             "schema:MediaObject"
           ],
           "@id": "datasets/1690711.cif_b3eebcf05996ed00.cif",
@@ -1680,6 +1753,7 @@
         },
         {
           "@type": [
+            "prov:Entity",
             "schema:MediaObject"
           ],
           "@id": "datasets/1680385.cif_d8d62840031974c8.cif",
@@ -1688,45 +1762,60 @@
         },
         {
           "@type": [
+            "prov:Entity",
             "schema:MediaObject"
           ],
-          "@id": "#Sn foil Calibration-pv",
+          "@id": "#Sn%20foil%20Calibration-pv",
           "schema:name": "Sn foil Calibration"
         },
         {
           "@type": [
+            "prov:Entity",
             "schema:MediaObject"
           ],
-          "@id": "#SnO2 Calibration-pv",
+          "@id": "#SnO2%20Calibration-pv",
           "schema:name": "SnO2 Calibration"
         },
         {
           "@type": [
+            "prov:Entity",
             "schema:MediaObject"
           ],
-          "@id": "#Sn K edge under H2 Calibration-pv",
+          "@id": "#Sn%20K%20edge%20under%20H2%20Calibration-pv",
           "schema:name": "Sn K edge under H2 Calibration"
         },
         {
           "@type": [
+            "prov:Entity",
             "schema:MediaObject"
           ],
-          "@id": "#Sn3Pt Sn Calibration-pv",
+          "@id": "#Sn3Pt%20Sn%20Calibration-pv",
           "schema:name": "Sn3Pt Sn Calibration"
         },
         {
           "@type": [
+            "prov:Entity",
             "schema:MediaObject"
           ],
-          "@id": "#Pt L3 edge under H2 Calibration-pv",
+          "@id": "#Pt%20L3%20edge%20under%20H2%20Calibration-pv",
           "schema:name": "Pt L3 edge under H2 Calibration"
         },
         {
           "@type": [
+            "prov:Entity",
             "schema:MediaObject"
           ],
-          "@id": "#Sn3Pt Pt Calibration-pv",
+          "@id": "#Sn3Pt%20Pt%20Calibration-pv",
           "schema:name": "Sn3Pt Pt Calibration"
+        },
+        {
+          "bios:computationalTool": {
+            "@type": [
+              "schema:SoftwareApplication"
+            ],
+            "schema:name": "Galaxy workflow engine",
+            "schema:version": "24.1"
+          }
         }
       ]
     }

@@ -2,30 +2,37 @@
   "@context": {
     "schema": "http://schema.org/",
     "prov": "http://www.w3.org/ns/prov#",
-    "bios": "https://bioschemas.org/"
+    "bios": "https://bioschemas.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "dcat": "http://www.w3.org/ns/dcat#"
   },
-  "@graph": [
-    {
-      "@type": [
-        "schema:Action",
-        "prov:Activity"
-      ],
-      "@id": "#c5250654-d18b-4657-b066-d3311ce7d2a5",
-      "schema:name": "Run of Galaxy workflow engine",
-      "schema:additionalType": [
-        "schema:OrganizeAction"
-      ],
-      "schema:actionStatus": "schema:CompletedActionStatus",
-      "schema:startTime": "2024-10-28T17:49:11.644661",
-      "schema:endTime": "2024-10-28T17:49:27.648788",
-      "schema:instrument": {
-        "@type": [
-          "schema:SoftwareApplication"
-        ],
-        "schema:name": "Galaxy workflow engine",
-        "schema:version": "24.1"
+  "@id": "#dataset",
+  "@type": [
+    "schema:Dataset"
+  ],
+  "schema:name": "Paper 8 EXAFS fitting",
+  "schema:dateModified": "2024-10-28",
+  "schema:subjectOf": {
+    "@type": [
+      "schema:Dataset",
+      "dcat:CatalogRecord"
+    ],
+    "schema:additionalType": [
+      {
+        "@id": "dcat:CatalogRecord"
       }
+    ],
+    "@id": "#metadata",
+    "schema:about": {
+      "@id": "#dataset"
     },
+    "dcterms:conformsTo": [
+      {
+        "@id": "https://w3id.org/cdif/provenance/1.1"
+      }
+    ]
+  },
+  "prov:wasGeneratedBy": [
     {
       "@type": [
         "schema:Action",
@@ -52,6 +59,7 @@
       "prov:used": [
         {
           "@type": [
+            "prov:Entity",
             "schema:MediaObject"
           ],
           "@id": "datasets/Washcoat_Athena_project_file_from_paper_3dfde3a7417d0973.prj",
@@ -60,6 +68,7 @@
         },
         {
           "@type": [
+            "prov:Entity",
             "schema:MediaObject"
           ],
           "@id": "datasets/20g_ash_Athena_project_file_from_paper_cb3d3286c5ba876f.prj",
@@ -68,6 +77,7 @@
         },
         {
           "@type": [
+            "prov:Entity",
             "schema:MediaObject"
           ],
           "@id": "datasets/PdO_cif_file.cif_ebd697d0c147d306.cif",
@@ -76,11 +86,21 @@
         },
         {
           "@type": [
+            "prov:Entity",
             "schema:MediaObject"
           ],
           "@id": "datasets/Pd_cif_file.cif_b0b2392468d82f00.cif",
           "schema:name": "Pd_cif_file.cif",
           "schema:encodingFormat": "text/plain"
+        },
+        {
+          "bios:computationalTool": {
+            "@type": [
+              "schema:SoftwareApplication"
+            ],
+            "schema:name": "Galaxy workflow engine",
+            "schema:version": "24.1"
+          }
         }
       ]
     },
@@ -101,8 +121,11 @@
       },
       "prov:used": [
         {
-          "@type": "schema:Thing",
-          "@id": "#input-Washcoat Athena project file from paper",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
+          "@id": "#input-Washcoat%20Athena%20project%20file%20from%20paper",
           "schema:name": "Washcoat Athena project file from paper"
         }
       ]
@@ -124,8 +147,11 @@
       },
       "prov:used": [
         {
-          "@type": "schema:Thing",
-          "@id": "#input-20g ash Athena project file from paper",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
+          "@id": "#input-20g%20ash%20Athena%20project%20file%20from%20paper",
           "schema:name": "20g ash Athena project file from paper"
         }
       ]
@@ -147,8 +173,11 @@
       },
       "prov:used": [
         {
-          "@type": "schema:Thing",
-          "@id": "#input-PdO cif file",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
+          "@id": "#input-PdO%20cif%20file",
           "schema:name": "PdO cif file"
         }
       ]
@@ -170,8 +199,11 @@
       },
       "prov:used": [
         {
-          "@type": "schema:Thing",
-          "@id": "#input-Pd cif file",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
+          "@id": "#input-Pd%20cif%20file",
           "schema:name": "Pd cif file"
         }
       ]
@@ -201,22 +233,34 @@
       ],
       "prov:used": [
         {
-          "@type": "schema:Thing",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
           "@id": "#output-6-out_dir",
           "schema:name": "6/out_dir"
         },
         {
-          "@type": "schema:Thing",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
           "@id": "#output-7-out_csv",
           "schema:name": "7/out_csv"
         },
         {
-          "@type": "schema:Thing",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
           "@id": "#output-7-out_dir",
           "schema:name": "7/out_dir"
         },
         {
-          "@type": "schema:Thing",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
           "@id": "#output-6-out_csv",
           "schema:name": "6/out_csv"
         }
@@ -247,22 +291,34 @@
       ],
       "prov:used": [
         {
-          "@type": "schema:Thing",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
           "@id": "#output-8-gds_csv",
           "schema:name": "8/gds_csv"
         },
         {
-          "@type": "schema:Thing",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
           "@id": "#output-8-sp_csv",
           "schema:name": "8/sp_csv"
         },
         {
-          "@type": "schema:Thing",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
           "@id": "#output-8-merged_directories",
           "schema:name": "8/merged_directories"
         },
         {
-          "@type": "schema:Thing",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
           "@id": "#output-4-athena_project_file_collection",
           "schema:name": "4/athena_project_file_collection"
         }
@@ -293,22 +349,34 @@
       ],
       "prov:used": [
         {
-          "@type": "schema:Thing",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
           "@id": "#output-8-gds_csv",
           "schema:name": "8/gds_csv"
         },
         {
-          "@type": "schema:Thing",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
           "@id": "#output-8-sp_csv",
           "schema:name": "8/sp_csv"
         },
         {
-          "@type": "schema:Thing",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
           "@id": "#output-8-merged_directories",
           "schema:name": "8/merged_directories"
         },
         {
-          "@type": "schema:Thing",
+          "@type": [
+            "prov:Entity",
+            "schema:Thing"
+          ],
           "@id": "#output-5-athena_project_file_collection",
           "schema:name": "5/athena_project_file_collection"
         }
