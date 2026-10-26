@@ -64,7 +64,7 @@ Key properties: `schema:agent`, `schema:participant`, `schema:object` (inputs), 
 1. a string (URI or free-text reference);
 2. an `{@id}` reference, which is the sealed [objectReference](https://github.com/Cross-Domain-Interoperability-Framework/metadataBuildingBlocks/tree/main/_sources/cdifDataType/objectReference) building block (`additionalProperties: false`, `required: \['@id']`);
 3. an inline entity whose `@type` array includes `prov:Entity`;
-4. a **role-keyed wrapper** under one of three recognized role names: `schema:instrument`, `bios:computationalTool` or `prov:reagent`;
+4. a **role-keyed wrapper** under one of three recognized role names: `schema:instrument`, `bios:computationalTool` or `bios:reagent` (`prov:reagent` until 2026-10-25; see [§14](#14-open-issues) item 1);
 5. *(since 2026-10-22, metadataBuildingBlocks #52)* a role-keyed wrapper under **any** prefixed role name, admitted by shape rather than by name.
 
 The wrapper names the role through the property key, e.g. `"prov:used": \[{"schema:instrument": \[ {…Instrument…} ]}]`. cdifProvActivity then *pins* the `schema:instrument` wrapper's value to an array of its Instrument definition, using a constraint-only `if/then`. It deliberately does not narrow the base `anyOf`, because an `allOf` intersection with a narrowed `anyOf` would silently exclude the other base shapes. Domain profiles are expected to **close** the set of role names they accept (see [§12](#12-a-domain-profile-built-on-cdifprovactivity-geochemistry-ada)).
@@ -524,8 +524,10 @@ The geochemistry product schema pins four roles in `prov:used`, each with a cons
 |-|-|
 |`schema:instrument`|array of the geochem instrument building block|
 |`bios:computationalTool`|array of software actually used|
-|`prov:reagent`|array of reagents / reference materials actually used|
+|`bios:reagent`|array of reagents / reference materials actually used|
 |`ada:tappDefinition`|the plan: a closed `{@id}` reference, or the plan inline|
+
+The reagent role is spelled `bios:reagent`, the same as on the plan. The profile also **rejects** the old spelling `prov:reagent` outright, with a rejection message that names the new key, and a counterexample keeps that rejection in place ([geochemBuildingBlocks#220](https://github.com/amds-ldeo/geochemBuildingBlocks/pull/220)). Rejecting it needed no record migration first: `prov:reagent` occurred 0 times in every stored ADA document. Without the profile's rejection, the CDIF base would still admit the old key through its generic wrapper branch.
 
 `ada:tappDefinition` is a profile-defined role. It reaches CDIF through the generic wrapper branch added to the base in metadataBuildingBlocks #52, and the profile closes the set to the roles it names. The reason for keying the plan link on a property name rather than on `@type` is that the **role is then readable without dereferencing anything**. An inline `prov:Entity` carries `ada:TAPPDefinition` in its `@type` too, so `@type` could never separate "the plan this run followed" from "a document that happens to be a plan".
 
@@ -618,7 +620,11 @@ ex:run1 a prov:Activity ;
 
 ## 14\. Open Issues
 
-1. **`prov:reagent` is not a PROV-O term.** The `generatedBy` base names `prov:reagent` as a recognized role, and the ADA profile pins it, but the PROV-O namespace defines no `reagent`. Meanwhile the ADA plan uses `bios:reagent`, which cdifBioschemasProperties does define. So one concept has two spellings across the plan and the activity, and one of them is a term minted in a namespace CDIF does not control. Options: rename the role to `bios:reagent`, or record `prov:reagent` as a CDIF-minted term with a definition.
+1. **RESOLVED (2026-10-25): the reagent role is now `bios:reagent`.** The role was spelled `prov:reagent`, but PROV-O defines no `reagent` term, while the ADA plan already used `bios:reagent`, which cdifBioschemasProperties defines. The role was renamed to `bios:reagent` everywhere, in two waves:
+   - **CDIF base:** the `generatedBy` named wrapper branch and the cdifProvActivity description ([metadataBuildingBlocks#53](https://github.com/Cross-Domain-Interoperability-Framework/metadataBuildingBlocks/pull/53), merged and published to gh-pages).
+   - **Downstream:** the ADA profile, which also rejects the old key ([geochemBuildingBlocks#220](https://github.com/amds-ldeo/geochemBuildingBlocks/pull/220)); ddeBuildingBlocks; and the CDIF release repos' synced schemas. These were open as draft PRs at the time of writing.
+
+   Before the rename, `prov:reagent` occurred 0 times in any JSON column of the ADA stores (`ada2`, `ada_subjects`, `method_registry`), and `bios:reagent` was already in 72 of 500 TAPP plans. Plan and activity now spell the role the same way.
 2. **The RDF reading of role-keyed wrappers** (§13.3 item 1; option D).
 3. **Converter instrument placement** differs from the documented wrapper placement (§5.4).
 4. **No controlled step vocabulary** in the CDIF base for `schema:step` names (§12.4).
@@ -634,6 +640,7 @@ What this document changes relative to [ProvenanceOptions.md](ProvenanceOptions.
 * §5: converter placement of instruments; the `OrganizeAction` and `@id`-encoding corrections of 2026-10-01; `bios:` prefix; converter files in this repository.
 * §7: added PROV-JSONLD and agent-role rows.
 * New §12 (ADA geochemistry profile), §13 (PROV-JSONLD), §14 (open issues).
+* 2026-10-26: the `prov:reagent` → `bios:reagent` rename (§2, §12.2; §14 item 1 marked resolved).
 
 ## 16\. Sources and References
 
