@@ -1,7 +1,7 @@
-# CDIF Provenance Options, October 2026 Update: Building Blocks, External Profiles and PROV-JSONLD
+# CDIF Provenance Options
 
 **Date:** 2026-10-25
-**Status:** Draft for review
+**Status:** Draft for review.  October 2026 Update: Building Blocks, External Profiles and PROV-JSONLD
 **Based on:** [ProvenanceOptions.md](ProvenanceOptions.md) (2026-03-11), which is left unchanged. This document carries that comparison forward. The changes are listed in [§15](#15-changes-from-provenanceoptionsmd).
 
 ## 1\. Overview
