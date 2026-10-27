@@ -1,0 +1,22 @@
+{
+  "@context": {
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "schema": "http://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "dag": "http://ddialliance.org/Specification/DDI-CDI/1.0/PROV/",
+    "at": "https://w3id.org/cdif/provenance/activityType/",
+    "skos:broadMatch": {"@type": "@id"},
+    "skos:exactMatch": {"@type": "@id"}
+  },
+  "@id": "at:calibrating",
+  "@type": ["skos:Concept"],
+  "skos:prefLabel": {"@value": "Calibrating", "@language": "en"},
+  "skos:notation": "calibrating",
+  "skos:definition": {"@value": "An activity during which measurement data produced by an entity are compared to a reference dataset with known accuracy in order to establish, verify, or document the accuracy of the entity.", "@language": "en"},
+  "skos:example": {"@value": "Chemistry: The set of operations which establish, under specified conditions, the relationship between values indicated by the analytical instrument and the corresponding known values of an analyte (https://goldbook.iupac.org/terms/view/C00775).", "@language": "en"},
+  "skos:editorialNote": [{"@value": "Tentative in ProvWork2025: the workshop marked this class as a potential new category, a component of other classes, or something to fold into context.", "@language": "en"}],
+  "skos:inScheme": {"@id": "https://w3id.org/cdif/provenance/activityType"},
+  "skos:topConceptOf": {"@id": "https://w3id.org/cdif/provenance/activityType"},
+  "skos:exactMatch": ["dag:Calibrating"],
+  "skos:narrower": [{"@id": "at:instrumentCalibration"}]
+}

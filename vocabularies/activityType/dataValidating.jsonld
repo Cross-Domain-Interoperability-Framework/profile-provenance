@@ -1,0 +1,20 @@
+{
+  "@context": {
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "schema": "http://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "dag": "http://ddialliance.org/Specification/DDI-CDI/1.0/PROV/",
+    "at": "https://w3id.org/cdif/provenance/activityType/",
+    "skos:broadMatch": {"@type": "@id"},
+    "skos:exactMatch": {"@type": "@id"}
+  },
+  "@id": "at:dataValidating",
+  "@type": ["skos:Concept"],
+  "skos:prefLabel": {"@value": "Data validating", "@language": "en"},
+  "skos:notation": "dataValidating",
+  "skos:definition": {"@value": "An activity during which a volume of data is evaluated in relation to some specification or criteria, usually assessing its soundness, justifiability, or appropriateness for a given purpose.", "@language": "en"},
+  "skos:example": {"@value": "Checking whether a model prediction is wtihin the Domain of Applicability of the model Confirming that a measured value is over the limit of quantification / Limit of detectionC", "@language": "en"},
+  "skos:inScheme": {"@id": "https://w3id.org/cdif/provenance/activityType"},
+  "skos:topConceptOf": {"@id": "https://w3id.org/cdif/provenance/activityType"},
+  "skos:exactMatch": ["dag:DataValidating"]
+}

@@ -1,0 +1,21 @@
+{
+  "@context": {
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "schema": "http://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "dag": "http://ddialliance.org/Specification/DDI-CDI/1.0/PROV/",
+    "at": "https://w3id.org/cdif/provenance/activityType/",
+    "skos:broadMatch": {"@type": "@id"},
+    "skos:exactMatch": {"@type": "@id"}
+  },
+  "@id": "at:observingMeasuring",
+  "@type": ["skos:Concept"],
+  "skos:prefLabel": {"@value": "Observing / measuring", "@language": "en"},
+  "skos:notation": "observingMeasuring",
+  "skos:definition": {"@value": "An activity during which an entity gathers data or information about another entity or itself. Measuring is observing during which reference standards or similar entities are used for the quantitative comparison of properties.", "@language": "en"},
+  "skos:example": {"@value": "For example, observation of features of an event; quantification of property; identification and description of qualitiative features of a phenomenon.", "@language": "en"},
+  "skos:inScheme": {"@id": "https://w3id.org/cdif/provenance/activityType"},
+  "skos:topConceptOf": {"@id": "https://w3id.org/cdif/provenance/activityType"},
+  "skos:exactMatch": ["dag:Observing_Measuring"],
+  "skos:narrower": [{"@id": "at:dataAcquisition"}]
+}

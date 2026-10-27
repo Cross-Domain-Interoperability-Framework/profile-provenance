@@ -1,0 +1,20 @@
+{
+  "@context": {
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "schema": "http://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "dag": "http://ddialliance.org/Specification/DDI-CDI/1.0/PROV/",
+    "at": "https://w3id.org/cdif/provenance/activityType/",
+    "skos:broadMatch": {"@type": "@id"},
+    "skos:exactMatch": {"@type": "@id"}
+  },
+  "@id": "at:analysing",
+  "@type": ["skos:Concept"],
+  "skos:prefLabel": {"@value": "Analysing", "@language": "en"},
+  "skos:notation": "analysing",
+  "skos:definition": {"@value": "An activity during which one or more entities are studied by examining their constituent parts and the interrelationships between those parts in order to increase one's knowledge about those entities.", "@language": "en"},
+  "skos:example": {"@value": "The calculation of column means and their standard deviations in a table.", "@language": "en"},
+  "skos:inScheme": {"@id": "https://w3id.org/cdif/provenance/activityType"},
+  "skos:topConceptOf": {"@id": "https://w3id.org/cdif/provenance/activityType"},
+  "skos:exactMatch": ["dag:Analyzing"]
+}

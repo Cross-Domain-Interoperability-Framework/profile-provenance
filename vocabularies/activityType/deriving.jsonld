@@ -1,0 +1,20 @@
+{
+  "@context": {
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "schema": "http://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "dag": "http://ddialliance.org/Specification/DDI-CDI/1.0/PROV/",
+    "at": "https://w3id.org/cdif/provenance/activityType/",
+    "skos:broadMatch": {"@type": "@id"},
+    "skos:exactMatch": {"@type": "@id"}
+  },
+  "@id": "at:deriving",
+  "@type": ["skos:Concept"],
+  "skos:prefLabel": {"@value": "Deriving", "@language": "en"},
+  "skos:notation": "deriving",
+  "skos:definition": {"@value": "A creation process during which a new entity arises from parts or all of pre-existing entities.", "@language": "en"},
+  "skos:editorialNote": [{"@value": "Tentative in ProvWork2025: the workshop marked this class as a potential new category, a component of other classes, or something to fold into context.", "@language": "en"}],
+  "skos:inScheme": {"@id": "https://w3id.org/cdif/provenance/activityType"},
+  "skos:broader": [{"@id": "at:creating"}],
+  "skos:exactMatch": ["dag:Deriving"]
+}

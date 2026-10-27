@@ -1,0 +1,21 @@
+{
+  "@context": {
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "schema": "http://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "dag": "http://ddialliance.org/Specification/DDI-CDI/1.0/PROV/",
+    "at": "https://w3id.org/cdif/provenance/activityType/",
+    "skos:broadMatch": {"@type": "@id"},
+    "skos:exactMatch": {"@type": "@id"}
+  },
+  "@id": "at:aggregating",
+  "@type": ["skos:Concept"],
+  "skos:prefLabel": {"@value": "Aggregating", "@language": "en"},
+  "skos:notation": "aggregating",
+  "skos:definition": {"@value": "An activity during which multiple entities are gathered together and assembled into a whole based on a defined set of criteria.", "@language": "en"},
+  "skos:example": {"@value": "For example, assembling a set of records to form a combined collection of observations of a given phenemenon, often for a metastudy or to create a broader understanding of the phenomenon.", "@language": "en"},
+  "skos:editorialNote": [{"@value": "Tentative in ProvWork2025: the workshop marked this class as a potential new category, a component of other classes, or something to fold into context.", "@language": "en"}],
+  "skos:inScheme": {"@id": "https://w3id.org/cdif/provenance/activityType"},
+  "skos:topConceptOf": {"@id": "https://w3id.org/cdif/provenance/activityType"},
+  "skos:exactMatch": ["dag:Aggregating"]
+}

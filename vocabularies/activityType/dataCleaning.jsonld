@@ -1,0 +1,20 @@
+{
+  "@context": {
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "schema": "http://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "dag": "http://ddialliance.org/Specification/DDI-CDI/1.0/PROV/",
+    "at": "https://w3id.org/cdif/provenance/activityType/",
+    "skos:broadMatch": {"@type": "@id"},
+    "skos:exactMatch": {"@type": "@id"}
+  },
+  "@id": "at:dataCleaning",
+  "@type": ["skos:Concept"],
+  "skos:prefLabel": {"@value": "Data cleaning", "@language": "en"},
+  "skos:notation": "dataCleaning",
+  "skos:definition": {"@value": "A data transformation during which erroneous, duplicated, or corrupted data is removed from a volume of data.", "@language": "en"},
+  "skos:example": {"@value": "For example, data cleaning can include removing impossible combinations of values from the raw data collected for a register of births, marriages, divorces, and deaths.", "@language": "en"},
+  "skos:inScheme": {"@id": "https://w3id.org/cdif/provenance/activityType"},
+  "skos:broader": [{"@id": "at:dataTransforming"}],
+  "skos:exactMatch": ["dag:DataCleaning"]
+}

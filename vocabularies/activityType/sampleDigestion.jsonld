@@ -1,0 +1,19 @@
+{
+  "@context": {
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "schema": "http://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "dag": "http://ddialliance.org/Specification/DDI-CDI/1.0/PROV/",
+    "at": "https://w3id.org/cdif/provenance/activityType/",
+    "skos:broadMatch": {"@type": "@id"},
+    "skos:exactMatch": {"@type": "@id"}
+  },
+  "@id": "at:sampleDigestion",
+  "@type": ["skos:Concept"],
+  "skos:prefLabel": {"@value": "Sample digestion", "@language": "en"},
+  "skos:notation": "sampleDigestion",
+  "skos:definition": {"@value": "Sample preparation that dissolves a solid sample, typically in acid, to produce a solution for analysis.", "@language": "en"},
+  "skos:inScheme": {"@id": "https://w3id.org/cdif/provenance/activityType"},
+  "skos:broader": [{"@id": "at:samplePreparation"}],
+  "skos:broadMatch": ["dag:IntentionalConditioning"]
+}

@@ -1,0 +1,20 @@
+{
+  "@context": {
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "schema": "http://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "dag": "http://ddialliance.org/Specification/DDI-CDI/1.0/PROV/",
+    "at": "https://w3id.org/cdif/provenance/activityType/",
+    "skos:broadMatch": {"@type": "@id"},
+    "skos:exactMatch": {"@type": "@id"}
+  },
+  "@id": "at:sampling",
+  "@type": ["skos:Concept"],
+  "skos:prefLabel": {"@value": "Sampling", "@language": "en"},
+  "skos:notation": "sampling",
+  "skos:definition": {"@value": "An activity in which a portion or part of an entity is extracted from or identified within a whole.", "@language": "en"},
+  "skos:example": {"@value": "The extraction of a tissue sample from a plant; The selection of participants from a registry; the acquisition of a sediment core from the deep sea;", "@language": "en"},
+  "skos:inScheme": {"@id": "https://w3id.org/cdif/provenance/activityType"},
+  "skos:topConceptOf": {"@id": "https://w3id.org/cdif/provenance/activityType"},
+  "skos:exactMatch": ["dag:Sampling"]
+}

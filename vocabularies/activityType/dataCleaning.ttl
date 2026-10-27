@@ -1,0 +1,14 @@
+@prefix at: <https://w3id.org/cdif/provenance/activityType/> .
+@prefix cdifprov: <https://w3id.org/cdif/provenance/> .
+@prefix dag: <http://ddialliance.org/Specification/DDI-CDI/1.0/PROV/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+at:dataCleaning a skos:Concept ;
+    skos:broader at:dataTransforming ;
+    skos:definition "A data transformation during which erroneous, duplicated, or corrupted data is removed from a volume of data."@en ;
+    skos:exactMatch dag:DataCleaning ;
+    skos:example "For example, data cleaning can include removing impossible combinations of values from the raw data collected for a register of births, marriages, divorces, and deaths."@en ;
+    skos:inScheme cdifprov:activityType ;
+    skos:notation "dataCleaning" ;
+    skos:prefLabel "Data cleaning"@en .
+

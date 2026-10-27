@@ -1,0 +1,14 @@
+@prefix at: <https://w3id.org/cdif/provenance/activityType/> .
+@prefix cdifprov: <https://w3id.org/cdif/provenance/> .
+@prefix dag: <http://ddialliance.org/Specification/DDI-CDI/1.0/PROV/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+at:dataValidating a skos:Concept ;
+    skos:definition "An activity during which a volume of data is evaluated in relation to some specification or criteria, usually assessing its soundness, justifiability, or appropriateness for a given purpose."@en ;
+    skos:exactMatch dag:DataValidating ;
+    skos:example "Checking whether a model prediction is wtihin the Domain of Applicability of the model Confirming that a measured value is over the limit of quantification / Limit of detectionC"@en ;
+    skos:inScheme cdifprov:activityType ;
+    skos:notation "dataValidating" ;
+    skos:prefLabel "Data validating"@en ;
+    skos:topConceptOf cdifprov:activityType .
+

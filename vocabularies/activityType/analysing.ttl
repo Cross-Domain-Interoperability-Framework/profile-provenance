@@ -1,0 +1,14 @@
+@prefix at: <https://w3id.org/cdif/provenance/activityType/> .
+@prefix cdifprov: <https://w3id.org/cdif/provenance/> .
+@prefix dag: <http://ddialliance.org/Specification/DDI-CDI/1.0/PROV/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+at:analysing a skos:Concept ;
+    skos:definition "An activity during which one or more entities are studied by examining their constituent parts and the interrelationships between those parts in order to increase one's knowledge about those entities."@en ;
+    skos:exactMatch dag:Analyzing ;
+    skos:example "The calculation of column means and their standard deviations in a table."@en ;
+    skos:inScheme cdifprov:activityType ;
+    skos:notation "analysing" ;
+    skos:prefLabel "Analysing"@en ;
+    skos:topConceptOf cdifprov:activityType .
+
