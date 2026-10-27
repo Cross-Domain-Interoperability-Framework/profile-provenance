@@ -1,0 +1,15 @@
+@prefix at: <https://w3id.org/cdif/provenance/activityType/> .
+@prefix cdifprov: <https://w3id.org/cdif/provenance/> .
+@prefix dag: <http://ddialliance.org/Specification/DDI-CDI/1.0/PROV/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+at:samplePreparation a skos:Concept ;
+    skos:broadMatch dag:IntentionalConditioning ;
+    skos:broader at:intentionalConditioning ;
+    skos:definition "An activity that changes the physical or chemical state of a sample to make it suitable for measurement, for example cutting, mounting, polishing, coating, crushing, sieving or dissolving it."@en ;
+    skos:inScheme cdifprov:activityType ;
+    skos:narrower at:ionMilling,
+        at:sampleDigestion ;
+    skos:notation "samplePreparation" ;
+    skos:prefLabel "Sample preparation"@en .
+

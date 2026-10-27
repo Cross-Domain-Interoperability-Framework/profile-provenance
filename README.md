@@ -12,9 +12,20 @@ There is a related [Google drive](https://drive.google.com/drive/folders/1TGToyv
 - **[ProvenanceOptions.md](ProvenanceOptions.md)** — Comprehensive comparison of provenance approaches available in CDIF: the three native building blocks (cdifProv, provActivity, ddicdiProv) and external RO-Crate-based profiles (WRROC, ARC). Covers property mappings, multi-step provenance patterns, and guidance for implementing ARC profile support in CDIF.
 - **[agents.md](agents.md)** — Analysis of how agents (people, organizations, software) are represented across provenance vocabularies used in CDIF, with recommendations for consistent implementation.
 
-### Ontology Files
+### Semantic Resources
 
 - **[PROV_Classes.ttl](PROV_Classes.ttl)** — PROV-based provenance classes as discussed at the Dagstuhl Workshop (November 2025), mapping DDI-CDI provenance activity types to W3C PROV-O. Includes editorial commentary on class naming conventions and agent modeling approaches.
+- **[vocabularies/activityTypes.jsonld](vocabularies/activityTypes.jsonld)** — Draft SKOS vocabulary of activity types for workflow steps. The top layer is the 23 activity classes from the Dagstuhl workshop's ProvWork2025 Activity sheet (sampling, observing / measuring, data transforming, calibrating, archiving, ...), each a `skos:exactMatch` to its class in `PROV_Classes.ttl`. Under them sit the laboratory steps used in ADA TAPP plans: sample preparation (narrower: sample digestion, ion milling) under conditioning (intentional), instrument tuning under configuring, instrument calibration under calibrating, data acquisition under observing / measuring, data processing under data transforming, and quality control under quality controlling. A step is typed with one of these concepts through `schema:additionalType`, while its `schema:name` stays free to say what it specifically did (for example, a step named "Laser calibration" has type `at:instrumentCalibration`). Validates against the CDIF concept-scheme profile (JSON Schema and SHACL). Published as a Turtle copy ([activityTypes.ttl](vocabularies/activityTypes.ttl)), one JSON-LD and Turtle file per concept ([vocabularies/activityType/](vocabularies/activityType/)), and an HTML page rendered with the [iSamples vocabulary tooling](https://github.com/isamplesorg/vocabularies) and Quarto, all generated from the JSON-LD.
+  - **HTML view:** [activity-type vocabulary](https://cross-domain-interoperability-framework.github.io/profile-provenance-draft/vocabularies/docs/activityTypes.html), served by GitHub Pages; each concept has an anchor named by its notation, for example [sample preparation](https://cross-domain-interoperability-framework.github.io/profile-provenance-draft/vocabularies/docs/activityTypes.html#samplePreparation).
+  - **Resolving the IRIs:** the scheme IRI `https://w3id.org/cdif/provenance/activityType` and each concept IRI `https://w3id.org/cdif/provenance/activityType/<notation>` resolve through w3id.org by content negotiation. w3id answers with a 303 redirect into the GitHub Pages copy of this repo, chosen by the request's `Accept` header:
+
+    | Accept | scheme IRI redirects to | concept IRI redirects to |
+    |---|---|---|
+    | `text/turtle` | `vocabularies/activityTypes.ttl` | `vocabularies/activityType/<notation>.ttl` |
+    | `application/ld+json` or `application/json` | `vocabularies/activityTypes.jsonld` | `vocabularies/activityType/<notation>.jsonld` |
+    | anything else (a browser) | `vocabularies/docs/activityTypes.html` | `vocabularies/docs/activityTypes.html#<notation>` |
+
+    So a browser following a concept IRI lands on that concept in the HTML view, and an RDF client gets the concept's own SKOS description. The rules are in [ids/cdif/.htaccess](https://github.com/perma-id/w3id.org/blob/master/ids/cdif/.htaccess) of the w3id repo; they map the last IRI segment straight onto a file name, which is why a concept's local name must equal its `skos:notation`. For example, `curl -L -H "Accept: text/turtle" https://w3id.org/cdif/provenance/activityType/samplePreparation` returns that concept in Turtle.
 - **[output_uc4 (1).ttl](output_uc4%20(1).ttl)** — PROV-O example: ML model development pipeline (data transformation, model development, model validation) demonstrating `prov:Activity`, `prov:Entity`, and `prov:wasAssociatedWith` patterns.
 
 ### Tools

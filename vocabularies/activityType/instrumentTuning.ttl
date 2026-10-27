@@ -1,0 +1,14 @@
+@prefix at: <https://w3id.org/cdif/provenance/activityType/> .
+@prefix cdifprov: <https://w3id.org/cdif/provenance/> .
+@prefix dag: <http://ddialliance.org/Specification/DDI-CDI/1.0/PROV/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+at:instrumentTuning a skos:Concept ;
+    skos:broadMatch dag:Configuring ;
+    skos:broader at:configuring ;
+    skos:definition "An activity that adjusts instrument settings to optimise performance for a measurement, judged by the instrument's response rather than against reference materials of known value."@en ;
+    skos:inScheme cdifprov:activityType ;
+    skos:notation "instrumentTuning" ;
+    skos:prefLabel "Instrument tuning"@en ;
+    skos:scopeNote "Distinct from instrument calibration, which compares the response with standards of known value. Covers technique-specific steps such as 'ICP-MS tuning and optimization'."@en .
+

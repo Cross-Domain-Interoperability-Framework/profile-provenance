@@ -1,0 +1,13 @@
+@prefix at: <https://w3id.org/cdif/provenance/activityType/> .
+@prefix cdifprov: <https://w3id.org/cdif/provenance/> .
+@prefix dag: <http://ddialliance.org/Specification/DDI-CDI/1.0/PROV/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+at:consuming a skos:Concept ;
+    skos:definition "An activity during which an agent acquires and uses an entity."@en ;
+    skos:exactMatch dag:Consuming ;
+    skos:inScheme cdifprov:activityType ;
+    skos:notation "consuming" ;
+    skos:prefLabel "Consuming"@en ;
+    skos:topConceptOf cdifprov:activityType .
+

@@ -1,0 +1,20 @@
+{
+  "@context": {
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "schema": "http://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "dag": "http://ddialliance.org/Specification/DDI-CDI/1.0/PROV/",
+    "at": "https://w3id.org/cdif/provenance/activityType/",
+    "skos:broadMatch": {"@type": "@id"},
+    "skos:exactMatch": {"@type": "@id"}
+  },
+  "@id": "at:instrumentCalibration",
+  "@type": ["skos:Concept"],
+  "skos:prefLabel": {"@value": "Instrument calibration", "@language": "en"},
+  "skos:notation": "instrumentCalibration",
+  "skos:definition": {"@value": "An activity that measures reference materials or standards of known value to establish the relationship between the instrument's response and the quantity being measured.", "@language": "en"},
+  "skos:scopeNote": {"@value": "Covers technique-specific steps such as 'Laser calibration' and 'Laser ablation calibration'.", "@language": "en"},
+  "skos:inScheme": {"@id": "https://w3id.org/cdif/provenance/activityType"},
+  "skos:broader": [{"@id": "at:calibrating"}],
+  "skos:broadMatch": ["dag:Calibrating"]
+}

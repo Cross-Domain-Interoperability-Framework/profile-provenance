@@ -1,0 +1,19 @@
+{
+  "@context": {
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "schema": "http://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "dag": "http://ddialliance.org/Specification/DDI-CDI/1.0/PROV/",
+    "at": "https://w3id.org/cdif/provenance/activityType/",
+    "skos:broadMatch": {"@type": "@id"},
+    "skos:exactMatch": {"@type": "@id"}
+  },
+  "@id": "at:ionMilling",
+  "@type": ["skos:Concept"],
+  "skos:prefLabel": {"@value": "Ion milling", "@language": "en"},
+  "skos:notation": "ionMilling",
+  "skos:definition": {"@value": "Sample preparation that thins or shapes a sample by sputtering it with an ion beam, for example to make an electron-transparent section.", "@language": "en"},
+  "skos:inScheme": {"@id": "https://w3id.org/cdif/provenance/activityType"},
+  "skos:broader": [{"@id": "at:samplePreparation"}],
+  "skos:broadMatch": ["dag:IntentionalConditioning"]
+}

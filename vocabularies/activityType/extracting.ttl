@@ -1,0 +1,14 @@
+@prefix at: <https://w3id.org/cdif/provenance/activityType/> .
+@prefix cdifprov: <https://w3id.org/cdif/provenance/> .
+@prefix dag: <http://ddialliance.org/Specification/DDI-CDI/1.0/PROV/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+at:extracting a skos:Concept ;
+    skos:definition "An activity during which an entity is moved to a new location."@en ;
+    skos:exactMatch dag:Extracting ;
+    skos:example "Includes retreival or all or part of a dataset; Extraction of data from an archive (in the ETL sense); the extraction of a specimen from a collection;"@en ;
+    skos:inScheme cdifprov:activityType ;
+    skos:notation "extracting" ;
+    skos:prefLabel "Extracting"@en ;
+    skos:topConceptOf cdifprov:activityType .
+

@@ -1,0 +1,21 @@
+{
+  "@context": {
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "schema": "http://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "dag": "http://ddialliance.org/Specification/DDI-CDI/1.0/PROV/",
+    "at": "https://w3id.org/cdif/provenance/activityType/",
+    "skos:broadMatch": {"@type": "@id"},
+    "skos:exactMatch": {"@type": "@id"}
+  },
+  "@id": "at:intentionalConditioning",
+  "@type": ["skos:Concept"],
+  "skos:prefLabel": {"@value": "Conditioning (intentional)", "@language": "en"},
+  "skos:notation": "intentionalConditioning",
+  "skos:definition": {"@value": "An activity in which the state of an entity is intentionally changed by an agent, in preparation for a specified and subsequent activity.", "@language": "en"},
+  "skos:example": {"@value": "For example, the exposure of an experimental unit to radiation, the treatment of a patient with a drug, culturing organisms and acclimating them to the test conditions, dosing in a toxicology study or clinical trial, Transformation of the surface of nanomaterial in a specific environment,", "@language": "en"},
+  "skos:inScheme": {"@id": "https://w3id.org/cdif/provenance/activityType"},
+  "skos:topConceptOf": {"@id": "https://w3id.org/cdif/provenance/activityType"},
+  "skos:exactMatch": ["dag:IntentionalConditioning"],
+  "skos:narrower": [{"@id": "at:samplePreparation"}]
+}

@@ -1,0 +1,20 @@
+{
+  "@context": {
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "schema": "http://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "dag": "http://ddialliance.org/Specification/DDI-CDI/1.0/PROV/",
+    "at": "https://w3id.org/cdif/provenance/activityType/",
+    "skos:broadMatch": {"@type": "@id"},
+    "skos:exactMatch": {"@type": "@id"}
+  },
+  "@id": "at:dataAcquisition",
+  "@type": ["skos:Concept"],
+  "skos:prefLabel": {"@value": "Data acquisition", "@language": "en"},
+  "skos:notation": "dataAcquisition",
+  "skos:definition": {"@value": "An activity in which an instrument or observer measures or observes the object of study and records the result as data.", "@language": "en"},
+  "skos:scopeNote": {"@value": "Covers technique-specific steps such as 'Laser ablation data acquisition' and 'WDS data acquisition'.", "@language": "en"},
+  "skos:inScheme": {"@id": "https://w3id.org/cdif/provenance/activityType"},
+  "skos:broader": [{"@id": "at:observingMeasuring"}],
+  "skos:broadMatch": ["dag:Observing_Measuring"]
+}

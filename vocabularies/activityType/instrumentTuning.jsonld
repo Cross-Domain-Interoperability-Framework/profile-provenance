@@ -1,0 +1,20 @@
+{
+  "@context": {
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "schema": "http://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "dag": "http://ddialliance.org/Specification/DDI-CDI/1.0/PROV/",
+    "at": "https://w3id.org/cdif/provenance/activityType/",
+    "skos:broadMatch": {"@type": "@id"},
+    "skos:exactMatch": {"@type": "@id"}
+  },
+  "@id": "at:instrumentTuning",
+  "@type": ["skos:Concept"],
+  "skos:prefLabel": {"@value": "Instrument tuning", "@language": "en"},
+  "skos:notation": "instrumentTuning",
+  "skos:definition": {"@value": "An activity that adjusts instrument settings to optimise performance for a measurement, judged by the instrument's response rather than against reference materials of known value.", "@language": "en"},
+  "skos:scopeNote": {"@value": "Distinct from instrument calibration, which compares the response with standards of known value. Covers technique-specific steps such as 'ICP-MS tuning and optimization'.", "@language": "en"},
+  "skos:inScheme": {"@id": "https://w3id.org/cdif/provenance/activityType"},
+  "skos:broader": [{"@id": "at:configuring"}],
+  "skos:broadMatch": ["dag:Configuring"]
+}

@@ -1,0 +1,14 @@
+@prefix at: <https://w3id.org/cdif/provenance/activityType/> .
+@prefix cdifprov: <https://w3id.org/cdif/provenance/> .
+@prefix dag: <http://ddialliance.org/Specification/DDI-CDI/1.0/PROV/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+at:passiveConditioning a skos:Concept ;
+    skos:definition "A non-intentional process in which the state of an entity is changed, such that it impacts or precipitates a planned and subsequent activity."@en ;
+    skos:exactMatch dag:PassiveConditioning ;
+    skos:example "For example, a train crash, radiation leak, meteor hitting earth, environmental exposure to chemicals (for biomonitoring), parade or cultural event, volcano eruption"@en ;
+    skos:inScheme cdifprov:activityType ;
+    skos:notation "passiveConditioning" ;
+    skos:prefLabel "Conditioning (passive)"@en ;
+    skos:topConceptOf cdifprov:activityType .
+
