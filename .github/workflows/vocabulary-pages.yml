@@ -1,0 +1,74 @@
+# Publish the activity-type vocabulary.
+#
+# vocabularies/activityTypes.jsonld is the only file anyone edits. From it:
+#   - tools/buildVocabularyFiles.py writes activityTypes.ttl and one .jsonld/.ttl per
+#     concept under vocabularies/activityType/. Those are committed with the change, and
+#     the `check` job fails a PR whose generated files are stale.
+#   - the iSamples vocabulary action renders activityTypes.ttl to Quarto HTML, which the
+#     `render` job commits to vocabularies/docs/ on the release branch, because GitHub
+#     Pages serves that branch as it is.
+# w3id.org/cdif/provenance/activityType[/<concept>] redirects into these files by
+# content negotiation (HTML, Turtle, JSON-LD).
+name: Vocabulary pages
+
+on:
+  pull_request:
+    paths:
+      - 'vocabularies/**'
+      - 'tools/buildVocabularyFiles.py'
+      - '.github/workflows/vocabulary-pages.yml'
+  push:
+    branches: [reviewRevision202606]
+    paths:
+      - 'vocabularies/activityTypes.jsonld'
+      - 'tools/buildVocabularyFiles.py'
+      - '.github/workflows/vocabulary-pages.yml'
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install rdflib
+      - name: Generated vocabulary files are up to date
+        run: python tools/buildVocabularyFiles.py vocabularies/activityTypes.jsonld --check
+
+  render:
+    if: github.event_name != 'pull_request'
+    needs: check
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install rdflib
+      - name: Render HTML with the iSamples vocabulary action
+        # Pinned to isamplesorg/vocabularies PR #40 (setuptools<81 for rdflib-sqlalchemy on
+        # Python 3.12, and the vocabdir input). Re-pin to main once it merges.
+        uses: isamplesorg/vocabularies@43af182f656ab09ffb3dce958bdccb5d640c89d2
+        with:
+          action: docs
+          # Relative, so it resolves inside the action's container; output goes to <path>/docs.
+          path: vocabularies
+          vocabdir: vocabularies
+          inputttl: activityTypes
+          inputvocaburi: cdifprov:activityType
+      - name: Add case-preserving concept anchors
+        run: |
+          sudo chown -R "$(id -u):$(id -g)" vocabularies/docs
+          python tools/buildVocabularyFiles.py vocabularies/activityTypes.jsonld --anchors vocabularies/docs/activityTypes.html
+      - name: Commit the rendered pages
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898183+github-actions[bot]@users.noreply.github.com"
+          git add vocabularies/docs
+          if git diff --cached --quiet; then echo "rendered pages unchanged"; exit 0; fi
+          git commit -m "Render activity-type vocabulary pages"
+          git push
