@@ -4,11 +4,18 @@
 #   - tools/buildVocabularyFiles.py writes activityTypes.ttl and one .jsonld/.ttl per
 #     concept under vocabularies/activityType/. Those are committed with the change, and
 #     the `check` job fails a PR whose generated files are stale.
-#   - the iSamples vocabulary action renders activityTypes.ttl to Quarto HTML, which the
-#     `render` job commits to vocabularies/docs/ on the release branch, because GitHub
-#     Pages serves that branch as it is.
+#   - the iSamples vocabulary tooling (isamplesorg/vocabularies, vocab2mdCacheV2.py) writes
+#     Quarto markdown from activityTypes.ttl and Quarto renders it to HTML. The `render` job
+#     commits that to vocabularies/docs/ on the release branch, because GitHub Pages serves
+#     that branch as it is; on a PR it only renders, and uploads the pages as an artifact.
 # w3id.org/cdif/provenance/activityType[/<concept>] redirects into these files by
 # content negotiation (HTML, Turtle, JSON-LD).
+#
+# Why not the iSamples GitHub Action itself: at 43af182 its loader always purges the SQLite
+# cache before creating it (navocab VocabularyStore(purge_existing=True) -> graph.destroy),
+# which raises on a fresh cache, and the action then skips the vocabulary but exits 0. The
+# markdown writer needs only an rdflib graph, so it is called on one directly and the cache
+# is never involved.
 name: Vocabulary pages
 
 on:
@@ -38,33 +45,53 @@ jobs:
         run: python tools/buildVocabularyFiles.py vocabularies/activityTypes.jsonld --check
 
   render:
-    if: github.event_name != 'pull_request'
     needs: check
     runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
       - uses: actions/checkout@v4
+      - name: Check out the iSamples vocabulary tooling
+        uses: actions/checkout@v4
+        with:
+          repository: isamplesorg/vocabularies
+          # isamplesorg/vocabularies PR #40: its requirements pin setuptools<81, which
+          # rdflib-sqlalchemy (imported by vocab2mdCacheV2) needs on Python 3.12.
+          ref: 43af182f656ab09ffb3dce958bdccb5d640c89d2
+          path: .isamples
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - run: pip install rdflib
-      - name: Render HTML with the iSamples vocabulary action
-        # Pinned to isamplesorg/vocabularies PR #40 (setuptools<81 for rdflib-sqlalchemy on
-        # Python 3.12, and the vocabdir input). Re-pin to main once it merges.
-        uses: isamplesorg/vocabularies@43af182f656ab09ffb3dce958bdccb5d640c89d2
+      - run: pip install -r .isamples/tools/requirements.txt
+      - uses: quarto-dev/quarto-actions/setup@v2
         with:
-          action: docs
-          # Relative, so it resolves inside the action's container; output goes to <path>/docs.
-          path: vocabularies
-          vocabdir: vocabularies
-          inputttl: activityTypes
-          inputvocaburi: cdifprov:activityType
-      - name: Add case-preserving concept anchors
+          version: 1.6.43
+      - name: Write Quarto markdown with the iSamples vocab2md writer
         run: |
-          sudo chown -R "$(id -u):$(id -g)" vocabularies/docs
-          python tools/buildVocabularyFiles.py vocabularies/activityTypes.jsonld --anchors vocabularies/docs/activityTypes.html
+          mkdir -p vocabularies/docs
+          python - > vocabularies/docs/activityTypes.md <<'EOF'
+          import logging, sys, rdflib
+          sys.path.insert(0, '.isamples/tools')
+          import vocab2mdCacheV2 as v
+          logging.disable(logging.CRITICAL)
+          g = rdflib.Graph()
+          g.parse('vocabularies/activityTypes.ttl', format='turtle')
+          for line in v.describeVocabulary(g, rdflib.URIRef('https://w3id.org/cdif/provenance/activityType')):
+              print(line)
+          EOF
+          grep -q '^# \*\*Concept scheme:\*\* CDIF provenance activity types' vocabularies/docs/activityTypes.md
+      - name: Render HTML
+        run: quarto render vocabularies/docs/activityTypes.md -t html
+      - name: Add case-preserving concept anchors
+        run: python tools/buildVocabularyFiles.py vocabularies/activityTypes.jsonld --anchors vocabularies/docs/activityTypes.html
+      - name: Upload the rendered pages
+        if: github.event_name == 'pull_request'
+        uses: actions/upload-artifact@v4
+        with:
+          name: vocabulary-pages
+          path: vocabularies/docs
       - name: Commit the rendered pages
+        if: github.event_name != 'pull_request'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898183+github-actions[bot]@users.noreply.github.com"

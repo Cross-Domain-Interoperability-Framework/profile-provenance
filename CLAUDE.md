@@ -26,7 +26,7 @@ Most of the root is NOT authored here. Edit the source, never the copy:
 | `FrameAndValidate.py` | `Cross-Domain-Interoperability-Framework/validation` `tools/FrameAndValidate.py` | `python tools/sync_frameandvalidate.py --apply` in that repo. Carries a DO-NOT-EDIT banner; CI (`check-frameandvalidate.yml`) fails on any body drift from the normative copy |
 | `examples/*.cdifprov.json` (Galaxy, Bennu) | `examples/ROCRATE/*` | the converters in `tools/` — fix the converter and regenerate, not the output |
 | `vocabularies/activityTypes.ttl`, `vocabularies/activityType/*.{jsonld,ttl}` | `vocabularies/activityTypes.jsonld` | `python tools/buildVocabularyFiles.py vocabularies/activityTypes.jsonld`, committed with the source change; CI (`vocabulary-pages.yml`) fails a PR whose copies are stale |
-| `vocabularies/docs/` | `vocabularies/activityTypes.ttl` | the iSamples vocabulary action (Quarto), run and committed by `vocabulary-pages.yml` on push to `reviewRevision202606`; never by hand |
+| `vocabularies/docs/` | `vocabularies/activityTypes.ttl` | the iSamples `vocab2mdCacheV2.py` markdown writer plus Quarto, run and committed by `vocabulary-pages.yml` on push to `reviewRevision202606`; never by hand |
 
 Authored here: `cdifProvenance-frame.jsonld`, the converters in `tools/`, `ODIS_provExampleJulesVerne.json`,
 the docs (`README.md`, `ProvenanceOptions.md`, `agents.md`, `PROV_Classes.ttl`), and
