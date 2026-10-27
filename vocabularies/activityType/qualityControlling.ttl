@@ -1,0 +1,15 @@
+@prefix at: <https://w3id.org/cdif/provenance/activityType/> .
+@prefix cdifprov: <https://w3id.org/cdif/provenance/> .
+@prefix dag: <http://ddialliance.org/Specification/DDI-CDI/1.0/PROV/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+at:qualityControlling a skos:Concept ;
+    skos:definition "An activity during which an entity's compliance to a set of defined criteria is assessed, resulting in acceptance or rejection of that entity in a set of further activities."@en ;
+    skos:editorialNote "Tentative in ProvWork2025: the workshop label carries a question mark."@en ;
+    skos:exactMatch dag:QualityControlling ;
+    skos:inScheme cdifprov:activityType ;
+    skos:narrower at:qualityControl ;
+    skos:notation "qualityControlling" ;
+    skos:prefLabel "Quality controlling"@en ;
+    skos:topConceptOf cdifprov:activityType .
+

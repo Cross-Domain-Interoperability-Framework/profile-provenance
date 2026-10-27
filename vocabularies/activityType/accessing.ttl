@@ -1,0 +1,14 @@
+@prefix at: <https://w3id.org/cdif/provenance/activityType/> .
+@prefix cdifprov: <https://w3id.org/cdif/provenance/> .
+@prefix dag: <http://ddialliance.org/Specification/DDI-CDI/1.0/PROV/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+at:accessing a skos:Concept ;
+    skos:definition "An activity during which an agent realises its rights and abilities to approach and interact with an entity."@en ;
+    skos:exactMatch dag:Accessing ;
+    skos:example "Accessing data through services in a data enclave to perform secure analysis;"@en ;
+    skos:inScheme cdifprov:activityType ;
+    skos:notation "accessing" ;
+    skos:prefLabel "Accessing"@en ;
+    skos:topConceptOf cdifprov:activityType .
+

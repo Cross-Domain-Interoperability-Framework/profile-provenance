@@ -1,0 +1,14 @@
+@prefix at: <https://w3id.org/cdif/provenance/activityType/> .
+@prefix cdifprov: <https://w3id.org/cdif/provenance/> .
+@prefix dag: <http://ddialliance.org/Specification/DDI-CDI/1.0/PROV/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+at:dataAcquisition a skos:Concept ;
+    skos:broadMatch dag:Observing_Measuring ;
+    skos:broader at:observingMeasuring ;
+    skos:definition "An activity in which an instrument or observer measures or observes the object of study and records the result as data."@en ;
+    skos:inScheme cdifprov:activityType ;
+    skos:notation "dataAcquisition" ;
+    skos:prefLabel "Data acquisition"@en ;
+    skos:scopeNote "Covers technique-specific steps such as 'Laser ablation data acquisition' and 'WDS data acquisition'."@en .
+

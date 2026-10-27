@@ -2,3 +2,6 @@
 # directory -- e.g. carried along when files are moved between repos.
 __pycache__/
 *.pyc
+
+# Cache the iSamples vocabulary action writes while rendering vocabularies/docs.
+cache/

@@ -25,13 +25,16 @@ Most of the root is NOT authored here. Edit the source, never the copy:
 | `examples/exampleCdifProvenance.json`, `examples/exampleEPMAProvenance.json` | mBB block's `example*.json` | same sync |
 | `FrameAndValidate.py` | `Cross-Domain-Interoperability-Framework/validation` `tools/FrameAndValidate.py` | `python tools/sync_frameandvalidate.py --apply` in that repo. Carries a DO-NOT-EDIT banner; CI (`check-frameandvalidate.yml`) fails on any body drift from the normative copy |
 | `examples/*.cdifprov.json` (Galaxy, Bennu) | `examples/ROCRATE/*` | the converters in `tools/` — fix the converter and regenerate, not the output |
+| `vocabularies/activityTypes.ttl`, `vocabularies/activityType/*.{jsonld,ttl}` | `vocabularies/activityTypes.jsonld` | `python tools/buildVocabularyFiles.py vocabularies/activityTypes.jsonld`, committed with the source change; CI (`vocabulary-pages.yml`) fails a PR whose copies are stale |
+| `vocabularies/docs/` | `vocabularies/activityTypes.ttl` | the iSamples vocabulary action (Quarto), run and committed by `vocabulary-pages.yml` on push to `reviewRevision202606`; never by hand |
 
 Authored here: `cdifProvenance-frame.jsonld`, the converters in `tools/`, `ODIS_provExampleJulesVerne.json`,
 the docs (`README.md`, `ProvenanceOptions.md`, `agents.md`, `PROV_Classes.ttl`), and
 `vocabularies/activityTypes.jsonld`, the activity-type vocabulary for workflow steps. Validate a change to it
 against the CDIF concept-scheme profile: `profile-conceptscheme`'s `FrameAndValidate.py -v` plus pyshacl
-with its `conceptSchemeRules.shacl`. Keep each `skos:closeMatch`/`skos:broadMatch` pointing at a class that
-exists in `PROV_Classes.ttl`.
+with its `conceptSchemeRules.shacl`. Keep each `skos:exactMatch`/`skos:broadMatch` pointing at a class that
+exists in `PROV_Classes.ttl`, and each concept's IRI local name equal to its `skos:notation` (the w3id rules
+map the last IRI segment straight onto `vocabularies/activityType/<name>.*`; the build fails otherwise).
 `CDIFProvenanceImplementationGuide.md` is an auto-generated draft from the StructuredSchema.
 Note `agents.md` here is a design analysis of *provenance agents*, not an agent-instructions file.
 

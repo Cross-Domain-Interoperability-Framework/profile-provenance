@@ -1,0 +1,13 @@
+@prefix at: <https://w3id.org/cdif/provenance/activityType/> .
+@prefix cdifprov: <https://w3id.org/cdif/provenance/> .
+@prefix dag: <http://ddialliance.org/Specification/DDI-CDI/1.0/PROV/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+at:qualityControl a skos:Concept ;
+    skos:broadMatch dag:QualityControlling ;
+    skos:broader at:qualityControlling ;
+    skos:definition "An activity that assesses data or a process against defined criteria, for example measuring secondary standards, checking precision and accuracy, or flagging anomalous values."@en ;
+    skos:inScheme cdifprov:activityType ;
+    skos:notation "qualityControl" ;
+    skos:prefLabel "Quality control"@en .
+

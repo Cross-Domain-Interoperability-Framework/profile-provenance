@@ -1,0 +1,15 @@
+@prefix at: <https://w3id.org/cdif/provenance/activityType/> .
+@prefix cdifprov: <https://w3id.org/cdif/provenance/> .
+@prefix dag: <http://ddialliance.org/Specification/DDI-CDI/1.0/PROV/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+at:dataTransforming a skos:Concept ;
+    skos:definition "An activity during which a volume of data is modified."@en ;
+    skos:exactMatch dag:DataTransforming ;
+    skos:inScheme cdifprov:activityType ;
+    skos:narrower at:dataCleaning,
+        at:dataProcessing ;
+    skos:notation "dataTransforming" ;
+    skos:prefLabel "Data transforming"@en ;
+    skos:topConceptOf cdifprov:activityType .
+

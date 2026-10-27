@@ -1,0 +1,13 @@
+@prefix at: <https://w3id.org/cdif/provenance/activityType/> .
+@prefix cdifprov: <https://w3id.org/cdif/provenance/> .
+@prefix dag: <http://ddialliance.org/Specification/DDI-CDI/1.0/PROV/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+at:ionMilling a skos:Concept ;
+    skos:broadMatch dag:IntentionalConditioning ;
+    skos:broader at:samplePreparation ;
+    skos:definition "Sample preparation that thins or shapes a sample by sputtering it with an ion beam, for example to make an electron-transparent section."@en ;
+    skos:inScheme cdifprov:activityType ;
+    skos:notation "ionMilling" ;
+    skos:prefLabel "Ion milling"@en .
+

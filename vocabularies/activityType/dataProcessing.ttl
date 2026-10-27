@@ -1,0 +1,14 @@
+@prefix at: <https://w3id.org/cdif/provenance/activityType/> .
+@prefix cdifprov: <https://w3id.org/cdif/provenance/> .
+@prefix dag: <http://ddialliance.org/Specification/DDI-CDI/1.0/PROV/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+at:dataProcessing a skos:Concept ;
+    skos:altLabel "Data reduction"@en ;
+    skos:broadMatch dag:DataTransforming ;
+    skos:broader at:dataTransforming ;
+    skos:definition "An activity that transforms acquired data into reported results, for example background and blank correction, drift correction, matrix correction, applying a calibration, or converting units."@en ;
+    skos:inScheme cdifprov:activityType ;
+    skos:notation "dataProcessing" ;
+    skos:prefLabel "Data processing"@en .
+

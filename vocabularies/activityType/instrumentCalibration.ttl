@@ -1,0 +1,14 @@
+@prefix at: <https://w3id.org/cdif/provenance/activityType/> .
+@prefix cdifprov: <https://w3id.org/cdif/provenance/> .
+@prefix dag: <http://ddialliance.org/Specification/DDI-CDI/1.0/PROV/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+at:instrumentCalibration a skos:Concept ;
+    skos:broadMatch dag:Calibrating ;
+    skos:broader at:calibrating ;
+    skos:definition "An activity that measures reference materials or standards of known value to establish the relationship between the instrument's response and the quantity being measured."@en ;
+    skos:inScheme cdifprov:activityType ;
+    skos:notation "instrumentCalibration" ;
+    skos:prefLabel "Instrument calibration"@en ;
+    skos:scopeNote "Covers technique-specific steps such as 'Laser calibration' and 'Laser ablation calibration'."@en .
+

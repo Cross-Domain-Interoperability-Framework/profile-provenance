@@ -1,0 +1,16 @@
+@prefix at: <https://w3id.org/cdif/provenance/activityType/> .
+@prefix cdifprov: <https://w3id.org/cdif/provenance/> .
+@prefix dag: <http://ddialliance.org/Specification/DDI-CDI/1.0/PROV/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+at:calibrating a skos:Concept ;
+    skos:definition "An activity during which measurement data produced by an entity are compared to a reference dataset with known accuracy in order to establish, verify, or document the accuracy of the entity."@en ;
+    skos:editorialNote "Tentative in ProvWork2025: the workshop marked this class as a potential new category, a component of other classes, or something to fold into context."@en ;
+    skos:exactMatch dag:Calibrating ;
+    skos:example "Chemistry: The set of operations which establish, under specified conditions, the relationship between values indicated by the analytical instrument and the corresponding known values of an analyte (https://goldbook.iupac.org/terms/view/C00775)."@en ;
+    skos:inScheme cdifprov:activityType ;
+    skos:narrower at:instrumentCalibration ;
+    skos:notation "calibrating" ;
+    skos:prefLabel "Calibrating"@en ;
+    skos:topConceptOf cdifprov:activityType .
+
